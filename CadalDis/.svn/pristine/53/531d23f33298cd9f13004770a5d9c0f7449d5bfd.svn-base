@@ -1,0 +1,92 @@
+package cn.cadal.dis.java.timebook;
+
+public class DisTimeBook {
+	
+	/**
+	 * @param time : 2013-04-09 13:00
+	 * @return     : 5 [2013-04-09 12:30到2013-04-09 13:00的图书阅读数]
+	 */
+	public int BookThirtyMin(String time){
+		
+		return 0;
+	}
+	
+	/**
+	 * @param time : 2013-04-09 13:00
+	 * @return     : 5 [2013-04-09 12:45到2013-04-09 13:00的图书阅读数]
+	 */
+	public int BookFifteenMin(String time) {
+		
+		return 0;
+	}
+	
+	/**
+	 * @param time : 2013-04-09 13:00
+	 * @return     : 5 [2013-04-09 12:59分的图书阅读数]
+	 */
+	public int BookOneMin(String time){
+		
+		return 0;
+	}
+	
+	/**
+	 * @param time : 2013-04-09 13:00
+	 * @return     : 5$12$... [2013-04-08 13:00到2013-04-09 13:00的图书阅读数,默认时间粒度为30分钟]
+	 */
+	public String BookTwentyFourHour(String time) {
+		
+		return null;
+	}
+	
+	/**
+	 * @param time : 2013-04-09 13:00
+	 * @param step : 15
+	 * @return     : 5$12$... [2013-04-08 13:00到2013-04-09 13:00的图书阅读数,时间粒度为#step分钟]
+	 */
+	public String BookTwentyFourHour(String time, String step) {
+		
+		return null;
+	}
+	
+	/**
+	 * @return     : 5 [过去30分钟的图书量]
+	 */
+	public int BookThirtyMinCur(){
+		
+		return 0;
+	}
+
+	/**
+	 * @return     : 5 [过去15分钟的图书量]
+	 */
+	public int BookFifteenMinCur() {
+		
+		return 0;
+	}
+	
+	/**
+	 * @return     : 5 [过去1分钟的图书量]
+	 */
+	public int BookOneMinCur(){
+		
+		return 0;
+	}
+
+	/**
+	 * @return     : 5$12$... [过去24小时的图书阅读数,默认时间粒度为30分钟]
+	 */
+	public String BookTwentyFourHourCur() {
+		
+		return null;
+	}
+
+	/**
+	 * @param step : 15
+	 * @return     : 5$12$... [过去24小时的图书阅读数,时间粒度为#step分钟]
+	 */
+	public String BookTwentyFourHourCur(String step) {
+		
+		return null;
+	}
+
+}

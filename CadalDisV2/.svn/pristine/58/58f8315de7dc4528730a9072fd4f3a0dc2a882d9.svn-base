@@ -1,0 +1,76 @@
+package cn.cadal.auth.java.control;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class PgAccess {
+	public String bookNum;
+	Connection con = null;
+	public int errorFlag;
+
+	// 构造函数
+	public PgAccess() {
+		this.errorFlag = 0; // 正常情况为0;
+
+		// 连数据库
+		String Username = "cadal";      // 数据库用户名
+		String userPasswd = "Cadal205"; // 密码
+		String url = "jdbc:postgresql:" + "//10.15.62.99:5432/cadal_metadata_full_dbo2";
+
+		// 加载驱动程序以连接数据库
+		try {
+			Class.forName("org.postgresql.Driver");
+			System.out.println(url);
+			con = DriverManager.getConnection(url, Username, userPasswd);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public String findISBN(String bookid) {
+		// 连数据库
+		String username = "cadal";      // 数据库用户名
+		String userPasswd = "Cadal205"; // 密码
+		String url = "jdbc:postgresql:" + "//10.15.62.99:5432/cadal_metadata_full_dbo2";
+		
+		String result = "";
+		
+		// 加载驱动程序以连接数据库
+		try {
+			Class.forName("org.postgresql.Driver");
+			System.out.println(url);
+			Connection con2 = DriverManager.getConnection(url, username, userPasswd);
+			
+			Statement statement = con2.createStatement();
+			String sql = "SELECT * FROM \"cbook\"";
+			ResultSet rs = statement.executeQuery(sql);
+			if (!rs.next()) {
+				System.out.println("没有查找到数据");
+			}else{
+				System.out.println(rs.getFetchSize());
+			}
+			
+			return result;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			return "";
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return "";
+		}
+	}
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// Test
+
+	}
+
+}

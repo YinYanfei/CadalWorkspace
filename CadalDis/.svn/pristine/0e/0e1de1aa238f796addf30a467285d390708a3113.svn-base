@@ -1,0 +1,15 @@
+package cn.cadal.dis.java.timebook;
+
+public class GetBookInfo {
+	
+	/**
+	 * @param timeStart : 2013-04-09 13:00
+	 * @param timeEnd   : 2013-04-09 13:30
+	 * @return			: 07018720$10102339$... [2013-04-09 13:00到2013-04-09 13:30之间被阅读的读书的id信息]
+	 */
+	public String BookInfo(String timeStart, String timeEnd){
+		
+		return null;
+	}
+
+}

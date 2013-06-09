@@ -1,0 +1,13 @@
+package cn.cadal.auth.java.control;
+
+public class AuthManage {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// Test
+
+	}
+
+}

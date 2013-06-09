@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/Sun JDK 1.6.0_13"/>
+	<classpathentry kind="lib" path="D:/LuceneSearch/CadalDis/libs/apache-cassandra-1.0.8.jar"/>
+	<classpathentry kind="lib" path="D:/LuceneSearch/CadalDis/libs/apache-cassandra-clientutil-1.0.8.jar"/>
+	<classpathentry kind="lib" path="D:/LuceneSearch/CadalDis/libs/apache-cassandra-thrift-1.0.8.jar"/>
+	<classpathentry kind="lib" path="D:/LuceneSearch/CadalDis/libs/libthrift-0.6.jar"/>
+	<classpathentry kind="lib" path="D:/LuceneSearch/CadalDis/libs/libthrift7-0.7.0.jar"/>
+	<classpathentry kind="lib" path="D:/LuceneSearch/CadalDis/libs/slf4j-api-1.5.8.jar"/>
+	<classpathentry kind="lib" path="D:/LuceneSearch/CadalDis/libs/slf4j-api-1.6.1.jar"/>
+	<classpathentry kind="lib" path="D:/LuceneSearch/CadalDis/libs/slf4j-log4j12-1.5.8.jar"/>
+	<classpathentry kind="lib" path="D:/LuceneSearch/CadalDis/libs/slf4j-log4j12-1.6.1.jar"/>
+	<classpathentry kind="lib" path="D:/LuceneSearch/CadalDis/libs/log4j.jar"/>
+	<classpathentry kind="lib" path="D:/LuceneSearch/CadalDis/libs/log4j-1.2.16.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

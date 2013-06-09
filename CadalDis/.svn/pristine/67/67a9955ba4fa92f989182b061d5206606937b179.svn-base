@@ -1,0 +1,92 @@
+package cn.cadal.dis.java.timepv;
+
+public class DisTimePV {
+	
+	/**
+	 * @param time : 2013-04-09 13:00
+	 * @return     : 5 [2013-04-09 12:30到2013-04-09 13:00的系统访问量(书页阅读量)]
+	 */
+	public int PvThirtyMin(String time){
+		
+		return 0;
+	}
+
+	/**
+	 * @param time : 2013-04-09 13:00
+	 * @return     : 5 [2013-04-09 12:45到2013-04-09 13:00的系统访问量(书页阅读量)]
+	 */
+	public int PvFifteenMin(String time) {
+		
+		return 0;
+	}
+	
+	/**
+	 * @param time : 2013-04-09 13:00
+	 * @return     : 5 [2013-04-09 12:59的系统访问量(书页阅读量)]
+	 */
+	public int PvOneMin(String time){
+		
+		return 0;
+	}
+
+	/**
+	 * @param time : 2013-04-09 13:00
+	 * @return     : 5$12$90$... [2013-04-08 13:00到2013-04-09 13:00的系统访问量(书页阅读量)，默认的时间粒度为30分钟]
+	 */
+	public String PvTwentyFourHour(String time) {
+		
+		return null;
+	}
+	
+	/**
+	 * @param time : 2013-04-09 13:00
+	 * @param step : 15
+	 * @return     : 5$12$90$... [2013-04-08 13:00到2013-04-09 13:00的系统访问量(书页阅读量)，时间粒度为#step分钟]
+	 */	
+	public String PvTwentyFourHour(String time, String step) {
+		
+		return null;
+	}
+	
+	/**
+	 * @return     : 5 [过去30分钟的系统访问量(书页阅读量)]
+	 */
+	public int PvThirtyMinCur(){
+		
+		return 0;
+	}
+	
+	/**
+	 * @return     : 5 [过去15分钟的系统访问量(书页阅读量)]
+	 */
+	public int PvFifteenMinCur() {
+		
+		return 0;
+	}
+	
+	/**
+	 * @return     : 5 [过去1分钟的系统访问量(书页阅读量)]
+	 */
+	public int PvOneMinCur(){
+		
+		return 0;
+	}
+
+	/**
+	 * @return     : 5$12$90$... [过去24小时的系统访问量(书页阅读量)，默认时间粒度为30分钟]
+	 */
+	public String PvTwentyFourHourCur() {
+		
+		return null;
+	}
+	
+	/**
+	 * @param step ： 15
+	 * @return     : 5$12$90$... [过去24小时的系统访问量(书页阅读量)，时间粒度为#step分钟]
+	 */
+	public String PvTwentyFourHourCur(String step) {
+		
+		return null;
+	}
+	
+}

@@ -1,0 +1,348 @@
+package cn.cadal.dis.java.schoolpv;
+
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
+import cn.cadal.dis.java.cassandra.CasSchoolPV;
+import cn.cadal.dis.java.utils.SchoolInfo;
+import cn.cadal.dis.java.utils.TimeOp;
+
+public class DisSchoolPV {
+	
+	private TimeOp timeOp = null;
+	private CasSchoolPV casSchoolPv = null;
+	private SchoolInfo schoolInfo = null;
+	
+	private int STEP = 30;
+	
+	public DisSchoolPV() {
+		this.timeOp = new TimeOp();
+		this.casSchoolPv = new CasSchoolPV();
+		this.schoolInfo = new SchoolInfo();
+		
+		this.schoolInfo.ReadIpToID();
+	}
+
+	/**
+	 * @param time : 2013-04-09 13:00
+	 * @return     : 101/17$53/42$52/192$... [各个学校在2013-04-09 12:30到2013-04-09 13:00间的访问量]
+	 */
+	public String SchoolPvThirtyMin(String time) {
+		Date date = this.timeOp.getFormatDate(time);
+		
+		try{
+			Date dateStart = this.timeOp.getFormatDate(this.timeOp.getPreDate(date, "m", -31));
+			Date dateEnd   = this.timeOp.getFormatDate(this.timeOp.getPreDate(date, "m", -1));
+			
+			return this.MapToString(this.PvOfTimeSlide(dateStart, dateEnd));
+		}catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}	
+	}
+	
+	/**
+	 * @param time : 2013-04-09 13:00
+	 * @return     : 101/17$53/42$52/192$... [各个学校在2013-04-09 12:45到2013-04-09 13:00间的访问量]
+	 */	
+	public String SchoolPvFifteenMin(String time) {
+		Date date = this.timeOp.getFormatDate(time);
+		
+		try{
+			Date dateStart = this.timeOp.getFormatDate(this.timeOp.getPreDate(date, "m", -16));
+			Date dateEnd   = this.timeOp.getFormatDate(this.timeOp.getPreDate(date, "m", -1));
+			
+			return this.MapToString(this.PvOfTimeSlide(dateStart, dateEnd));
+		}catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}	
+	}
+	
+	/**
+	 * @param time : 2013-04-09 13:00
+	 * @return     : 101/17$53/42$52/192$... [各个学校在2013-04-09 12:59的访问量]
+	 */
+	public String SchoolPvOneMin(String time) {
+		Date date = this.timeOp.getFormatDate(time);
+		
+		try{
+			Date dateStart = this.timeOp.getFormatDate(this.timeOp.getPreDate(date, "m", -2));
+			Date dateEnd   = this.timeOp.getFormatDate(this.timeOp.getPreDate(date, "m", -1));
+			
+			return this.MapToString(this.PvOfTimeSlide(dateStart, dateEnd));
+		}catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}	
+	}
+	
+	/**
+	 * @param time : 2013-04-09 13:00
+	 * @return     : 101/17$82/57$...#53/42$52/192$... [各个学校在2013-04-08 13:00到2013-04-09 13:00间的访问量，默认的时间粒度是30分钟]
+	 */
+	public String SchoolPvTwentyFourHour(String time) {
+		Date dateFinal = this.timeOp.getFormatDate(time);
+		Date dateFirst = this.timeOp.getFormatDate(this.timeOp.getPreDate(dateFinal, "d", -1));
+		
+		String result = "";
+		
+		try{
+			Date dateEnd   = dateFinal;
+			Date dateStart = this.timeOp.getFormatDate(this.timeOp.getPreDate(dateEnd, "m", this.STEP * (-1)));
+			while(dateEnd.after(dateFirst)){
+				result = this.MapToString(this.PvOfTimeSlide(dateStart, dateEnd)) + "#"  + result;
+				
+				dateEnd   = dateStart;
+				dateStart = this.timeOp.getFormatDate(this.timeOp.getPreDate(dateEnd, "m", this.STEP * (-1)));
+			}
+			
+			return result;
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return "";
+	}
+	
+	/**
+	 * @param time : 2013-04-09 13:00
+	 * @param step ： 15
+	 * @return     : 101/17$82/57$...#53/42$52/192$... [各个学校在2013-04-08 13:00到2013-04-09 13:00间的访问量， 时间粒度为#step分钟]
+	 */
+	public String SchoolPvTwentyFourHour(String time, int step) {
+		Date dateFinal = this.timeOp.getFormatDate(time);
+		Date dateFirst = this.timeOp.getFormatDate(this.timeOp.getPreDate(dateFinal, "d", -1));
+		
+		String result = "";
+		
+		try{
+			Date dateEnd   = dateFinal;
+			Date dateStart = this.timeOp.getFormatDate(this.timeOp.getPreDate(dateEnd, "m", step * (-1)));
+			while(dateEnd.after(dateFirst)){
+				result = this.MapToString(this.PvOfTimeSlide(dateStart, dateEnd)) + "#"  + result;
+				
+				dateEnd   = dateStart;
+				dateStart = this.timeOp.getFormatDate(this.timeOp.getPreDate(dateEnd, "m", step * (-1)));
+			}
+			
+			return result;
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return "";
+	}
+	
+	/**
+	 * @return     : 101/17$53/42$52/192$... [各个学校在过去30分钟的访问量]
+	 */
+	public String SchoolPvThirtyMinCur() {
+		Date date = new Date();
+		
+		try{
+			Date dateStart = this.timeOp.getFormatDate(this.timeOp.getPreDate(date, "m", -31));
+			Date dateEnd   = this.timeOp.getFormatDate(this.timeOp.getPreDate(date, "m", -1));
+			
+			return this.MapToString(this.PvOfTimeSlide(dateStart, dateEnd));
+		}catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	/**
+	 * @return     : 101/17$53/42$52/192$... [各个学校在过去15分钟的访问量]
+	 */
+	public String SchoolPvFifteenMinCur() {
+		Date date = new Date();
+		
+		try{
+			Date dateStart = this.timeOp.getFormatDate(this.timeOp.getPreDate(date, "m", -16));
+			Date dateEnd   = this.timeOp.getFormatDate(this.timeOp.getPreDate(date, "m", -1));
+			
+			return this.MapToString(this.PvOfTimeSlide(dateStart, dateEnd));
+		}catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	/**
+	 * @return     : 101/17$53/42$52/192$... [各个学校在过去1分钟的访问量]
+	 */
+	public String SchoolPvOneMinCur() {
+		Date date = new Date();
+		
+		try{
+			Date dateStart = this.timeOp.getFormatDate(this.timeOp.getPreDate(date, "m", -2));
+			Date dateEnd   = this.timeOp.getFormatDate(this.timeOp.getPreDate(date, "m", -1));
+			
+			return this.MapToString(this.PvOfTimeSlide(dateStart, dateEnd));
+		}catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	/**
+	 * @return     : 101/17$82/57$...#53/42$52/192$... [各个学校在过去24小时的访问量，默认时间粒度为30分钟]
+	 */
+	public String SchoolPvTwentyFourHourCur() {
+		Date dateFinal = this.timeOp.getFormatDate(this.timeOp.getCurrentDate());
+		Date dateFirst = this.timeOp.getFormatDate(this.timeOp.getPreDate(dateFinal, "d", -1));
+		
+		String result = "";
+		
+		try{
+			Date dateEnd   = dateFinal;
+			Date dateStart = this.timeOp.getFormatDate(this.timeOp.getPreDate(dateEnd, "m", this.STEP * (-1)));
+			while(dateEnd.after(dateFirst)){
+				result = this.MapToString(this.PvOfTimeSlide(dateStart, dateEnd)) + "#"  + result;
+				
+				dateEnd   = dateStart;
+				dateStart = this.timeOp.getFormatDate(this.timeOp.getPreDate(dateEnd, "m", this.STEP * (-1)));
+			}
+			
+			return result;
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return "";
+	}
+	
+	/**
+	 * @param step : 15
+	 * @return     : 101/17$82/57$...#53/42$52/192$... [各个学校在过去24小时的访问量，时间粒度为#step分钟]
+	 */
+	public String SchoolPvTwentyFourHourCur(int step) {
+		Date dateFinal = this.timeOp.getFormatDate(this.timeOp.getCurrentDate());
+		Date dateFirst = this.timeOp.getFormatDate(this.timeOp.getPreDate(dateFinal, "d", -1));
+		
+		String result = "";
+		
+		try{
+			Date dateEnd   = dateFinal;
+			Date dateStart = this.timeOp.getFormatDate(this.timeOp.getPreDate(dateEnd, "m", step * (-1)));
+			while(dateEnd.after(dateFirst)){
+				result = this.MapToString(this.PvOfTimeSlide(dateStart, dateEnd)) + "#"  + result;
+				
+				dateEnd   = dateStart;
+				dateStart = this.timeOp.getFormatDate(this.timeOp.getPreDate(dateEnd, "m", step * (-1)));
+			}
+			
+			return result;
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return "";
+	}
+	
+	/**
+	 * @param start	: 2013-04-09 13:00
+	 * @param end	: 2013-04-09 13:30
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public Map<String, Integer> PvOfTimeSlide(Date start, Date end) {
+		Map<String, Integer> schoolCount = new HashMap<String, Integer>();
+		
+		try{
+			Map<String, Integer> map = this.casSchoolPv.QueryRecordTimeSlide(this.timeOp.getFormatDate(start), this.timeOp.getFormatDate(end));
+			
+			for(Iterator iter = map.entrySet().iterator(); iter.hasNext();) {  
+			    Map.Entry entry = (Map.Entry) iter.next();
+			    Object key = entry.getKey();
+			    Object val = entry.getValue();
+			    
+			    String schoolID = this.schoolInfo.GetSchoolID((String)key);
+			    
+			    if(schoolID.length() != 0) {
+			    	if(schoolCount.containsKey(schoolID))
+			    		schoolCount.put(schoolID, schoolCount.get(schoolID) + (Integer)val);
+			    	else
+			    		schoolCount.put(schoolID, (Integer)val);
+			    }else{
+			    	if(schoolCount.containsKey("Others"))
+			    		schoolCount.put("Others", schoolCount.get("Others") + (Integer)val);
+			    	else
+			    		schoolCount.put("Others", (Integer)val);
+			    }
+			}
+			
+			return schoolCount;
+		}catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	/**
+	 * @param map
+	 * @return		: 50/4$61/14$53/2$105/442$51/63$82/63$55/295$56/15$Others/1099$
+	 */
+	@SuppressWarnings("unchecked")
+	private String MapToString(Map<String, Integer> map) {
+		String result = "";
+		
+		try{
+			for (Iterator iter = map.entrySet().iterator(); iter.hasNext();) {
+				Map.Entry entry = (Map.Entry) iter.next();
+				Object key = entry.getKey();
+				Object val = entry.getValue();
+
+				result = key + "/" + val+ "$" + result;
+			}
+		
+			return result;
+		}catch(Exception e){
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	/**
+	 * Main Function
+	 */
+	public static void main(String[] args) {
+//		DisSchoolPV dsp = new DisSchoolPV();
+
+		//SchoolPvTwentyFourMin
+//		System.out.println(dsp.SchoolPvTwentyFourHourCur());
+		
+		//SchoolPvThirtyMinCur
+//		System.out.println(dsp.SchoolPvThirtyMinCur());
+
+		//SchoolPvFifteenMinCur
+//		System.out.println(dsp.SchoolPvFifteenMinCur());
+		
+		//SchoolPvOneMinCur
+//		System.out.println(dsp.SchoolPvOneMinCur());
+		
+		// SchoolPvThirtyMin
+//		System.out.println(dsp.SchoolPvOneMin("2013-04-10 11:30"));
+		
+		// SchoolPvThirtyMin
+//		System.out.println(dsp.SchoolPvFifteenMin("2013-04-10 11:30"));
+		
+		// SchoolPvThirtyMin
+//		System.out.println(dsp.SchoolPvThirtyMin("2013-04-10 11:30"));
+		
+		// PvOfTimeSlide
+//		SimpleDateFormat sdf = new SimpleDateFormat( "yyyy-MM-dd HH:mm" );
+//		Date date1;
+//		Date date2;
+//		try {
+//			date1 = sdf.parse( "2013-04-10 11:00" );
+//			date2 = sdf.parse( "2013-04-10 11:30" );
+//			
+//			System.out.println(dsp.MapToString(dsp.PvOfTimeSlide(date1, date2)));
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+	}
+}

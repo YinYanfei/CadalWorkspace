@@ -1,0 +1,90 @@
+package cn.cadal.dis.java.timereader;
+
+public class DisTimeReader {
+	/**
+	 * @param time : 2013-04-09 13:00
+	 * @return     : 5 [2013-04-09 12:30到2013-04-09 13:00的用户数]
+	 */
+	public int ReaderThirtyMin(String time){
+		
+		return 0;
+	}
+	
+	/**
+	 * @param time : 2013-04-09 13:00
+	 * @return     : 5 [2013-04-09 12:45到2013-04-09 13:00的用户数]
+	 */
+	public int ReaderFifteenMin(String time) {
+		
+		return 0;
+	}
+	
+	/**
+	 * @param time : 2013-04-09 13:00
+	 * @return     : 5 [2013-04-09 12:59分的用户数]
+	 */
+	public int ReaderOneMin(String time){
+		
+		return 0;
+	}
+	
+	/**
+	 * @param time : 2013-04-09 13:00
+	 * @return     : 5$12$... [2013-04-08 13:00到2013-04-09 13:00的用户数,默认时间粒度为30分钟]
+	 */
+	public String ReaderTwentyFourHour(String time) {
+		
+		return null;
+	}
+	
+	/**
+	 * @param time : 2013-04-09 13:00
+	 * @param step : 15
+	 * @return     : 5$12$... [2013-04-08 13:00到2013-04-09 13:00的用户数,时间粒度为#step分钟]
+	 */
+	public String ReaderTwentyFourHour(String time, String step) {
+		
+		return null;
+	}
+	
+	/**
+	 * @return     : 5 [过去30分钟的用户数]
+	 */
+	public int ReaderThirtyMinCur(){
+		
+		return 0;
+	}
+
+	/**
+	 * @return     : 5 [过去15分钟的用户数]
+	 */
+	public int ReaderFifteenMinCur() {
+		
+		return 0;
+	}
+	
+	/**
+	 * @return     : 5 [过去1分钟的用户数]
+	 */
+	public int ReaderOneMinCur(){
+		
+		return 0;
+	}
+
+	/**
+	 * @return     : 5$12$... [过去24小时的用户数,默认时间粒度为30分钟]
+	 */
+	public String ReaderTwentyFourHourCur() {
+		
+		return null;
+	}
+
+	/**
+	 * @param step : 15
+	 * @return     : 5$12$... [过去24小时的用户数,时间粒度为#step分钟]
+	 */
+	public String ReaderTwentyFourHourCur(String step) {
+		
+		return null;
+	}
+}

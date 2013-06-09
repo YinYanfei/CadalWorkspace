@@ -1,0 +1,29 @@
+package cn.cadal.dis.java.utils;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class SchoolInfo {
+
+	public Map<String, Integer> IpToSchoolID = null;
+	public Map<Integer, String> SchoolIDToName = null;
+	
+	private String DIR = "";
+	
+	/**
+	 * Construct
+	 */
+	public SchoolInfo() {
+		this.IpToSchoolID = new HashMap<String, Integer>();
+		this.SchoolIDToName = new HashMap<Integer, String>();
+	}
+	
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// Test
+
+	}
+
+}

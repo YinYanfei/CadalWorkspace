@@ -1,0 +1,182 @@
+package cn.cadal.dis.java.cassandra;
+
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.cassandra.thrift.Cassandra;
+import org.apache.cassandra.thrift.Column;
+import org.apache.cassandra.thrift.ColumnOrSuperColumn;
+import org.apache.cassandra.thrift.ColumnParent;
+import org.apache.cassandra.thrift.ConsistencyLevel;
+import org.apache.cassandra.thrift.SlicePredicate;
+import org.apache.cassandra.thrift.SliceRange;
+import org.apache.cassandra.thrift.SuperColumn;
+import org.apache.thrift.protocol.TBinaryProtocol;
+import org.apache.thrift.protocol.TProtocol;
+import org.apache.thrift.transport.TFramedTransport;
+import org.apache.thrift.transport.TSocket;
+import org.apache.thrift.transport.TTransport;
+
+import cn.cadal.dis.java.utils.TimeOp;
+import cn.cadal.dis.java.utils.Utils;
+
+public class CasSchoolPV {
+	
+	private TimeOp timeOp = null;
+	
+	public CasSchoolPV() {
+		this.timeOp = new TimeOp();
+	}
+
+	/**
+	 * Query from cf [RecordMinute]
+	 * @param queryWord
+	 * @return
+	 */
+	public Map<String, Integer> QueryRecordMinute(String queryWord) {
+		TTransport tr = new TFramedTransport(new TSocket("10.15.61.114", 9160));
+		TProtocol proto = new TBinaryProtocol(tr);
+		Cassandra.Client client = new Cassandra.Client(proto);
+
+		Map<String, Integer> ipCountHash = new HashMap<String, Integer>();
+		
+		try {
+			tr.open();
+			client.set_keyspace("CadalSecTest");
+
+			// read entire row
+			SlicePredicate predicate = new SlicePredicate();// new SliceRange(new byte[0], new byte[0], false, 10)
+			SliceRange range = new SliceRange();
+			range.start = Utils.toByteBuffer("");
+			range.finish = Utils.toByteBuffer("");
+			predicate.setSlice_range(range);
+
+			ColumnParent parent = new ColumnParent();
+			parent.column_family = "RecordMinute";
+			
+			List<ColumnOrSuperColumn> results = client.get_slice(Utils.toByteBuffer(queryWord), parent, predicate, ConsistencyLevel.ONE);
+			for (ColumnOrSuperColumn result : results) {
+				SuperColumn superColumn2 = result.super_column;
+				List<Column> columns2 = superColumn2.getColumns();
+				
+				for (Column column : columns2) {
+					if((new String(column.getName(), "UTF-8")).equals("ip")) {
+						String ip = new String(column.getValue(), "UTF-8");
+						if(ipCountHash.containsKey(ip)) {
+							ipCountHash.put(ip, ipCountHash.get(ip) + 1);
+						}else{
+							ipCountHash.put(ip, 1);
+						}
+					}else{
+						continue;
+					}
+				}
+			}
+
+			tr.close();
+			return ipCountHash;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	/**
+	 * Query from cf [RecordMinute]
+	 * @param queryTimeStart
+	 * @param queryTimeEnd
+	 * @return
+	 */
+	public Map<String, Integer> QueryRecordTimeSlide(String queryTimeStart, String queryTimeEnd) {
+		TTransport tr = new TFramedTransport(new TSocket("10.15.61.114", 9160));
+		TProtocol proto = new TBinaryProtocol(tr);
+		Cassandra.Client client = new Cassandra.Client(proto);
+
+		Date dateQuery = this.timeOp.getFormatDate(queryTimeStart);
+		Date dateEnd   = this.timeOp.getFormatDate(queryTimeEnd);
+		
+		Map<String, Integer> ipCountHash = new HashMap<String, Integer>();
+		
+		try {
+			tr.open();
+			client.set_keyspace("CadalSecTest");
+
+			// read entire row
+			SlicePredicate predicate = new SlicePredicate();// new SliceRange(new byte[0], new byte[0], false, 10)
+			SliceRange range = new SliceRange();
+			range.start = Utils.toByteBuffer("");
+			range.finish = Utils.toByteBuffer("");
+			predicate.setSlice_range(range);
+
+			ColumnParent parent = new ColumnParent();
+			parent.column_family = "RecordMinute";
+			
+			String queryWord = this.timeOp.getFormatDate(dateQuery);
+			
+			while(dateQuery.before(dateEnd)) {
+				List<ColumnOrSuperColumn> results = client.get_slice(Utils.toByteBuffer(queryWord), parent, predicate, ConsistencyLevel.ONE);
+				
+				for (ColumnOrSuperColumn result : results) {
+					SuperColumn superColumn2 = result.super_column;
+					List<Column> columns2 = superColumn2.getColumns();
+					
+					for (Column column : columns2) {
+						if((new String(column.getName(), "UTF-8")).equals("ip")) {
+							String ip = new String(column.getValue(), "UTF-8");
+							if(ipCountHash.containsKey(ip)) {
+								ipCountHash.put(ip, ipCountHash.get(ip) + 1);
+							}else{
+								ipCountHash.put(ip, 1);
+							}
+						}else{
+							continue;
+						}
+					}
+				}
+				dateQuery = this.timeOp.getFormatDate(this.timeOp.getPreDate(dateQuery, "m", 1));
+				queryWord = this.timeOp.getFormatDate(dateQuery);
+			}
+			
+			tr.close();
+			
+			return ipCountHash;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// Test
+		// String strTmp =
+		// "290.15.6.200$Yanfei$07018720$00000180$2013-03-13 22:07:02.909009";
+
+		CasSchoolPV co = new CasSchoolPV();
+
+		// Insert into cf [RecordMinute]
+		// co.InsertRecordMinute(strTmp);
+
+		// Query from cf [RecordMinute]
+		//System.out.println(co.QueryRecordMinute("2013-04-01 10:00"));
+		
+		Map<String, Integer> map = co.QueryRecordTimeSlide("2013-04-09 11:00", "2013-04-09 12:00");
+		
+		for(Iterator iter = map.entrySet().iterator(); iter.hasNext();) {  
+		    Map.Entry entry = (Map.Entry) iter.next();
+		    Object key = entry.getKey();
+		    Object val = entry.getValue();
+		    
+		    System.out.println(key);
+		    System.out.println(val);
+		} 
+	}
+}
+
+
+

@@ -1,0 +1,15 @@
+package cn.cadal.dis.java.timereader;
+
+public class GetReaderInfo {
+	
+	/**
+	 * @param timeStart : 2013-04-09 13:00
+	 * @param timeEnd   : 2013-04-09 13:30
+	 * @return			: 64412$261$... [2013-04-09 13:00到2013-04-09 13:30之间用户的id信息]
+	 */
+	public String ReaderInfo(String timeStart, String timeEnd){
+		
+		return null;
+	}
+
+}

@@ -1,0 +1,129 @@
+package cn.cadal.dis.java.schoolpv;
+
+import java.util.Date;
+
+import cn.cadal.dis.java.cassandra.CasSchoolPV;
+import cn.cadal.dis.java.utils.TimeOp;
+
+public class DisSchoolPV {
+	
+	private TimeOp timeOp = null;
+	private CasSchoolPV casSchoolPv = null;
+	
+	private int STEP = 30;
+	
+	public DisSchoolPV() {
+		this.timeOp = new TimeOp();
+		this.casSchoolPv = new CasSchoolPV();
+	}
+
+	/**
+	 * @param time : 2013-04-09 13:00
+	 * @return     : 12$4$0$... [各个学校在2013-04-09 12:30到2013-04-09 13:00间的访问量]
+	 */
+	public String SchoolPvThirtyMin(String time) {
+		
+		return null;
+	}
+	
+	/**
+	 * @param time : 2013-04-09 13:00
+	 * @return     : 12$4$0$... [各个学校在2013-04-09 12:45到2013-04-09 13:00间的访问量]
+	 */	
+	public String SchoolPvFifteenMin(String time) {
+		
+		return null;
+	}
+	
+	/**
+	 * @param time : 2013-04-09 13:00
+	 * @return     : 12$4$0$... [各个学校在2013-04-09 12:59的访问量]
+	 */
+	public String SchoolPvOneMin(String time) {
+		
+		return null;
+	}
+	
+	/**
+	 * @param time : 2013-04-09 13:00
+	 * @return     : 12$4$0$...#30$0$... [各个学校在2013-04-08 13:00到2013-04-09 13:00间的访问量，默认的时间粒度是30分钟]
+	 */
+	public String SchoolPvTwentyFourHour(String time) {
+		
+		return null;
+	}
+	
+	/**
+	 * @param time : 2013-04-09 13:00
+	 * @param step ： 15
+	 * @return     : 12$4$0$...#30$0$... [各个学校在2013-04-08 13:00到2013-04-09 13:00间的访问量， 时间粒度为#step分钟]
+	 */
+	public String SchoolPvTwentyFourHour(String time, int step) {
+		
+		return null;
+	}
+	
+	/**
+	 * @return     : 12$4$0$... [各个学校在过去30分钟的访问量]
+	 */
+	public String SchoolPvThirtyMinCur() {
+		
+		return null;
+	}
+	
+	/**
+	 * @return     : 12$4$0$... [各个学校在过去15分钟的访问量]
+	 */
+	public String SchoolPvFifteenMinCur() {
+		
+		return null;
+	}
+	
+	/**
+	 * @return     : 12$4$0$... [各个学校在过去1分钟的访问量]
+	 */
+	public String SchoolPvOneMinCur() {
+		
+		return null;
+	}
+
+	/**
+	 * @return     : 12$4$0$...#30$0$... [各个学校在过去24小时的访问量，默认时间粒度为30分钟]
+	 */
+	public String SchoolPvTwentyFourHourCur() {
+		
+		return null;
+	}
+	
+	/**
+	 * @param step : 15
+	 * @return     : 12$4$0$...#30$0$... [各个学校在过去24小时的访问量，时间粒度为#step分钟]
+	 */
+	public String SchoolPvTwentyFourHourCur(int step) {
+		
+		return null;
+	}
+	
+	/**
+	 * @param start	: 2013-04-09 13:00
+	 * @param end	: 2013-04-09 13:30
+	 * @return
+	 */
+	public String PvOfTimeSlide(Date start, Date end) {
+		try{
+			
+			return null;
+		}catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	
+	/**
+	 * Main Function
+	 */
+	public static void main(String[] args) {
+
+	}
+}

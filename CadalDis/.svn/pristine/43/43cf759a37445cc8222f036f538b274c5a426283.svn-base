@@ -1,0 +1,258 @@
+package cn.cadal.dis.java.timepv;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import cn.cadal.dis.java.cassandra.CasTimePV;
+import cn.cadal.dis.java.utils.TimeOp;
+
+public class DisTimePV {
+	
+	private TimeOp timeOp = null;
+	private CasTimePV casTimePv = null;
+	
+	private int STEP = 30;
+		
+	public DisTimePV() {
+		this.timeOp = new TimeOp();
+		this.casTimePv = new CasTimePV();
+	}
+	
+	/**
+	 * @param time : 2013-04-09 13:00
+	 * @return     : 5 [2013-04-09 12:30到2013-04-09 13:00的系统访问量(书页阅读量)]
+	 */
+	public int PvThirtyMin(String time){
+		Date date = this.timeOp.getFormatDate(time);
+		
+		try{
+			Date dateStart = this.timeOp.getFormatDate(this.timeOp.getPreDate(date, "m", -31));
+			Date dateEnd   = this.timeOp.getFormatDate(this.timeOp.getPreDate(date, "m", -1));
+			
+			return this.PvOfTimeSlide(dateStart, dateEnd);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+
+	/**
+	 * @param time : 2013-04-09 13:00
+	 * @return     : 5 [2013-04-09 12:45到2013-04-09 13:00的系统访问量(书页阅读量)]
+	 */
+	public int PvFifteenMin(String time) {
+		Date date = this.timeOp.getFormatDate(time);
+		
+		try{
+			Date dateStart = this.timeOp.getFormatDate(this.timeOp.getPreDate(date, "m", -16));
+			Date dateEnd   = this.timeOp.getFormatDate(this.timeOp.getPreDate(date, "m", -1));
+			
+			return this.PvOfTimeSlide(dateStart, dateEnd);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+	
+	/**
+	 * @param time : 2013-04-09 13:00
+	 * @return     : 5 [2013-04-09 12:59的系统访问量(书页阅读量)]
+	 */
+	public int PvOneMin(String time){
+		Date date = this.timeOp.getFormatDate(time);
+		
+		try{
+			Date dateStart = this.timeOp.getFormatDate(this.timeOp.getPreDate(date, "m", -2));
+			Date dateEnd   = this.timeOp.getFormatDate(this.timeOp.getPreDate(date, "m", -1));
+			
+			return this.PvOfTimeSlide(dateStart, dateEnd);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+				
+		return 0;
+	}
+
+	/**
+	 * @param time : 2013-04-09 13:00
+	 * @return     : 5$12$90$... [2013-04-08 13:00到2013-04-09 13:00的系统访问量(书页阅读量)，默认的时间粒度为30分钟]
+	 */
+	public String PvTwentyFourHour(String time) {
+		Date dateFinal = this.timeOp.getFormatDate(time);
+		Date dateFirst = this.timeOp.getFormatDate(this.timeOp.getPreDate(dateFinal, "d", -1));
+		
+		String result = "";
+		
+		try{
+			Date dateEnd   = dateFinal;
+			Date dateStart = this.timeOp.getFormatDate(this.timeOp.getPreDate(dateEnd, "m", this.STEP * (-1)));
+			while(dateEnd.after(dateFirst)){
+				result = this.PvOfTimeSlide(dateStart, dateEnd) + "$"  + result;
+				
+				dateEnd   = dateStart;
+				dateStart = this.timeOp.getFormatDate(this.timeOp.getPreDate(dateEnd, "m", this.STEP * (-1)));
+			}
+			
+			return result;
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return "";
+	}
+	
+	/**
+	 * @param time : 2013-04-09 13:00
+	 * @param step : 15
+	 * @return     : 5$12$90$... [2013-04-08 13:00到2013-04-09 13:00的系统访问量(书页阅读量)，时间粒度为#step分钟]
+	 */	
+	public String PvTwentyFourHour(String time, String step) {
+		
+		return null;
+	}
+	
+	/**
+	 * @return     : 5 [过去30分钟的系统访问量(书页阅读量)]
+	 */
+	public int PvThirtyMinCur(){
+		Date date = new Date();
+		
+		try{
+			Date dateStart = this.timeOp.getFormatDate(this.timeOp.getPreDate(date, "m", -31));
+			Date dateEnd   = this.timeOp.getFormatDate(this.timeOp.getPreDate(date, "m", -1));
+			
+			return this.PvOfTimeSlide(dateStart, dateEnd);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+	
+	/**
+	 * @return     : 5 [过去15分钟的系统访问量(书页阅读量)]
+	 */
+	public int PvFifteenMinCur() {
+		Date date = new Date();
+		
+		try{
+			Date dateStart = this.timeOp.getFormatDate(this.timeOp.getPreDate(date, "m", -16));
+			Date dateEnd   = this.timeOp.getFormatDate(this.timeOp.getPreDate(date, "m", -1));
+			
+			return this.PvOfTimeSlide(dateStart, dateEnd);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+	
+	/**
+	 * @return     : 5 [过去1分钟的系统访问量(书页阅读量)]
+	 */
+	public int PvOneMinCur(){
+		Date date = new Date();
+		
+		try{
+			Date dateStart = this.timeOp.getFormatDate(this.timeOp.getPreDate(date, "m", -2));
+			Date dateEnd   = this.timeOp.getFormatDate(this.timeOp.getPreDate(date, "m", -1));
+			
+			return this.PvOfTimeSlide(dateStart, dateEnd);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+
+		return 0;
+	}
+
+	/**
+	 * @return     : 5$12$90$... [过去24小时的系统访问量(书页阅读量)，默认时间粒度为30分钟]
+	 */
+	public String PvTwentyFourHourCur() {
+		
+		return null;
+	}
+	
+	/**
+	 * @param step ： 15
+	 * @return     : 5$12$90$... [过去24小时的系统访问量(书页阅读量)，时间粒度为#step分钟]
+	 */
+	public String PvTwentyFourHourCur(String step) {
+		
+		return null;
+	}
+	
+	/**
+	 * 
+	 * @param start
+	 * @param end
+	 * @return Times count
+	 */
+	public int PvOfTimeSlide(Date start, Date end) {
+		int count = 0;
+
+		System.out.println(this.timeOp.getFormatDate(start));
+		System.out.println(this.timeOp.getFormatDate(end));
+		
+		try{
+			String queryTime = this.timeOp.getFormatDate(start);
+			
+			while(start.before(end)) {
+				count += this.casTimePv.QueryRecordMinute(queryTime);
+				queryTime = this.timeOp.getPreDate(start, "m", 1);
+				start = this.timeOp.getFormatDate(queryTime);
+			}
+			
+			return count;
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+	
+	/**
+	 * Main Function
+	 */
+	public static void main(String[] args) {
+		DisTimePV disTimePv = new DisTimePV();
+
+		// PvTwentyFourHour
+//		System.out.println(disTimePv.PvTwentyFourHour("2013-04-09 09:09"));
+		
+		// PvOneMinCur
+//		System.out.println(disTimePv.PvOneMinCur());
+		
+		// PvFifteenMinCur
+//		System.out.println(disTimePv.PvFifteenMinCur());
+		
+		// PvThirtyMinCur
+//		System.out.println(disTimePv.PvThirtyMinCur());
+		
+		// PvOneMin
+//		System.out.println(disTimePv.PvOneMin("2013-04-09 09:09"));
+		
+		// PvFifteenMin
+//		System.out.println(disTimePv.PvFifteenMin("2013-04-10 10:05"));
+		
+		// PvThirtyMin
+//		System.out.println(disTimePv.PvThirtyMin("2013-04-10 10:05"));
+		
+		// PvOfTimeSlide
+		SimpleDateFormat sdf = new SimpleDateFormat( "yyyy-MM-dd HH:mm" );
+		Date date1;
+		Date date2;
+		try {
+			date1 = sdf.parse( "2013-04-09 09:00" );
+			date2 = sdf.parse( "2013-04-09 09:10" );
+			
+			System.out.println(disTimePv.PvOfTimeSlide(date1, date2));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+}
