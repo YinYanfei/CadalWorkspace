@@ -1,0 +1,15 @@
+PACKAGE_PATH=cn/cadal/catalogsearch
+REPOSITORY_PATH=/home/cadal/CodeRepository
+CADAL_LIBS_PATH=${REPOSITORY_PATH}/cadal.libs
+LUCENE_CORE_JAR=${CADAL_LIBS_PATH}/lucene-core-3.0.0.jar
+
+.PHONY: all
+all: IndexBuilder
+
+.PHONY: SAXHandler
+SAXHandler:
+	javac -d bin -cp .:${LUCENE_CORE_JAR} src/${PACKAGE_PATH}/indexBuilder/SAXHandler.java
+
+.PHONY: IndexBuilder
+IndexBuilder: 
+	javac -d bin -cp .:bin:${LUCENE_CORE_JAR} src/${PACKAGE_PATH}/indexBuilder/IndexBuilder.java

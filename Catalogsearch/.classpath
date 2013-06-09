@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="libs/com.noelios.restlet.ext.httpclient_3.1.jar"/>
+	<classpathentry kind="lib" path="libs/com.noelios.restlet.ext.simple_3.1.jar"/>
+	<classpathentry kind="lib" path="libs/com.noelios.restlet.jar"/>
+	<classpathentry kind="lib" path="libs/lucene-analyzers-3.0.0.jar"/>
+	<classpathentry kind="lib" path="libs/lucene-core-3.0.0.jar"/>
+	<classpathentry kind="lib" path="libs/lucene-highlighter-3.0.0.jar"/>
+	<classpathentry kind="lib" path="libs/mysql-connector-java-5.1.6-bin.jar"/>
+	<classpathentry kind="lib" path="libs/org.apache.commons.codec.jar"/>
+	<classpathentry kind="lib" path="libs/org.apache.commons.httpclient.jar"/>
+	<classpathentry kind="lib" path="libs/org.apache.commons.logging.jar"/>
+	<classpathentry kind="lib" path="libs/org.json.jar"/>
+	<classpathentry kind="lib" path="libs/org.restlet.ext.json_2.0.jar"/>
+	<classpathentry kind="lib" path="libs/org.restlet.jar"/>
+	<classpathentry kind="lib" path="libs/org.simpleframework.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

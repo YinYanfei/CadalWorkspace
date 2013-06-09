@@ -1,0 +1,39 @@
+package cn.cadal.catalogsearch.indexBuilder;
+
+import java.io.IOException;
+import java.util.Stack;
+
+import org.apache.lucene.document.Document;
+import org.apache.lucene.document.Field;
+import org.apache.lucene.index.CorruptIndexException;
+import org.apache.lucene.index.IndexWriter;
+import org.xml.sax.Attributes;
+import org.xml.sax.helpers.DefaultHandler;
+
+public class SAXHandler extends DefaultHandler {
+	private IndexWriter indexWriter;
+	private Stack<String> chapters = new Stack<String>();
+	
+	public String bookNo;
+	
+	public SAXHandler(IndexWriter indexWriter) {
+		this.indexWriter = indexWriter;
+	}
+	
+	public void startElement(String uri, String localName, String qName, Attributes attributes){
+		if (qName == "METS:div") {
+			chapters.push(attributes.getValue("LABEL"));
+		}
+		else if (qName == "METS:fptr") {
+			Document doc = new Document();
+			doc.add(new Field("Chapter", chapters.pop(), Field.Store.YES, Field.Index.ANALYZED));
+			doc.add(new Field("FileID", attributes.getValue("FILEID"), Field.Store.YES, Field.Index.NO));
+			doc.add(new Field("BookNo", bookNo, Field.Store.YES, Field.Index.NO));
+			try {
+				indexWriter.addDocument(doc);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+}

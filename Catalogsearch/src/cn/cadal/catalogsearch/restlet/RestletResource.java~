@@ -1,0 +1,247 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package cn.cadal.catalogsearch;
+
+import java.io.File;
+import java.io.InputStream;
+import java.util.Hashtable;
+import java.util.Map;
+import java.util.Properties;
+import org.apache.lucene.analysis.cn.ChineseAnalyzer;
+import org.apache.lucene.document.Document;
+import org.apache.lucene.queryParser.QueryParser;
+import org.apache.lucene.search.IndexSearcher;
+import org.apache.lucene.search.Query;
+import org.apache.lucene.search.ScoreDoc;
+import org.apache.lucene.search.TopDocs;
+import org.apache.lucene.store.SimpleFSDirectory;
+import org.apache.lucene.store.SimpleFSLockFactory;
+import org.apache.lucene.util.Version;
+import org.json.JSONObject;
+import org.restlet.Context;
+import org.restlet.data.CharacterSet;
+import org.restlet.data.MediaType;
+import org.restlet.data.Request;
+import org.restlet.data.Response;
+import org.restlet.ext.json.JsonRepresentation;
+import org.restlet.resource.Representation;
+import org.restlet.resource.Resource;
+import org.restlet.resource.StringRepresentation;
+import org.restlet.resource.Variant;
+
+/**
+ *
+ * @author Chenxing
+ */
+public class RestletResource extends Resource{
+    private static IndexSearcher bookIndexSearcher;
+    private static IndexSearcher paperIndexSearcher;
+    private static final String defaultIndexDirPath = "";
+    private static String indexDirPath = defaultIndexDirPath;
+    private static final int defaultCount = 10;
+    private static final String defaultType = "book";
+    private static final String defaultFormat = "text";
+    private static final String defaultJsonCallback = null;
+
+    private static Hashtable<String, Float> fieldBoost =
+            new Hashtable<String, Float>();
+
+    static {
+        try {
+            String configLocation = String.format("%s/config.properties",
+                    RestletResource.class.getPackage()
+                    .getName().replace('.', '/'));
+            InputStream inputStream = RestletResource.class.getClassLoader()
+                    .getResourceAsStream(configLocation);
+            if (inputStream != null) {
+                Properties p = new Properties();
+                p.load(inputStream);
+                indexDirPath = p.getProperty("indexdir",
+                        defaultIndexDirPath);
+            }
+            bookIndexSearcher = new IndexSearcher(new SimpleFSDirectory(new File(indexDirPath + "/book"), new SimpleFSLockFactory()));
+            paperIndexSearcher = new IndexSearcher(new SimpleFSDirectory(new File(indexDirPath + "/dissertation"), new SimpleFSLockFactory()));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        fieldBoost.put("Title", new Float(2.0));
+        //fieldBoost.put("Creator", new Float(1.5));
+        fieldBoost.put("Chapters", new Float(1.0));
+        //fieldBoost.put("Publisher", new Float(1.0));
+        fieldBoost.put("Subject", new Float(1.0));
+    }
+
+    private String query = null;
+    private int count = defaultCount;
+    private String type;
+    private String format;
+    private String jsonCallback;
+
+    public RestletResource(Context context,
+            Request request, Response response) {
+        super(context, request, response);
+        Map<String, Object> attributes = request.getAttributes();
+        query = !attributes.containsKey("query") ? null :
+            ((String)attributes.get("query")).toLowerCase().trim();
+        type = !attributes.containsKey("type") ? defaultType :
+            ((String)attributes.get("type")).toLowerCase().trim();
+        System.out.println(attributes.containsKey("format"));
+        System.out.println(attributes.get("format"));
+        format = attributes.get("format") == null ? defaultFormat :
+            ((String)attributes.get("format"));
+        count = !attributes.containsKey("count") ? defaultCount :
+            Integer.parseInt((String)attributes.get("count"));
+        jsonCallback = !attributes.containsKey("jsoncallback") ?
+            defaultJsonCallback : ((String)attributes.get("jsoncallback"));
+        if (format.equals("text"))
+            getVariants().add(new Variant(MediaType.TEXT_PLAIN));
+        else if (format.equals("json"))
+            getVariants().add(new Variant(MediaType.APPLICATION_JSON));
+    }
+
+    @Override
+    public Representation getRepresentation(Variant variant) {
+        // do search
+        IndexSearcher indexSearcher = !type.equals("paper") ?
+                    bookIndexSearcher : paperIndexSearcher;
+        TopDocs topDocs = null;
+        if (query != null && !query.equals(""))
+            try {
+                QueryParser queryParser =
+		    new QueryParser(Version.LUCENE_24, "Chapters", new ChineseAnalyzer());
+                String queryString = QueryGenerator.getQuery(fieldBoost,
+		        query, new RelativeWords(query).getTermBoost());
+                Query searchQuery = queryParser.parse(queryString);
+                topDocs = indexSearcher.search(searchQuery, count);
+            } catch (Exception ex) {
+               ex.printStackTrace();
+            }
+        // get representation
+        Representation representation = null;
+        if (variant.getMediaType().equals(MediaType.TEXT_PLAIN)) {
+            StringBuilder resultBuilder = new StringBuilder();
+            if (topDocs != null) {
+                int left = count;
+                for (ScoreDoc scoreDoc : topDocs.scoreDocs)
+                    try {
+                        Document doc = indexSearcher.doc(scoreDoc.doc);
+                        String chapterEntry =
+                                getChapterEntry(doc.get("Chapters"), query);
+                        int splitPos = chapterEntry.indexOf(' ');
+                        String fileId, chapter;
+                        if (splitPos == -1) {
+                            fileId = "00000001";
+                            chapter = "";
+                        }
+                        else {
+                            fileId = chapterEntry.substring(0, splitPos);
+                            chapter = chapterEntry.substring(splitPos + 1);
+                        }
+                        resultBuilder.append(String.format("BookNo:%s\n" +
+                                "Title:%s\nCreator:%s\n" +
+                                "Publisher:%s\nSubject:%s\n" +
+                                "Chapter:%s\nFileID:%s\n",
+                                doc.get("BookNo").replace('\n', '\0'),
+                                doc.get("Title").replace('\n', '\0'),
+                                doc.get("Creator").replace('\n', '\0'),
+                                doc.get("Publisher").replace('\n', '\0'),
+                                doc.get("Subject").replace('\n', '\0'),
+                                chapter, fileId));
+                        if (--left == 0)
+                            break;
+                    }
+                    catch (Exception e) {
+                        e.printStackTrace();
+                    }
+            }
+            StringRepresentation stringRepresentation =
+                    new StringRepresentation(resultBuilder.toString());
+            stringRepresentation.setCharacterSet(CharacterSet.UTF_8);
+            representation = stringRepresentation;
+        }
+        else if (variant.getMediaType().equals(MediaType.APPLICATION_JSON)) {
+            JSONObject resultObject = new JSONObject();
+            if (topDocs != null) {
+                int left = count;
+                for (ScoreDoc scoreDoc : topDocs.scoreDocs)
+                    try {
+                        Document doc = indexSearcher.doc(scoreDoc.doc);
+                        String chapterEntry =
+                                getChapterEntry(doc.get("Chapters"), query);
+                        int splitPos = chapterEntry.indexOf(' ');
+                        String fileId, chapter;
+                        if (splitPos == -1) {
+                            fileId = "00000001";
+                            chapter = "";
+                        }
+                        else {
+                            fileId = chapterEntry.substring(0, splitPos);
+                            chapter = chapterEntry.substring(splitPos + 1);
+                        }
+                        JSONObject bookObject = new JSONObject();
+                        bookObject.put("BookNo", doc.get("BookNo"));
+                        bookObject.put("Title", doc.get("Title"));
+                        bookObject.put("Creator", doc.get("Creator"));
+                        bookObject.put("Publisher", doc.get("Publisher"));
+                        bookObject.put("Subject", doc.get("Subject"));
+                        bookObject.put("Chapter", chapter);
+                        bookObject.put("FileID", fileId);
+                        resultObject.append("books", bookObject);
+                        if (--left == 0)
+                            break;
+                    }
+                    catch (Exception e) {
+                        e.printStackTrace();
+                    }
+            }
+            JsonRepresentation jsonRepresentation =
+                    new JsonRepresentation(resultObject);
+            if (jsonCallback != null && !jsonCallback.trim().equals("")) {
+                jsonRepresentation.setText(jsonCallback + "(" + 
+                        jsonRepresentation.getText() + ")");
+            }
+            jsonRepresentation.setCharacterSet(CharacterSet.UTF_8);
+            representation = jsonRepresentation;
+        }
+        return representation;
+    }
+
+    private static String getChapterEntry(String chapters, String query) {
+        int pos = chapters.toLowerCase().indexOf(query);
+        if (pos != -1) {
+            int begin = chapters.lastIndexOf('\n', pos);
+            begin = begin == -1 ? 0 : begin + 1;
+            int end = chapters.indexOf('\n', pos);
+            if (end == -1)
+                end = chapters.length();
+            return chapters.substring(begin, end);
+        }
+        else
+            return "";
+    }
+
+    private static class QueryGenerator {
+        public static String getQuery(Hashtable<String, Float> fields,
+                String term, Hashtable<String, Float> rterms) {
+            StringBuilder query = new StringBuilder();
+            query.append("+(");
+            for (Map.Entry<String, Float> fieldEntry : fields.entrySet())
+                query.append(String.format("%s:\"%s\"^%f ", fieldEntry.getKey(),
+                        term, fieldEntry.getValue().floatValue()));
+            query.append(") ");
+            if (rterms.size() > 0)
+                for (Map.Entry<String, Float> fieldEntry : fields.entrySet()) {
+                    query.append(String.format("%s:(", fieldEntry.getKey()));
+                    for (Map.Entry<String, Float> termEntry : rterms.entrySet())
+                        query.append(String.format("%s^%f ", termEntry.getKey(),
+                                termEntry.getValue().floatValue() *
+                                fieldEntry.getValue().floatValue()));
+                    query.append(") ");
+                }
+            return query.toString();
+        }
+    }
+}
