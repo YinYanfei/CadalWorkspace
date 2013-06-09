@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="316"
+   name=""
+   committed-date="2008-03-12T16:12:59.928391Z"
+   url="svn://10.15.62.201/branches/portal-release-2.0/src/cn/cadal/fulltextsearch/analysis/cjk"
+   last-author="yc"
+   kind="dir"
+   uuid="52a00f4e-9218-0410-86c7-a288e60a3ace"
+   repos="svn://10.15.62.201"
+   revision="316"/>
+<entry
+   committed-rev="316"
+   name="CJKTokenizer.java"
+   text-time="2008-03-12T07:55:42.328125Z"
+   committed-date="2008-03-12T16:12:59.928391Z"
+   checksum="f1dae9aea65b54143cc4eb9e61e88933"
+   last-author="yc"
+   kind="file"
+   prop-time="2008-03-12T07:55:42.234375Z"/>
+<entry
+   committed-rev="316"
+   name="CJKAnalyzer.java"
+   text-time="2008-03-12T07:55:42.375000Z"
+   committed-date="2008-03-12T16:12:59.928391Z"
+   checksum="278fc17fc9589060cd7e07ae9bfc1042"
+   last-author="yc"
+   kind="file"
+   prop-time="2008-03-12T07:55:42.281250Z"/>
+</wc-entries>

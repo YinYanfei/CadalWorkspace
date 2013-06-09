@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="315"
+   name=""
+   committed-date="2008-03-12T16:12:51.033888Z"
+   url="svn://10.15.62.201/branches/portal-release-2.0/lib"
+   last-author="yc"
+   kind="dir"
+   uuid="52a00f4e-9218-0410-86c7-a288e60a3ace"
+   repos="svn://10.15.62.201"
+   revision="316"/>
+<entry
+   committed-rev="1"
+   name="axis.jar"
+   text-time="2006-07-23T12:42:23.390625Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="324812a5b7debb8df48c4d485566ea61"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:19.171875Z"/>
+<entry
+   committed-rev="1"
+   name="wsdl4j.jar"
+   text-time="2006-07-23T12:42:23.406250Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="e76bf26b6955a7fa73d85d096be6e1a6"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:19.250000Z"/>
+<entry
+   committed-rev="1"
+   name="jstl.jar"
+   text-time="2006-07-23T12:42:23.437500Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="65691d028314ffd3a85870a2b9eb9fe9"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:19.296875Z"/>
+<entry
+   committed-rev="1"
+   name="jakarta-oro-2.0.8.jar"
+   text-time="2006-07-23T12:42:23.468750Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="42e940d5d2d822f4dc04c65053e630ab"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:19.343750Z"/>
+<entry
+   committed-rev="1"
+   name="dom4j-1.6.1.jar"
+   text-time="2006-07-23T12:42:23.500000Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="4d8f51d3fe3900efc6e395be48030d6d"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:19.453125Z"/>
+<entry
+   committed-rev="1"
+   name="jta.jar"
+   text-time="2006-07-23T12:42:23.484375Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="c6e3e528816227b97f6b21f709641f8f"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:19.375000Z"/>
+<entry
+   committed-rev="1"
+   name="cglib-2.1.3.jar"
+   text-time="2006-07-23T12:42:23.515625Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="ce1dce4a5f6865fb88d4c7c2728b78ed"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:19.515625Z"/>
+<entry
+   committed-rev="1"
+   name="htmlparser.jar"
+   text-time="2006-07-23T12:42:23.531250Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="97ae8c196756bd961eaa546622bc99a4"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:19.578125Z"/>
+<entry
+   committed-rev="1"
+   name="freemarker.jar"
+   text-time="2006-07-23T12:42:23.562500Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="a4764ddddfc8e32e17e0d220cef4923c"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:20.031250Z"/>
+<entry
+   committed-rev="1"
+   name="xdoclet-hibernate-module-1.2.3.jar"
+   text-time="2006-07-23T12:42:23.578125Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="65e312c098df687bbc376feaf177fd5d"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:20.078125Z"/>
+<entry
+   committed-rev="1"
+   name="javamail.jar"
+   text-time="2006-07-23T12:42:23.609375Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="259feb948cff81dd93c8bc42817a8552"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:20.218750Z"/>
+<entry
+   committed-rev="1"
+   name="odmg-3.0.jar"
+   text-time="2006-07-23T12:42:23.671875Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="d40969d81d9cb74dde126ed2905ba318"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:20.296875Z"/>
+<entry
+   committed-rev="1"
+   name="ehcache-0.9.jar"
+   text-time="2006-07-23T12:42:23.640625Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="d71f5a2c052d2454631e7af3542fd379"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:20.265625Z"/>
+<entry
+   committed-rev="1"
+   name="log4j-1.2.9.jar"
+   text-time="2006-07-23T12:42:23.593750Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="6a44d84b72897f28189f4792e2015b93"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:20.156250Z"/>
+<entry
+   committed-rev="1"
+   name="commons-lang-1.0.1.jar"
+   text-time="2006-07-23T12:42:23.750000Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="f449a26eb16e0dc32765aacc0b0db355"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:20.328125Z"/>
+<entry
+   committed-rev="1"
+   name="jaxrpc.jar"
+   text-time="2006-07-23T12:42:23.765625Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="b3f5e2b971eff83c27e67fa8a3d9adcb"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:20.359375Z"/>
+<entry
+   committed-rev="1"
+   name="jdom.jar"
+   text-time="2006-07-23T12:42:23.859375Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="79b2b9dcb60a2bb00e15cfcd3cb61865"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:20.437500Z"/>
+<entry
+   committed-rev="1"
+   name="oscore.jar"
+   text-time="2006-07-23T12:42:23.921875Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="48c2e05e8f2e1143eca49f24d7fd5ba3"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:20.484375Z"/>
+<entry
+   committed-rev="1"
+   name="hibernate-annotations.jar"
+   text-time="2006-07-23T12:42:23.937500Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="95feb9ae11c2913df1e8bbf0ea17ea9c"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:20.531250Z"/>
+<entry
+   committed-rev="57"
+   name="hessian-3.0.8.jar"
+   text-time="2006-12-17T16:53:23.687500Z"
+   committed-date="2006-12-14T12:54:47.111771Z"
+   checksum="4fa95173fd45537c2af0fde093bd23fb"
+   last-author="zhangyin"
+   kind="file"
+   prop-time="2006-12-17T16:53:23.578125Z"/>
+<entry
+   committed-rev="1"
+   name="hibernate-tools.jar"
+   text-time="2006-07-23T12:42:23.953125Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="ad8778daf4d262d3cdc7ac7cf46897e4"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:20.593750Z"/>
+<entry
+   committed-rev="1"
+   name="ognl.jar"
+   text-time="2006-07-23T12:42:24.031250Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="a39b8219b95f64ccf3fad7947c72f009"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:20.640625Z"/>
+<entry
+   committed-rev="1"
+   name="portlet-api.jar"
+   text-time="2006-07-23T12:42:24.046875Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="74e40817096d9d72963eaa143bdebd32"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:20.671875Z"/>
+<entry
+   committed-rev="1"
+   name="standard.jar"
+   text-time="2006-07-23T12:42:24.093750Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="32dcddd5154d450c8efcd64ffb730b4f"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:20.718750Z"/>
+<entry
+   committed-rev="315"
+   name="lucene-core-2.3.1.jar"
+   text-time="2008-03-12T07:55:42.031250Z"
+   committed-date="2008-03-12T16:12:51.033888Z"
+   checksum="784d262afc2bc259cd9b8e458f051ec7"
+   last-author="yc"
+   kind="file"
+   prop-time="2008-03-12T07:55:42.000000Z"/>
+<entry
+   committed-rev="1"
+   name="velocity-tools-generic-1.1.jar"
+   text-time="2006-07-23T12:42:24.109375Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="4f01708787b7d02fa5fb5c63b2196e85"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:20.765625Z"/>
+<entry
+   committed-rev="1"
+   name="htmllexer.jar"
+   text-time="2006-07-23T12:42:24.125000Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="3a56136ef5fa9e31b789be446257475d"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:20.796875Z"/>
+<entry
+   committed-rev="1"
+   name="ejb3-persistence.jar"
+   text-time="2006-07-23T12:42:24.140625Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="24829568bc9e5fb97d9a45e0ddf2ff05"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:20.828125Z"/>
+<entry
+   committed-rev="1"
+   name="c3p0-0.9.0.jar"
+   text-time="2006-07-23T12:42:24.156250Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="cbba7a0f8f9ca927216425bb32c9f5e2"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:20.921875Z"/>
+<entry
+   committed-rev="1"
+   name="javadjvu-zy.jar"
+   text-time="2006-07-23T12:42:24.171875Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="4292983de352a39cd14c30392e059d3e"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:20.984375Z"/>
+<entry
+   committed-rev="1"
+   name="xwork.jar"
+   text-time="2006-07-23T12:42:24.203125Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="9b6c3e99dadf1bf02ce7c50fb5ebf44b"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:21.125000Z"/>
+<entry
+   committed-rev="1"
+   name="velocity-1.4-dev.jar"
+   text-time="2006-07-23T12:42:24.187500Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="60011229ce233f43d3fde81ff3d44e3a"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:21.062500Z"/>
+<entry
+   committed-rev="1"
+   name="asm-attrs.jar"
+   text-time="2006-07-23T12:42:24.218750Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="9791e464c742d33bab27df60ddecab86"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:21.171875Z"/>
+<entry
+   committed-rev="1"
+   name="xdoclet-portlet-module-1.2.3.jar"
+   text-time="2006-07-23T12:42:24.359375Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="0c03c654d118fabb011a772b449e144e"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:21.218750Z"/>
+<entry
+   committed-rev="1"
+   name="saaj.jar"
+   text-time="2006-07-23T12:42:24.578125Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="4d89989419d289b2cc7ae4b1e8b9149b"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:21.328125Z"/>
+<entry
+   committed-rev="1"
+   name="hsqldb-1.7.1.jar"
+   text-time="2006-07-23T12:42:24.609375Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="309129bd5d8dedde129d87bf31139688"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:21.375000Z"/>
+<entry
+   committed-rev="84"
+   name="webwork-2.2.jar"
+   text-time="2007-01-04T14:11:21.640625Z"
+   committed-date="2007-01-04T22:28:41.174777Z"
+   checksum="5ccdcd9cb8c75a899d7144a92d2ebe9d"
+   last-author="zhangyin"
+   kind="file"
+   prop-time="2007-01-04T14:11:21.531250Z"/>
+<entry
+   committed-rev="1"
+   name="asm.jar"
+   text-time="2006-07-23T12:42:25.468750Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="8a687877eb19f83b8e62ac51d3499c35"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:21.703125Z"/>
+<entry
+   committed-rev="1"
+   name="commons-discovery.jar"
+   text-time="2006-07-23T12:42:25.500000Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="9a2fb56e6a79169b2fb6c8a0dc79abb0"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:21.750000Z"/>
+<entry
+   committed-rev="1"
+   name="rife-continuations.jar"
+   text-time="2006-07-23T12:42:25.546875Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="2f1d7b5c8b88e3e252a5540779495ece"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:21.781250Z"/>
+<entry
+   committed-rev="1"
+   name="middlegen-hibernate-plugin-2.1.jar"
+   text-time="2006-07-23T12:42:25.562500Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="4460a8225a1c9d01420d8fab9a999107"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:21.828125Z"/>
+<entry
+   committed-rev="1"
+   name="xdoclet-xdoclet-module-1.2.3.jar"
+   text-time="2006-07-23T12:42:25.734375Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="168b48a583ed70cbe1be5c33cd259be3"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:22.250000Z"/>
+<entry
+   committed-rev="1"
+   name="xdoclet-spring-module-1.2.3.jar"
+   text-time="2006-07-23T12:42:25.640625Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="9ed93f0dcf000966c9f5395eddb51717"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:22.203125Z"/>
+<entry
+   committed-rev="1"
+   name="hibernate3.jar"
+   text-time="2006-07-23T12:42:25.609375Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="2f1cfc9b1ce180a1fd83a9958e951fce"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:22.156250Z"/>
+<entry
+   committed-rev="1"
+   name="middlegen-2.1.jar"
+   text-time="2006-07-23T12:42:25.812500Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="89c58d4386ae11782519bf7dc6b99d9b"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:22.281250Z"/>
+<entry
+   committed-rev="1"
+   name="junit.jar"
+   text-time="2006-07-23T12:42:25.828125Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="1f40fb782a4f2cf78f161d32670f7a3a"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:22.328125Z"/>
+<entry
+   committed-rev="56"
+   name="multipartrequest.jar"
+   text-time="2006-12-17T16:53:23.703125Z"
+   committed-date="2006-12-14T12:54:11.600066Z"
+   checksum="4ae3106fc7a0fc268bfb25d8a0886d65"
+   last-author="zhangyin"
+   kind="file"
+   prop-time="2006-12-17T16:53:23.656250Z"/>
+<entry
+   committed-rev="1"
+   name="commons-net-1.3.0-zy.jar"
+   text-time="2006-07-23T12:42:25.843750Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="497eab0eb1b40e4e0e1fa230ba57a046"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:22.359375Z"/>
+<entry
+   committed-rev="1"
+   name="dwr.jar"
+   text-time="2006-07-23T12:42:25.875000Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="cbd77ffb40a2382741388b1adafd4769"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:22.406250Z"/>
+<entry
+   committed-rev="1"
+   name="antlr-2.7.6rc1.jar"
+   text-time="2006-07-23T12:42:26.046875Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="4da7e5578e39d21322c2a921609c36b8"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:22.500000Z"/>
+<entry
+   committed-rev="1"
+   name="velocity-1.4.jar"
+   text-time="2006-07-23T12:42:26.062500Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="362824c4f03b48d7e3d0fc776f5ac4b8"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:22.578125Z"/>
+<entry
+   committed-rev="1"
+   name="commons-logging.jar"
+   text-time="2006-07-23T12:42:26.093750Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="8a507817b28077e0478add944c64586a"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:22.718750Z"/>
+<entry
+   committed-rev="1"
+   name="xdoclet-web-module-1.2.3.jar"
+   text-time="2006-07-23T12:42:26.109375Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="ee294d9464e4cb0526842686150397a6"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:22.750000Z"/>
+<entry
+   committed-rev="1"
+   name="commons-beanutils.jar"
+   text-time="2006-07-23T12:42:26.078125Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="0f18acf5fa857f9959675e14d901a7ce"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:22.625000Z"/>
+<entry
+   committed-rev="1"
+   name="xdoclet-1.2.3.jar"
+   text-time="2006-07-23T12:42:26.125000Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="96e57acaf89284ba9bd0a1a8e1b053f3"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:22.781250Z"/>
+<entry
+   committed-rev="1"
+   name="xdoclet-webwork-module-1.2.3.jar"
+   text-time="2006-07-23T12:42:26.234375Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="91fa9e0e2e982449f8d71141a2660f57"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:23.250000Z"/>
+<entry
+   committed-rev="1"
+   name="spring.jar"
+   text-time="2006-07-23T12:42:26.203125Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="af3d6e47cb35052096282b37bacf1c8d"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:23.156250Z"/>
+<entry
+   committed-rev="1"
+   name="pluto.jar"
+   text-time="2006-07-23T12:42:26.500000Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="a11afb9dfcce5e3a9a316bc7241079d4"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:23.343750Z"/>
+<entry
+   committed-rev="1"
+   name="jtidy-r8-21122004.jar"
+   text-time="2006-07-23T12:42:26.250000Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="6340f64d83724ad4130a951b7b9a05d6"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:23.296875Z"/>
+</wc-entries>

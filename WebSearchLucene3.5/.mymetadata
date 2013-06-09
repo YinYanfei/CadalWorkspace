@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="WebSearchLucene3.5"
+  id="myeclipse.1326506128732"
+  context-root="/WebSearchLucene3.5"
+  j2ee-spec="5.0"
+  archive="WebSearchLucene3.5.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

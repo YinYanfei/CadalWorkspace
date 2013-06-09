@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="87"
+   name=""
+   committed-date="2007-03-27T20:13:02.365462Z"
+   url="svn://10.15.62.201/branches/portal-release-2.0/src/cn/cadal/recommender/input"
+   last-author="zhangyin"
+   kind="dir"
+   uuid="52a00f4e-9218-0410-86c7-a288e60a3ace"
+   repos="svn://10.15.62.201"
+   revision="300"/>
+<entry
+   name="eachmovie"
+   kind="dir"/>
+<entry
+   name="cadal"
+   kind="dir"/>
+<entry
+   committed-rev="1"
+   name="AbstractRatingCollection.java"
+   text-time="2006-07-23T12:42:36.390625Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="6765be0b20c1e677e540a6df923d9157"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:35.796875Z"/>
+<entry
+   committed-rev="1"
+   name="InputObject.java"
+   text-time="2006-07-23T12:42:36.421875Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="40356189a091e262223038fe467e8d0a"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:36.031250Z"/>
+<entry
+   committed-rev="1"
+   name="InputFactory.java"
+   text-time="2006-07-23T12:42:36.468750Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="97560ea8d7addc95af0b1ac130c0e125"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:36.078125Z"/>
+<entry
+   committed-rev="1"
+   name="ListInputCollection.java"
+   text-time="2006-07-23T12:42:36.515625Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="d0f5dc6ee9b7f9845bbf26909fb8c781"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:36.125000Z"/>
+<entry
+   committed-rev="1"
+   name="InputManager.java"
+   text-time="2006-07-23T12:42:36.546875Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="07398ead7ff2116e9661c27bc3a368b7"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:36.156250Z"/>
+<entry
+   committed-rev="1"
+   name="InputCollection.java"
+   text-time="2006-07-23T12:42:36.578125Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="1ffd4beaf7fa60d8d50c6066141513ab"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:36.187500Z"/>
+<entry
+   committed-rev="1"
+   name="RatingComparator.java"
+   text-time="2006-07-23T12:42:36.593750Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="399e5e9540bdb1013a79c03d43b8ecd3"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:36.218750Z"/>
+<entry
+   committed-rev="1"
+   name="UIRRatingComparator.java"
+   text-time="2006-07-23T12:42:36.625000Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="6b6b82975ffe03bd8bc0528536688be6"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:36.250000Z"/>
+<entry
+   committed-rev="1"
+   name="URIRatingComparator.java"
+   text-time="2006-07-23T12:42:36.656250Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="f5be88f3f488baf32c54b654b02e361a"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:36.296875Z"/>
+<entry
+   committed-rev="1"
+   name="AbstractItemCollection.java"
+   text-time="2006-07-23T12:42:36.687500Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="0bb88eb6aec38bad07634c670319232a"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:36.328125Z"/>
+<entry
+   committed-rev="1"
+   name="AbstractUserCollection.java"
+   text-time="2006-07-23T12:42:36.718750Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="70ac25f48b9f11c414182c66168a5485"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:36.359375Z"/>
+</wc-entries>

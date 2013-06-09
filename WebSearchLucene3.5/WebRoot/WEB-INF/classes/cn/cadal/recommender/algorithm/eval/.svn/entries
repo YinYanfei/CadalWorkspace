@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="1"
+   name=""
+   committed-date="2006-07-14T22:49:06.052328Z"
+   url="svn://10.15.62.201/branches/portal-release-2.0/src/cn/cadal/recommender/algorithm/eval"
+   last-author="root"
+   kind="dir"
+   uuid="52a00f4e-9218-0410-86c7-a288e60a3ace"
+   repos="svn://10.15.62.201"
+   revision="300"/>
+<entry
+   committed-rev="1"
+   name="LSMEval.java"
+   text-time="2006-07-23T12:42:37.265625Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="6eaebb15d5b536e2ae9be3663b619426"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:37.093750Z"/>
+<entry
+   committed-rev="1"
+   name="Error.java"
+   text-time="2006-07-23T12:42:37.296875Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="8f1f6976c3b34df36277bcfbf6aef1c1"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:37.140625Z"/>
+<entry
+   committed-rev="1"
+   name="RmsError.java"
+   text-time="2006-07-23T12:42:37.359375Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="49ce3662504014139e914292abd36d77"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:37.171875Z"/>
+<entry
+   committed-rev="1"
+   name="MaeError.java"
+   text-time="2006-07-23T12:42:37.390625Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="cf4d732194c5817acbdc1561769d5a7a"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:37.234375Z"/>
+</wc-entries>

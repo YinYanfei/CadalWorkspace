@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="1"
+   name=""
+   committed-date="2006-07-14T22:49:06.052328Z"
+   url="svn://10.15.62.201/branches/portal-release-2.0/src/cn/cadal/recommender/input/cadal"
+   last-author="root"
+   kind="dir"
+   uuid="52a00f4e-9218-0410-86c7-a288e60a3ace"
+   repos="svn://10.15.62.201"
+   revision="300"/>
+<entry
+   committed-rev="1"
+   name="Cadal.java"
+   text-time="2006-07-23T12:42:35.968750Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="eef28eeaa1691aa8c4aa40c4e5368ddb"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:35.937500Z"/>
+</wc-entries>

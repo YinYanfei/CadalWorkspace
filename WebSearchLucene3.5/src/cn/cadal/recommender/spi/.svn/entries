@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="1"
+   name=""
+   committed-date="2006-07-14T22:49:06.052328Z"
+   url="svn://10.15.62.201/branches/portal-release-2.0/src/cn/cadal/recommender/spi"
+   last-author="root"
+   kind="dir"
+   uuid="52a00f4e-9218-0410-86c7-a288e60a3ace"
+   repos="svn://10.15.62.201"
+   revision="300"/>
+<entry
+   committed-rev="1"
+   name="Visitor.java"
+   text-time="2006-07-23T12:42:38.453125Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="5b5cc6285d7938c8f12e038156a039e5"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:37.984375Z"/>
+<entry
+   committed-rev="1"
+   name="Output.java"
+   text-time="2006-07-23T12:42:38.484375Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="3a35916c1cef29094ef4ba13a1354408"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:38.031250Z"/>
+<entry
+   committed-rev="1"
+   name="RatingCollection.java"
+   text-time="2006-07-23T12:42:38.546875Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="8e90b7cfa13c6d6f999d68a515a05eaa"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:38.078125Z"/>
+<entry
+   committed-rev="1"
+   name="Configurator.java"
+   text-time="2006-07-23T12:42:38.593750Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="e5336a87c514a72b8ea8ba8db2e76a3d"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:38.125000Z"/>
+<entry
+   committed-rev="1"
+   name="Rating.java"
+   text-time="2006-07-23T12:42:38.609375Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="53045fcd8b070b4d15d403fda7334329"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:38.156250Z"/>
+<entry
+   committed-rev="1"
+   name="ItemFactory.java"
+   text-time="2006-07-23T12:42:38.640625Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="f6bf633aad4617b5beb97065318faaa1"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:38.187500Z"/>
+<entry
+   committed-rev="1"
+   name="UserFactory.java"
+   text-time="2006-07-23T12:42:38.671875Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="d8b45e23c871bffa32907469210c7e8a"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:38.218750Z"/>
+<entry
+   committed-rev="1"
+   name="CollaborativeFiltering.java"
+   text-time="2006-07-23T12:42:38.703125Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="7d645229764b669023edccb03bef5076"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:38.250000Z"/>
+<entry
+   committed-rev="1"
+   name="ItemCollection.java"
+   text-time="2006-07-23T12:42:38.734375Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="9884cc167fac00bcb415b35eb9f9e8e1"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:38.281250Z"/>
+<entry
+   committed-rev="1"
+   name="UserCollection.java"
+   text-time="2006-07-23T12:42:38.765625Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="12213fa9027401e35b5683bc13464db6"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:38.312500Z"/>
+<entry
+   committed-rev="1"
+   name="RatingFactory.java"
+   text-time="2006-07-23T12:42:38.796875Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="b5af58eb2003fbf5809a04a24e25062c"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:38.343750Z"/>
+<entry
+   committed-rev="1"
+   name="Item.java"
+   text-time="2006-07-23T12:42:38.828125Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="d3d36c4d4465291b831ada018b9b3c5e"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:38.390625Z"/>
+<entry
+   committed-rev="1"
+   name="User.java"
+   text-time="2006-07-23T12:42:38.859375Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="4765c0d2db03396b02df2abf2ef1b9d6"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:38.421875Z"/>
+</wc-entries>

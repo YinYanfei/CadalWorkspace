@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="1"
+   name=""
+   committed-date="2006-07-14T22:49:06.052328Z"
+   url="svn://10.15.62.201/branches/portal-release-2.0/src/cn/cadal/recommender/algorithm"
+   last-author="root"
+   kind="dir"
+   uuid="52a00f4e-9218-0410-86c7-a288e60a3ace"
+   repos="svn://10.15.62.201"
+   revision="300"/>
+<entry
+   name="output"
+   kind="dir"/>
+<entry
+   committed-rev="1"
+   name="Controller.java"
+   text-time="2006-07-23T12:42:37.843750Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="0f3b14bad3ab9a941e26d3d7ec40111e"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:37.015625Z"/>
+<entry
+   name="eval"
+   kind="dir"/>
+<entry
+   name="cf"
+   kind="dir"/>
+<entry
+   name="cbf"
+   kind="dir"/>
+<entry
+   committed-rev="1"
+   name="SortedItemMap.java"
+   text-time="2006-07-23T12:42:37.875000Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="5b49b879acc09f328041cf73afddcd35"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:37.796875Z"/>
+</wc-entries>

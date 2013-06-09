@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="1"
+   name=""
+   committed-date="2006-07-14T22:49:06.052328Z"
+   url="svn://10.15.62.201/branches/portal-release-2.0/src/cn/cadal/recommender/algorithm/output"
+   last-author="root"
+   kind="dir"
+   uuid="52a00f4e-9218-0410-86c7-a288e60a3ace"
+   repos="svn://10.15.62.201"
+   revision="300"/>
+<entry
+   committed-rev="1"
+   name="EachMovieOutput.java"
+   text-time="2006-07-23T12:42:36.953125Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="99b352f70aec3ac9104af45981ec59db"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:36.921875Z"/>
+</wc-entries>

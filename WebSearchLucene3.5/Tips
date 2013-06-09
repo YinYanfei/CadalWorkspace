@@ -1,0 +1,3 @@
+cn.cadal.quicksearch.index
+cn.cadal.quicksearch.search -->QuickIndex, IndexSearch, SearchResult, TopicSearchResult
+cn.cadal.quicksearch.servlet

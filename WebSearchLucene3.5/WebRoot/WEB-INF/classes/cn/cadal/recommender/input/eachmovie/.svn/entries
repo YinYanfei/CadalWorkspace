@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="87"
+   name=""
+   committed-date="2007-03-27T20:13:02.365462Z"
+   url="svn://10.15.62.201/branches/portal-release-2.0/src/cn/cadal/recommender/input/eachmovie"
+   last-author="zhangyin"
+   kind="dir"
+   uuid="52a00f4e-9218-0410-86c7-a288e60a3ace"
+   repos="svn://10.15.62.201"
+   revision="300"/>
+<entry
+   committed-rev="1"
+   name="EachMovieItem.java"
+   text-time="2006-07-23T12:42:35.375000Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="d3453113a985f146dc64d1496ecfe965"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:35.000000Z"/>
+<entry
+   committed-rev="1"
+   name="EachMovieUser.java"
+   text-time="2006-07-23T12:42:35.453125Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="dbdadbc847c0b02757cc3008d79def8d"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:35.046875Z"/>
+<entry
+   committed-rev="1"
+   name="EachMovieRatingCollection.java"
+   text-time="2006-07-23T12:42:35.515625Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="dcb8b1605c8c6c028551e0b57e9cc502"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:35.109375Z"/>
+<entry
+   committed-rev="1"
+   name="EachMovieRating.java"
+   text-time="2006-07-23T12:42:35.593750Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="a13f533f048074bf1741390674c5efc5"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:35.171875Z"/>
+<entry
+   committed-rev="1"
+   name="EachMovieItemFactory.java"
+   text-time="2006-07-23T12:42:35.625000Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="b11fe504c808f7fee1a4c6750d767dc5"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:35.203125Z"/>
+<entry
+   committed-rev="1"
+   name="EachMovieUserFactory.java"
+   text-time="2006-07-23T12:42:35.656250Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="bec87c725f9370cf76951197783e0102"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:35.250000Z"/>
+<entry
+   committed-rev="1"
+   name="EachMovieItemCollection.java"
+   text-time="2006-07-23T12:42:35.687500Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="bd7199fa4d9d4cdf9690e4b6be06122a"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:35.281250Z"/>
+<entry
+   committed-rev="87"
+   name="EachMovieUserCollection.java"
+   text-time="2007-03-27T12:04:10.281250Z"
+   committed-date="2007-03-27T20:13:02.365462Z"
+   checksum="fee6f2fe84937bebf81f76f221cfdbc3"
+   last-author="zhangyin"
+   kind="file"
+   prop-time="2007-03-27T12:04:10.234375Z"/>
+<entry
+   committed-rev="1"
+   name="EachMovieRatingFactory.java"
+   text-time="2006-07-23T12:42:35.734375Z"
+   committed-date="2006-07-14T22:49:06.052328Z"
+   checksum="5ce0dbd9953fffc2f906df4a5433e9c7"
+   last-author="root"
+   kind="file"
+   prop-time="2006-07-23T12:42:35.343750Z"/>
+</wc-entries>
