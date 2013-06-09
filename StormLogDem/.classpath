@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="melibrary.com.genuitec.eclipse.j2eedt.core.MYECLIPSE_JAVAEE_5_CONTAINER"/>
+	<classpathentry kind="lib" path="D:/LuceneSearch/StormLogDem/lib/apache-cassandra-1.0.8.jar"/>
+	<classpathentry kind="lib" path="D:/LuceneSearch/StormLogDem/lib/apache-cassandra-clientutil-1.0.8.jar"/>
+	<classpathentry kind="lib" path="D:/LuceneSearch/StormLogDem/lib/apache-cassandra-thrift-1.0.8.jar"/>
+	<classpathentry kind="lib" path="D:/LuceneSearch/StormLogDem/lib/commons-lang-2.4.jar"/>
+	<classpathentry kind="lib" path="D:/LuceneSearch/StormLogDem/lib/commons-logging.jar"/>
+	<classpathentry kind="lib" path="D:/LuceneSearch/StormLogDem/lib/commons-net-2.2.jar"/>
+	<classpathentry kind="lib" path="D:/LuceneSearch/StormLogDem/lib/log4j.jar"/>
+	<classpathentry kind="lib" path="D:/LuceneSearch/StormLogDem/lib/postgresql-8.4-703.jdbc3.jar"/>
+	<classpathentry kind="lib" path="D:/LuceneSearch/StormLogDem/lib/slf4j-api-1.6.0.jar"/>
+	<classpathentry kind="lib" path="D:/LuceneSearch/StormLogDem/lib/slf4j-log4j12-1.6.0.jar"/>
+	<classpathentry kind="lib" path="D:/LuceneSearch/StormLogDem/lib/libthrift-0.8.0-snapshot.jar"/>
+	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
+</classpath>

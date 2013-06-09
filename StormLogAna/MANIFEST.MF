@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Class-Path: /home/Yanfei/lib/apache-cassandra-1.0.8.jar /home/Yanfei/lib/apache-cassandra-clientutil-1.0.8.jar 
+  /home/Yanfei/lib/asm-3.2.jar /home/Yanfei/lib/carbonite-1.0.0.jar /home/Yanfei/lib/clj-time-0.3.0.jar /home/Yanfei/lib/clojure-1.2.0.jar 
+  /home/Yanfei/lib/clojure-contrib-1.2.0.jar /home/Yanfei/lib/clout-0.4.1.jar /home/Yanfei/lib/commons-codec-1.4.jar 
+  /home/Yanfei/lib/commons-exec-1.1.jar /home/Yanfei/lib/commons-fileupload-1.2.1.jar /home/Yanfei/lib/commons-io-1.4.jar 
+  /home/Yanfei/lib/commons-lang-2.5.jar /home/Yanfei/lib/commons-logging-1.1.1.jar /home/Yanfei/lib/compojure-0.6.4.jar 
+  /home/Yanfei/lib/core.incubator-0.1.0.jar /home/Yanfei/lib/curator-client-1.0.1.jar /home/Yanfei/lib/curator-framework-1.0.1.jar 
+  /home/Yanfei/lib/guava-10.0.1.jar /home/Yanfei/lib/hiccup-0.3.6.jar /home/Yanfei/lib/httpclient-4.1.1.jar /home/Yanfei/lib/httpcore-4.1.jar 
+  /home/Yanfei/lib/jetty-6.1.26.jar /home/Yanfei/lib/jetty-util-6.1.26.jar /home/Yanfei/lib/jline-0.9.94.jar 
+  /home/Yanfei/lib/joda-time-1.6.jar /home/Yanfei/lib/json-simple-1.1.jar /home/Yanfei/lib/jsr305-1.3.9.jar 
+  /home/Yanfei/lib/junit-3.8.1.jar /home/Yanfei/lib/jzmq-2.1.0.jar /home/Yanfei/lib/kestrel-2.1.5.jar /home/Yanfei/lib/kryo-1.04.jar 
+  /home/Yanfei/lib/libthrift-0.6.jar /home/Yanfei/lib/log4j-1.2.16.jar /home/Yanfei/lib/apache-cassandra-thrift-1.0.8.jar 
+  /home/Yanfei/lib/minlog-1.2.jar /home/Yanfei/lib/reflectasm-1.01.jar /home/Yanfei/lib/ring-core-0.3.10.jar 
+  /home/Yanfei/lib/ring-jetty-adapter-0.3.11.jar /home/Yanfei/lib/ring-servlet-0.3.11.jar /home/Yanfei/lib/servlet-api-2.5.jar 
+  /home/Yanfei/lib/slf4j-api-1.5.8.jar /home/Yanfei/lib/slf4j-log4j12-1.5.8.jar /home/Yanfei/lib/snakeyaml-1.9.jar 
+  /home/Yanfei/lib/tools.macro-0.1.0.jar /home/Yanfei/lib/twitter4j-async-2.2.0.jar 
+  /home/Yanfei/lib/twitter4j-core-2.2.0.jar /home/Yanfei/lib/twitter4j-examples-2.2.0.jar /home/Yanfei/lib/twitter4j-media-support-2.2.0.jar 
+  /home/Yanfei/lib/twitter4j-stream-2.2.0.jar /home/Yanfei/lib/zookeeper-3.3.3.jar 
