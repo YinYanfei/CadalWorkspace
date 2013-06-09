@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="321"
+   name=""
+   committed-date="2008-05-27T14:15:09.245969Z"
+   url="svn://10.15.62.201/branches/portal-release-2.0/src/cn/cadal/quicksearch"
+   last-author="zhangyin"
+   kind="dir"
+   repos="svn://10.15.62.201"
+   revision="321"/>
+<entry
+   name="analysis"
+   kind="dir"/>
+<entry
+   name="search"
+   kind="dir"/>
+<entry
+   name="index"
+   kind="dir"/>
+<entry
+   committed-rev="321"
+   name="QuickSearchConfig.java"
+   text-time="2008-03-13T06:56:46.921875Z"
+   committed-date="2008-05-27T14:15:09.245969Z"
+   checksum="7be7704eda717055304dfbea6361555b"
+   last-author="zhangyin"
+   kind="file"/>
+</wc-entries>

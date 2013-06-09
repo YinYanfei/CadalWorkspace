@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="321"
+   name=""
+   committed-date="2008-05-27T14:15:09.245969Z"
+   url="svn://10.15.62.201/branches/portal-release-2.0/src/cn/cadal/quicksearch/index"
+   last-author="zhangyin"
+   kind="dir"
+   repos="svn://10.15.62.201"
+   revision="321"/>
+<entry
+   committed-rev="321"
+   name="GetMetadata.java"
+   text-time="2008-05-10T12:58:21.875000Z"
+   committed-date="2008-05-27T14:15:09.245969Z"
+   checksum="075bb250848a5357178b8c961bc2cbbf"
+   last-author="zhangyin"
+   kind="file"/>
+<entry
+   committed-rev="321"
+   name="BookRankClient.java"
+   text-time="2008-04-29T07:39:00.312500Z"
+   committed-date="2008-05-27T14:15:09.245969Z"
+   checksum="c9b60913bdbcca1197f2cea23d02b8f2"
+   last-author="zhangyin"
+   kind="file"/>
+<entry
+   committed-rev="321"
+   name="IndexBuilder.java"
+   text-time="2008-04-29T12:18:07.953125Z"
+   committed-date="2008-05-27T14:15:09.245969Z"
+   checksum="705021db0b5d0014e5fbbde579bfbb82"
+   last-author="zhangyin"
+   kind="file"/>
+</wc-entries>

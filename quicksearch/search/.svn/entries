@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="321"
+   name=""
+   committed-date="2008-05-27T14:15:09.245969Z"
+   url="svn://10.15.62.201/branches/portal-release-2.0/src/cn/cadal/quicksearch/search"
+   last-author="zhangyin"
+   kind="dir"
+   repos="svn://10.15.62.201"
+   revision="321"/>
+<entry
+   committed-rev="321"
+   name="QuickMinguoSearch.java"
+   text-time="2008-03-13T06:05:45.953125Z"
+   committed-date="2008-05-27T14:15:09.245969Z"
+   checksum="976e3d7ad4858827aade1da12c637483"
+   last-author="zhangyin"
+   kind="file"/>
+<entry
+   committed-rev="321"
+   name="QuickSearch.java"
+   text-time="2008-03-12T14:08:58.000000Z"
+   committed-date="2008-05-27T14:15:09.245969Z"
+   checksum="87bdf2e0ce01266fb19d64557ec8b3cf"
+   last-author="zhangyin"
+   kind="file"/>
+<entry
+   committed-rev="321"
+   name="SearchResult.java"
+   text-time="2008-04-29T09:12:35.203125Z"
+   committed-date="2008-05-27T14:15:09.245969Z"
+   checksum="2a092505dd10e13de556d2cd1c08d44b"
+   last-author="zhangyin"
+   kind="file"/>
+<entry
+   committed-rev="321"
+   name="QuickAncientSearch.java"
+   text-time="2008-03-13T06:06:44.828125Z"
+   committed-date="2008-05-27T14:15:09.245969Z"
+   checksum="8951c043a65e8f0e3a63f8f0d0129f8e"
+   last-author="zhangyin"
+   kind="file"/>
+<entry
+   committed-rev="331"
+   name="Search.java"
+   text-time="2008-06-09T06:39:48.031250Z"
+   committed-date="2008-06-16T14:39:18.709768Z"
+   checksum="a05c2f67e87e862930c774153d6356be"
+   last-author="zhangyin"
+   kind="file"
+   revision="331"/>
+<entry
+   committed-rev="321"
+   name="QuickModernSearch.java"
+   text-time="2008-03-13T06:03:36.203125Z"
+   committed-date="2008-05-27T14:15:09.245969Z"
+   checksum="6d099716d03179da3db0c17a4eaa9c3c"
+   last-author="zhangyin"
+   kind="file"/>
+<entry
+   committed-rev="321"
+   name="ConsoleSearch.java"
+   text-time="2008-04-29T06:23:40.015625Z"
+   committed-date="2008-05-27T14:15:09.245969Z"
+   checksum="1a417e8098afaf601a352e0a630bcc0e"
+   last-author="zhangyin"
+   kind="file"/>
+<entry
+   committed-rev="321"
+   name="QuickVideoSearch.java"
+   text-time="2008-03-13T09:01:52.468750Z"
+   committed-date="2008-05-27T14:15:09.245969Z"
+   checksum="c3dc06053426f0440e2b5001b9ac2281"
+   last-author="zhangyin"
+   kind="file"/>
+<entry
+   committed-rev="321"
+   name="QuickDissertationSearch.java"
+   text-time="2008-03-13T06:06:35.343750Z"
+   committed-date="2008-05-27T14:15:09.245969Z"
+   checksum="a31f92d93ce33f126bc2511beeffb509"
+   last-author="zhangyin"
+   kind="file"/>
+<entry
+   committed-rev="321"
+   name="SearchResultComparator.java"
+   text-time="2008-04-29T09:28:38.890625Z"
+   committed-date="2008-05-27T14:15:09.245969Z"
+   checksum="f18ded4f9ef1c7b84a0679daa45b56ed"
+   last-author="zhangyin"
+   kind="file"/>
+<entry
+   committed-rev="321"
+   name="QuickEnglishSearch.java"
+   text-time="2008-04-29T13:05:36.859375Z"
+   committed-date="2008-05-27T14:15:09.245969Z"
+   checksum="892c6d4b507c0aeb7eab4f40542989a5"
+   last-author="zhangyin"
+   kind="file"/>
+<entry
+   committed-rev="321"
+   name="QuickPaintingSearch.java"
+   text-time="2008-03-13T09:01:32.593750Z"
+   committed-date="2008-05-27T14:15:09.245969Z"
+   checksum="c331ba8701cfcab6a2983c85586b8832"
+   last-author="zhangyin"
+   kind="file"/>
+<entry
+   committed-rev="321"
+   name="QuickJournalSearch.java"
+   text-time="2008-03-13T06:07:29.500000Z"
+   committed-date="2008-05-27T14:15:09.245969Z"
+   checksum="4755628f4f26224b52a5c53fb2a85db9"
+   last-author="zhangyin"
+   kind="file"/>
+</wc-entries>

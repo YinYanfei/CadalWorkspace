@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="321"
+   name=""
+   committed-date="2008-05-27T14:15:09.245969Z"
+   url="svn://10.15.62.201/branches/portal-release-2.0/src/cn/cadal/quicksearch/analysis"
+   last-author="zhangyin"
+   kind="dir"
+   repos="svn://10.15.62.201"
+   revision="321"/>
+<entry
+   committed-rev="321"
+   name="ChineseAnalyzer.java"
+   text-time="2008-03-12T12:47:10.468750Z"
+   committed-date="2008-05-27T14:15:09.245969Z"
+   checksum="7de69c02595ee72edf2afc068a30ad4a"
+   last-author="zhangyin"
+   kind="file"/>
+<entry
+   committed-rev="321"
+   name="ChineseFilter.java"
+   text-time="2008-03-12T12:47:10.546875Z"
+   committed-date="2008-05-27T14:15:09.245969Z"
+   checksum="f4b263aaf0c6bce3f5656c20fc57f7f6"
+   last-author="zhangyin"
+   kind="file"/>
+<entry
+   committed-rev="321"
+   name="ChineseTokenizer.java"
+   text-time="2008-03-12T12:46:00.453125Z"
+   committed-date="2008-05-27T14:15:09.245969Z"
+   checksum="e67529baae49e4f9e99b7ffe9d03e596"
+   last-author="zhangyin"
+   kind="file"/>
+</wc-entries>
