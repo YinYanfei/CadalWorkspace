@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/Sun JDK 1.6.0_13"/>
+	<classpathentry kind="lib" path="D:/LuceneSearch/CassandraOp/lib/antlr-3.2.jar"/>
+	<classpathentry kind="lib" path="D:/LuceneSearch/CassandraOp/lib/apache-cassandra-1.0.8.jar"/>
+	<classpathentry kind="lib" path="D:/LuceneSearch/CassandraOp/lib/apache-cassandra-clientutil-1.0.8.jar"/>
+	<classpathentry kind="lib" path="D:/LuceneSearch/CassandraOp/lib/apache-cassandra-thrift-1.0.8.jar"/>
+	<classpathentry kind="lib" path="D:/LuceneSearch/CassandraOp/lib/avro-1.4.0-fixes.jar"/>
+	<classpathentry kind="lib" path="D:/LuceneSearch/CassandraOp/lib/avro-1.4.0-sources-fixes.jar"/>
+	<classpathentry kind="lib" path="D:/LuceneSearch/CassandraOp/lib/commons-cli-1.1.jar"/>
+	<classpathentry kind="lib" path="D:/LuceneSearch/CassandraOp/lib/commons-codec-1.2.jar"/>
+	<classpathentry kind="lib" path="D:/LuceneSearch/CassandraOp/lib/commons-lang-2.4.jar"/>
+	<classpathentry kind="lib" path="D:/LuceneSearch/CassandraOp/lib/compress-lzf-0.8.4.jar"/>
+	<classpathentry kind="lib" path="D:/LuceneSearch/CassandraOp/lib/concurrentlinkedhashmap-lru-1.2.jar"/>
+	<classpathentry kind="lib" path="D:/LuceneSearch/CassandraOp/lib/guava-r08.jar"/>
+	<classpathentry kind="lib" path="D:/LuceneSearch/CassandraOp/lib/high-scale-lib-1.1.2.jar"/>
+	<classpathentry kind="lib" path="D:/LuceneSearch/CassandraOp/lib/jackson-core-asl-1.4.0.jar"/>
+	<classpathentry kind="lib" path="D:/LuceneSearch/CassandraOp/lib/jackson-mapper-asl-1.4.0.jar"/>
+	<classpathentry kind="lib" path="D:/LuceneSearch/CassandraOp/lib/jamm-0.2.5.jar"/>
+	<classpathentry kind="lib" path="D:/LuceneSearch/CassandraOp/lib/jline-0.9.94.jar"/>
+	<classpathentry kind="lib" path="D:/LuceneSearch/CassandraOp/lib/json-simple-1.1.jar"/>
+	<classpathentry kind="lib" path="D:/LuceneSearch/CassandraOp/lib/libthrift-0.6.jar"/>
+	<classpathentry kind="lib" path="D:/LuceneSearch/CassandraOp/lib/log4j-1.2.16.jar"/>
+	<classpathentry kind="lib" path="D:/LuceneSearch/CassandraOp/lib/servlet-api-2.5-20081211.jar"/>
+	<classpathentry kind="lib" path="D:/LuceneSearch/CassandraOp/lib/slf4j-api-1.6.1.jar"/>
+	<classpathentry kind="lib" path="D:/LuceneSearch/CassandraOp/lib/slf4j-log4j12-1.6.1.jar"/>
+	<classpathentry kind="lib" path="D:/LuceneSearch/CassandraOp/lib/snakeyaml-1.6.jar"/>
+	<classpathentry kind="lib" path="D:/LuceneSearch/CassandraOp/lib/snappy-java-1.0.4.1.jar"/>
+	<classpathentry kind="lib" path="D:/LuceneSearch/CassandraOp/lib/cassandra-cql-jdbc.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
