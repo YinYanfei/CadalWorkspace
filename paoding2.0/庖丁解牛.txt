@@ -1,0 +1,44 @@
+1、准备 
+  1)将二进制包paoding-analyis.jar放到自己的classpath下 
+
+
+  2)将字典文件安装(也就是拷贝)到某个目录下，比如/data/paoding/dic下 
+
+
+  3)把配置文件paoding-analysis.properties放到自己的classpath下 
+
+
+  4)打开paoding-analysis.properties，把paoding.dic.home属性设置为字 
+   典的安装目录，比如paoding.dic.home=/data/paoding/dic，特别的，如 
+   果字典是安装在classpath下的dic目录下，则可以简单这样配置该属性： 
+   paoding.dic.home=classpath:dic 
+
+ 5)环境变量：PAODING_DIC_HOME  E:\paoding\dic
+
+2、建立索引 
+  1)将庖丁封装成符合Lucene要求的Analyzer规范,获取query mode的lucene 
+   分析器，writer mode意味要同时支持最大和最小切词。 
+    Paoding paoding = PaodingMaker.make(); 
+    Analyzer writerAnalyzer = PaodingAnalyzer.writerMode(paoding); 
+
+
+    Paoding应保存为一个系统单例为好，以重复利用，它是线程安全的. 
+
+
+  2)使用Lucene标准API对文件建立索引。 
+    IndexWriter writer = new IndexWriter(dirctory, writerAnalyzer); 
+    ... 
+
+
+3、检索查找 
+  1)获取query mode的lucene分析器，query mode意味仅支持最大切词。 
+    Analyzer queryAnalyzer = PaodingAnalyzer.queryMode(paoding); 
+
+
+  2)使用Lucene标准API对文件建立索引。 
+    QueryParser parser = new QueryParser("content", queryAnalyzer); 
+    ... 
+
+
+更具体的使用方式参见 
+examples/net.paoding.analysis.examples.gettingstarted中的示例代码 
