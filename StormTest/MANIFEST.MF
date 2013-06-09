@@ -1,0 +1,2 @@
+Manifest-Version: 1.0
+Class-Path: /home/Yanfei/storm-0.7.4.jar /home/Yanfei/zookeeper-3.3.3.jar
