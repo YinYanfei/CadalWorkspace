@@ -1,0 +1,11 @@
+is 1
+am 2
+are 3
+have 4
+has 5
+had 6
+Is 7
+Are 8
+Have 9
+Has 10
+Had 11

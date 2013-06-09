@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="con" path="melibrary.com.genuitec.eclipse.j2eedt.core.MYECLIPSE_JAVAEE_5_CONTAINER"/>
+	<classpathentry kind="lib" path="D:/LuceneSearch/AudioSearch/lib/postgresql-8.4-703.jdbc3.jar"/>
+	<classpathentry kind="lib" path="D:/LuceneSearch/AudioSearch/lib/lucene-analyzers-3.5.0.jar"/>
+	<classpathentry kind="lib" path="D:/LuceneSearch/AudioSearch/lib/lucene-core-3.5.0.jar"/>
+	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
+</classpath>
