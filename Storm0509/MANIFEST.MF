@@ -1,0 +1,22 @@
+Manifest-Version: 1.0
+Class-Path: /home/cadal/lib/antlr-3.2.jar /home/cadal/lib/apache-cassandra-1.0.8.jar /home/cadal/lib/apache-cassandra-clientutil-1.0.8.jar 
+  /home/cadal/lib/apache-cassandra-thrift-1.0.8.jar /home/cadal/lib/asm-3.2.jar /home/cadal/lib/avro-1.4.0-fixes.jar /home/cadal/lib/avro-1.4.0-sources-fixes.jar 
+  /home/cadal/lib/carbonite-1.0.0.jar /home/cadal/lib/cassandra-cql-jdbc.jar /home/cadal/lib/clj-time-0.3.0.jar /home/cadal/lib/clojure-1.2.0.jar 
+  /home/cadal/lib/clojure-contrib-1.2.0.jar /home/cadal/lib/clout-0.4.1.jar /home/cadal/lib/commons-cli-1.1.jar /home/cadal/lib/commons-codec-1.2.jar 
+  /home/cadal/lib/commons-codec-1.4.jar /home/cadal/lib/commons-exec-1.1.jar /home/cadal/lib/commons-fileupload-1.2.1.jar /home/cadal/lib/commons-io-1.4.jar 
+  /home/cadal/lib/commons-lang-2.4.jar /home/cadal/lib/commons-lang-2.5.jar /home/cadal/lib/commons-logging-1.1.1.jar /home/cadal/lib/compojure-0.6.4.jar 
+  /home/cadal/lib/compress-lzf-0.8.4.jar /home/cadal/lib/concurrentlinkedhashmap-lru-1.2.jar /home/cadal/lib/core.incubator-0.1.0.jar /home/cadal/lib/curator-client-1.0.1.jar 
+  /home/cadal/lib/curator-framework-1.0.1.jar /home/cadal/lib/file.txt /home/cadal/lib/guava-10.0.1.jar /home/cadal/lib/guava-r08.jar /home/cadal/lib/hiccup-0.3.6.jar 
+  /home/cadal/lib/high-scale-lib-1.1.2.jar /home/cadal/lib/httpclient-4.1.1.jar /home/cadal/lib/httpcore-4.1.jar /home/cadal/lib/jackson-core-asl-1.4.0.jar 
+  /home/cadal/lib/jackson-mapper-asl-1.4.0.jar /home/cadal/lib/jamm-0.2.5.jar /home/cadal/lib/jetty-6.1.26.jar /home/cadal/lib/jetty-util-6.1.26.jar 
+  /home/cadal/lib/jline-0.9.94.jar /home/cadal/lib/joda-time-1.6.jar /home/cadal/lib/json-simple-1.1.jar /home/cadal/lib/jsr305-1.3.9.jar 
+  /home/cadal/lib/junit-3.8.1.jar /home/cadal/lib/jzmq-2.1.0.jar /home/cadal/lib/kafka-0.7.jar /home/cadal/lib/kestrel-2.1.5.jar 
+  /home/cadal/lib/kryo-1.04.jar /home/cadal/lib/libthrift-0.6.jar /home/cadal/lib/libthrift7-0.7.0.jar /home/cadal/lib/log4j-1.2.16.jar 
+  /home/cadal/lib/log4j.jar /home/cadal/lib/minlog-1.2.jar /home/cadal/lib/reflectasm-1.01.jar /home/cadal/lib/ring-core-0.3.10.jar 
+  /home/cadal/lib/ring-jetty-adapter-0.3.11.jar /home/cadal/lib/ring-servlet-0.3.11.jar /home/cadal/lib/scala-library-2.8.0.final.jar 
+  /home/cadal/lib/servlet-api-2.5-20081211.jar /home/cadal/lib/servlet-api-2.5.jar /home/cadal/lib/slf4j-api-1.5.8.jar /home/cadal/lib/slf4j-api-1.6.1.jar 
+  /home/cadal/lib/slf4j-log4j12-1.5.8.jar /home/cadal/lib/slf4j-log4j12-1.6.1.jar /home/cadal/lib/snakeyaml-1.6.jar /home/cadal/lib/snakeyaml-1.9.jar 
+  /home/cadal/lib/snappy-java-1.0.4.1.jar /home/cadal/lib/tools.macro-0.1.0.jar /home/cadal/lib/twitter4j-async-2.2.0.jar 
+  /home/cadal/lib/twitter4j-core-2.2.0.jar /home/cadal/lib/twitter4j-examples-2.2.0.jar /home/cadal/lib/twitter4j-media-support-2.2.0.jar 
+  /home/cadal/lib/twitter4j-stream-2.2.0.jar /home/cadal/lib/zkclient-20110412.jar /home/cadal/lib/zookeeper-3.3.0.jar /home/cadal/lib/zookeeper-3.3.3.jar 
+  /home/cadal/lib/postgresql-8.4-703.jdbc4.jar
