@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="34"
+   name=""
+   committed-date="2006-07-27T14:12:10.044318Z"
+   url="svn://10.15.62.201/branches/portal-release-2.0/src/cn/cadal/webservice/translation"
+   last-author="zhangyin"
+   kind="dir"
+   uuid="52a00f4e-9218-0410-86c7-a288e60a3ace"
+   repos="svn://10.15.62.201"
+   revision="300"/>
+<entry
+   committed-rev="34"
+   name="TranslationSoap.java"
+   text-time="2006-07-27T10:35:51.750000Z"
+   committed-date="2006-07-27T14:12:10.044318Z"
+   checksum="f12810faebad5b0040a234dcb8d65aac"
+   last-author="zhangyin"
+   kind="file"
+   prop-time="2006-07-27T10:35:51.687500Z"/>
+</wc-entries>

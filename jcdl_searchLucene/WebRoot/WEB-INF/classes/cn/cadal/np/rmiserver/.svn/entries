@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="199"
+   name=""
+   committed-date="2007-07-19T20:48:35.175925Z"
+   url="svn://10.15.62.201/branches/portal-release-2.0/src/cn/cadal/np/rmiserver"
+   last-author="mc"
+   kind="dir"
+   uuid="52a00f4e-9218-0410-86c7-a288e60a3ace"
+   repos="svn://10.15.62.201"
+   revision="300"/>
+<entry
+   committed-rev="199"
+   name="NPRecommender.java"
+   text-time="2007-07-27T10:56:48.187500Z"
+   committed-date="2007-07-19T20:48:35.175925Z"
+   checksum="7e04135f6fcc1b6cc7791bdd994aaef7"
+   last-author="mc"
+   kind="file"
+   prop-time="2007-07-27T10:56:48.140625Z"/>
+</wc-entries>

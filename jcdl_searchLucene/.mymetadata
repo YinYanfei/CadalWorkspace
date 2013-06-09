@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="jcdl_searchLucene"
+  id="myeclipse.1328926617276"
+  context-root="/jdcl_searchLucene"
+  j2ee-spec="5.0"
+  archive="jcdl_searchLucene.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
