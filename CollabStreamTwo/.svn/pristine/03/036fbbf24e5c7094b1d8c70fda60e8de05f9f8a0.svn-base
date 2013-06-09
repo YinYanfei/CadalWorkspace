@@ -1,0 +1,32 @@
+# -*- coding: utf-8 -*
+#此脚本将从一个原始样本集中构造用于进行topN测试的训练集和测试集，生成top_n_training.dat和top_n_testing.dat
+#第一个参数指定原始样本集,数据集的分隔符请在代码中指定
+import mmap,sys
+import contextlib
+
+with open(sys.argv[1],'r') as fwhole:
+    with open('top_n_training.dat','w') as ftrain:
+        with open('top_n_testing.dat','w') as ftest:
+            with contextlib.closing(mmap.mmap(fwhole.fileno(),0,access=mmap.ACCESS_READ)) as mwhole:
+                #with contextlib.closing(mmap.mmap(ftest.fileno(),0,access=mmap.ACCESS_WRITE)) as mtest:
+                #with contextlib.closing(mmap.mmap(ftrain.fileno(),0,access=mmap.ACCESS_WRITE)) as mtrain:
+                currentUser=''#初始时刻当前用户为空
+                while True:
+                        line=mwhole.readline()
+                        if not line:
+                            break
+                        ex=line.split(' ') #原始样本的分隔符，根据具体情况改
+                        if currentUser==ex[0]:
+                            ftrain.write(line)
+                            continue
+                        ftest.write(line)
+                        currentUser=ex[0]
+print 'finished'
+                            
+                            
+                            
+                            
+                            
+                    
+                    
+                    

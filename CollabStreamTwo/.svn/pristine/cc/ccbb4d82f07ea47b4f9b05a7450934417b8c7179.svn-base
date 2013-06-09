@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Class-Path: /home/Yanfei/Recommendation/lib-two/clj-time-0.3.0.jar /home/Yanfei/Recommendation/lib-two/clojure-1.2.0.jar 
+  /home/Yanfei/Recommendation/lib-two/clojure-contrib-1.2.0.jar /home/Yanfei/Recommendation/lib-two/clout-0.4.1.jar 
+  /home/Yanfei/Recommendation/lib-two/commons-codec-1.3.jar /home/Yanfei/Recommendation/lib-two/commons-exec-1.1.jar 
+  /home/Yanfei/Recommendation/lib-two/commons-fileupload-1.2.1.jar /home/Yanfei/Recommendation/lib-two/commons-io-1.4.jar 
+  /home/Yanfei/Recommendation/lib-two/commons-lang-2.5.jar /home/Yanfei/Recommendation/lib-two/commons-logging-1.1.1.jar 
+  /home/Yanfei/Recommendation/lib-two/compojure-0.6.4.jar /home/Yanfei/Recommendation/lib-two/core.incubator-0.1.0.jar 
+  /home/Yanfei/Recommendation/lib-two/hiccup-0.3.6.jar /home/Yanfei/Recommendation/lib-two/httpclient-4.0.1.jar 
+  /home/Yanfei/Recommendation/lib-two/httpcore-4.0.1.jar /home/Yanfei/Recommendation/lib-two/jetty-6.1.26.jar 
+  /home/Yanfei/Recommendation/lib-two/jetty-util-6.1.26.jar /home/Yanfei/Recommendation/lib-two/jline-0.9.94.jar 
+  /home/Yanfei/Recommendation/lib-two/joda-time-1.6.jar /home/Yanfei/Recommendation/lib-two/json-simple-1.1.jar 
+  /home/Yanfei/Recommendation/lib-two/junit-3.8.1.jar /home/Yanfei/Recommendation/lib-two/jvyaml-1.0.0.jar 
+  /home/Yanfei/Recommendation/lib-two/jzmq-2.1.0.jar /home/Yanfei/Recommendation/lib-two/libthrift7-0.7.0.jar 
+  /home/Yanfei/Recommendation/lib-two/log4j-1.2.14.jar /home/Yanfei/Recommendation/lib-two/ring-core-0.3.10.jar 
+  /home/Yanfei/Recommendation/lib-two/ring-jetty-adapter-0.3.11.jar /home/Yanfei/Recommendation/lib-two/ring-servlet-0.3.11.jar 
+  /home/Yanfei/Recommendation/lib-two/servlet-api-2.5-20081211.jar /home/Yanfei/Recommendation/lib-two/servlet-api-2.5.jar 
+  /home/Yanfei/Recommendation/lib-two/tools.macro-0.1.0.jar /home/Yanfei/Recommendation/lib-two/zookeeper-3.3.2.jar 
