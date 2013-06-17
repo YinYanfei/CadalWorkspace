@@ -41,8 +41,6 @@ public class TestClient {
 			client.set_keyspace("MyKeyspace2");
 			ColumnParent parent = new ColumnParent("school");
 			
-			String key_user_id = "a";
-			
 			// insert
 /*			for(int i = 420009; i < 420020; ++i) {
 				String k = key_user_id + i;
@@ -60,7 +58,7 @@ public class TestClient {
 			// read
 			ColumnPath path = new ColumnPath("school");
 			path.setColumn(toByteBuffer("name"));
-			String key3 = "ÖĞ";
+			String key3 = "ä¸­";
 			String name = toString(client.get(toByteBuffer(key3), path, ConsistencyLevel.ONE).column.value);
 			if(name.length() > 1) {
 				System.out.println(name);
@@ -91,7 +89,7 @@ public class TestClient {
 	}
 	
     /* 
-     * ½«String×ª»»Îªbytebuffer£¬ÒÔ±ã²åÈëcassandra 
+     * å°†Stringè½¬æ¢ä¸ºbytebufferï¼Œä»¥ä¾¿æ’å…¥cassandra 
      */  
 	public static ByteBuffer toByteBuffer(String value) {
 		try {
@@ -103,7 +101,7 @@ public class TestClient {
 	}
 	
     /* 
-     * ½«bytebuffer×ª»»ÎªString 
+     * å°†bytebufferè½¬æ¢ä¸ºString 
      */ 
     public static String toString(ByteBuffer buffer)
         throws UnsupportedEncodingException {

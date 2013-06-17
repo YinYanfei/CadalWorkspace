@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 1 elements(s) to &apos;CassandraOp/src/cn.cadal.cadalSec&apos;&#x0D;&#x0A;- Original project: &apos;CadalSec&apos;&#x0D;&#x0A;- Destination element: &apos;CassandraOp/src/cn.cadal.cadalSec&apos;&#x0D;&#x0A;- Original element: &apos;cn.cadal.sec.storm.bolt.cassandra.CassandraOp.java&apos;" description="Copy compilation unit" destination="=CassandraOp/src&lt;cn.cadal.cadalSec" element1="/src&lt;cn.cadal.sec.storm.bolt.cassandra{CassandraOp.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1371349526826" units="1" version="1.0"/>
+</session>
