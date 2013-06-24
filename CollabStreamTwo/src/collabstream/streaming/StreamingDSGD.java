@@ -35,7 +35,7 @@ public class StreamingDSGD {
 		float userPenalty = Float.parseFloat(props.getProperty("userPenalty", "0.1"));
 		float itemPenalty = Float.parseFloat(props.getProperty("itemPenalty", "0.1"));
 		float initialStepSize = Float.parseFloat(props.getProperty("initialStepSize", "0.1"));//SGD迭代步长
-		int maxTrainingIters = Integer.parseInt(props.getProperty("maxTrainingIters", "50"));//每个R(i,j)迭代30次
+		int maxTrainingIters = Integer.parseInt(props.getProperty("maxTrainingIters", "30"));//每个R(i,j)迭代30次
 		String inputFilename = args[3];
 		String userOutputFilename = args[4];
 		String itemOutputFilename = args[5];

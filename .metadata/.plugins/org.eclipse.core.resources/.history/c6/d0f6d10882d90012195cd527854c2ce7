@@ -1,0 +1,82 @@
+package collabstream.streaming;
+
+import java.io.File;
+import java.io.FileReader;
+import java.util.Properties;
+
+import backtype.storm.Config;
+import backtype.storm.LocalCluster;
+import backtype.storm.StormSubmitter;
+import backtype.storm.topology.TopologyBuilder;
+import backtype.storm.tuple.Fields;
+
+public class StreamingDSGD {
+	public static void main(String[] args) throws Exception {
+		if (args.length < 6) {
+			System.err.println("######## Wrong number of arguments");
+			System.err.println("######## required args: local|production numUsers numItems"
+							   + " inputFilename userOutputFilename itemOutputFilename");
+			return;
+		}
+		
+		Properties props = new Properties();  //属性集（键值对）
+		File propFile = new File("data/collabstream.properties");
+		if (propFile.exists()) { //看上面提到的文件是否存在
+			FileReader in = new FileReader(propFile);
+			props.load(in); //从file中读取属性
+			in.close();
+		}
+		//设置参数
+		int numUsers = Integer.parseInt(args[1]);  //用户数量
+		int numItems = Integer.parseInt(args[2]);  //物品数量
+		int numLatent = Integer.parseInt(props.getProperty("numLatent", "80")); //默认10个隐因子
+		int numUserBlocks = Integer.parseInt(props.getProperty("numUserBlocks", "10"));
+		int numItemBlocks = Integer.parseInt(props.getProperty("numItemBlocks", "10"));
+		float userPenalty = Float.parseFloat(props.getProperty("userPenalty", "0.1"));
+		float itemPenalty = Float.parseFloat(props.getProperty("itemPenalty", "0.1"));
+		float initialStepSize = Float.parseFloat(props.getProperty("initialStepSize", "0.1"));//SGD迭代步长
+		int maxTrainingIters = Integer.parseInt(props.getProperty("maxTrainingIters", "30"));//每个R(i,j)迭代30次
+		String inputFilename = args[3];
+		String userOutputFilename = args[4];
+		String itemOutputFilename = args[5];
+		long inputDelay = Long.parseLong(props.getProperty("inputDelay", "0"));
+		boolean debug = Boolean.parseBoolean(props.getProperty("debug", "false"));
+
+		Configuration config = new Configuration(numUsers, numItems, numLatent, numUserBlocks, numItemBlocks,
+												 userPenalty, itemPenalty, initialStepSize, maxTrainingIters,
+												 inputFilename, userOutputFilename, itemOutputFilename,
+												 inputDelay, debug); //dsgd的配置
+
+		Config stormConfig = new Config();  //storm的配置 
+		stormConfig.addSerialization(TrainingExample.Serialization.class);
+		stormConfig.addSerialization(BlockPair.Serialization.class);
+		stormConfig.addSerialization(MatrixSerialization.class);
+		stormConfig.setNumWorkers(config.getNumProcesses());
+		stormConfig.setNumAckers(config.getNumWorkers()); // our notion of a worker is different from Storm's
+		//建storm拓扑
+		TopologyBuilder builder = new TopologyBuilder();
+		builder.setSpout(1, new RatingsSource(config)); //从ratingsSourece这个spout中流出样本
+		builder.setBolt(2, new Master(config))
+			.globalGrouping(1)
+			.globalGrouping(3, Worker.TO_MASTER_STREAM_ID)
+			.directGrouping(4)
+			.directGrouping(5);
+		builder.setBolt(3, new Worker(config), config.getNumWorkers()) //Userblocks那么多个worker(这概念和storm中的worker不同)
+			.fieldsGrouping(2, new Fields("userBlockIdx"))
+			.directGrouping(4)
+			.directGrouping(5);
+		builder.setBolt(4, new MatrixStore(config), config.numUserBlocks)
+			.fieldsGrouping(3, Worker.USER_BLOCK_STREAM_ID, new Fields("userBlockIdx"));
+		builder.setBolt(5, new MatrixStore(config), config.numItemBlocks)
+			.fieldsGrouping(3, Worker.ITEM_BLOCK_STREAM_ID, new Fields("itemBlockIdx"));
+		
+		System.out.println("######## StreamingDSGD.main: submitting topology");
+		
+		if ("local".equals(args[0])) {
+			LocalCluster cluster = new LocalCluster(); //在本地storm上运行
+			cluster.submitTopology("StreamingDSGD", stormConfig, builder.createTopology());
+		} else {
+			StormSubmitter.submitTopology("StreamingDSGD", stormConfig, builder.createTopology());
+		}
+	}
+}

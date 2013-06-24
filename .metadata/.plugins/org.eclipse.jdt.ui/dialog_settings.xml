@@ -19,6 +19,9 @@
 	</section>
 	<section name="JavaElementSearchActions">
 	</section>
+	<section name="BuildPathsPropertyPage">
+		<item value="3" key="pageIndex"/>
+	</section>
 	<section name="JarPackageWizard">
 		<item value="false" key="JarPackageWizardPage.INCLUDE_DIRECTORY_ENTRIES"/>
 		<item value="false" key="JarManifestWizardPage.GENERATE_MANIFEST"/>
@@ -39,11 +42,11 @@
 		<item value="false" key="jarOptionsWizardPage.STORE_USE_SRC_FOLDERS"/>
 		<item value="" key="jarOptionsWizardPage.DESCRIPTION_LOCATION"/>
 		<list key="JarPackageWizardPage.DESTINATION_NAMES_ID">
-			<item value="C:\Users\D390\Desktop\Storm-rec-3-11.jar"/>
-			<item value="C:\Users\D390\Desktop\Storm-rec-3-10.jar"/>
-			<item value="C:\Users\D390\Desktop\Storm-rec-3-9.jar"/>
-			<item value="C:\Users\D390\Desktop\Storm-rec-3-8.jar"/>
-			<item value="C:\Users\D390\Desktop\Storm-rec-3-7.jar"/>
+			<item value="C:\Users\D390\Desktop\Storm-rec-5-7.jar"/>
+			<item value="C:\Users\D390\Desktop\Storm-rec-5-6.jar"/>
+			<item value="C:\Users\D390\Desktop\Storm-rec-5-5.jar"/>
+			<item value="C:\Users\D390\Desktop\Storm-rec-5-4.jar"/>
+			<item value="C:\Users\D390\Desktop\Storm-rec-5-3.jar"/>
 		</list>
 	</section>
 	<section name="CallHierarchySearchScope">
