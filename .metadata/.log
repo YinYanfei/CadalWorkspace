@@ -520,3 +520,241 @@ java.io.IOException: Wagon exception connecting to Repository[d9d714e11cb097b3ff
 	at org.maven.ide.eclipse.internal.index.NexusIndexManager$1.run(NexusIndexManager.java:624)
 	at org.maven.ide.eclipse.internal.index.IndexUpdaterJob.run(IndexUpdaterJob.java:71)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.osgi 2 1 2013-06-24 18:55:23.061
+!MESSAGE NLS unused message: ContentAssistProposal_label in: org.hibernate.eclipse.console.HibernateConsoleMessages
+
+!ENTRY org.eclipse.osgi 2 1 2013-06-24 18:55:23.062
+!MESSAGE NLS unused message: ContentAssistProposal_tooltip in: org.hibernate.eclipse.console.HibernateConsoleMessages
+
+!ENTRY org.eclipse.osgi 2 1 2013-06-24 18:55:23.062
+!MESSAGE NLS unused message: ContentAssistProposal_image in: org.hibernate.eclipse.console.HibernateConsoleMessages
+
+!ENTRY org.eclipse.osgi 2 1 2013-06-24 18:55:23.063
+!MESSAGE NLS unused message: ContentAssistProposal_description in: org.hibernate.eclipse.console.HibernateConsoleMessages
+
+!ENTRY org.eclipse.osgi 2 1 2013-06-24 18:55:23.064
+!MESSAGE NLS unused message: ContentAssistTip_label in: org.hibernate.eclipse.console.HibernateConsoleMessages
+
+!ENTRY org.eclipse.osgi 2 1 2013-06-24 18:55:23.065
+!MESSAGE NLS unused message: ContentAssistTip_tooltip in: org.hibernate.eclipse.console.HibernateConsoleMessages
+
+!ENTRY org.eclipse.osgi 2 1 2013-06-24 18:55:23.066
+!MESSAGE NLS unused message: ContentAssistTip_image in: org.hibernate.eclipse.console.HibernateConsoleMessages
+
+!ENTRY org.eclipse.osgi 2 1 2013-06-24 18:55:23.066
+!MESSAGE NLS unused message: ContentAssistTip_description in: org.hibernate.eclipse.console.HibernateConsoleMessages
+
+!ENTRY org.eclipse.osgi 2 1 2013-06-24 18:55:23.067
+!MESSAGE NLS unused message: ContentFormat_label in: org.hibernate.eclipse.console.HibernateConsoleMessages
+
+!ENTRY org.eclipse.osgi 2 1 2013-06-24 18:55:23.068
+!MESSAGE NLS unused message: ContentFormat_tooltip in: org.hibernate.eclipse.console.HibernateConsoleMessages
+
+!ENTRY org.eclipse.osgi 2 1 2013-06-24 18:55:23.069
+!MESSAGE NLS unused message: ContentFormat_image in: org.hibernate.eclipse.console.HibernateConsoleMessages
+
+!ENTRY org.eclipse.osgi 2 1 2013-06-24 18:55:23.070
+!MESSAGE NLS unused message: ContentFormat_description in: org.hibernate.eclipse.console.HibernateConsoleMessages
+
+!ENTRY org.eclipse.ui.workbench 2 0 2013-06-24 19:25:35.830
+!MESSAGE A handler conflict occurred.  This may disable some commands.
+!SUBENTRY 1 org.eclipse.ui.workbench 2 0 2013-06-24 19:25:35.830
+!MESSAGE Conflict for 'com.genuitec.eclipse.ast.deploy.core.runonservershortcut.debug':
+HandlerActivation(commandId=com.genuitec.eclipse.ast.deploy.core.runonservershortcut.debug,
+	handler=org.eclipse.debug.internal.ui.launchConfigurations.LaunchShortcutExtension$LaunchCommandHandler@11d6278,
+	expression=,sourcePriority=0)
+HandlerActivation(commandId=com.genuitec.eclipse.ast.deploy.core.runonservershortcut.debug,
+	handler=org.eclipse.debug.internal.ui.launchConfigurations.LaunchShortcutExtension$LaunchCommandHandler@2bb5e0,
+	expression=,sourcePriority=0)
+!SESSION 2013-06-25 15:40:14.928 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.6.0_13
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=zh_CN
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.jface 2 0 2013-06-25 15:40:31.731
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2013-06-25 15:40:31.731
+!MESSAGE A conflict occurred for SHIFT+DEL:
+Binding(SHIFT+DEL,
+	ParameterizedCommand(Command(org.eclipse.datatools.sqltools.result.removeAllInstances,Remove All Visible Results,
+		,
+		Category(org.eclipse.datatools.sqltools.result.category,SQL Results View,null,true),
+		,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(SHIFT+DEL,
+	ParameterizedCommand(Command(org.eclipse.ui.edit.cut,Cut,
+		Cut the selection to the clipboard,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.handlers.WidgetMethodHandler@1ae7fff,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.dialogAndWindow,,,system)
+Binding(SHIFT+DEL,
+	ParameterizedCommand(Command(org.topcased.modeler.deleteModelObject,Delete From Model,
+		Allows the user to delete the selected graph element and its associated model element in a Topcased editor.,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.maven.ide.eclipse 4 0 2013-06-25 15:40:49.256
+!MESSAGE Unable to update index for central|http://repo1.maven.org/maven2
+!STACK 0
+java.io.IOException: Wagon exception connecting to Repository[d9d714e11cb097b3ffcec91cccc65d3e|http://repo1.maven.org/maven2/.index]
+	at org.sonatype.nexus.index.updater.DefaultIndexUpdater$WagonFetcher.connect(DefaultIndexUpdater.java:651)
+	at org.sonatype.nexus.index.updater.DefaultIndexUpdater.fetchAndUpdateIndex(DefaultIndexUpdater.java:120)
+	at org.maven.ide.eclipse.internal.index.NexusIndexManager.updateRemoteIndex(NexusIndexManager.java:1060)
+	at org.maven.ide.eclipse.internal.index.NexusIndexManager.updateIndex(NexusIndexManager.java:1013)
+	at org.maven.ide.eclipse.internal.index.NexusIndexManager$1.run(NexusIndexManager.java:624)
+	at org.maven.ide.eclipse.internal.index.IndexUpdaterJob.run(IndexUpdaterJob.java:71)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.ui.workbench 2 0 2013-06-25 15:43:57.579
+!MESSAGE A handler conflict occurred.  This may disable some commands.
+!SUBENTRY 1 org.eclipse.ui.workbench 2 0 2013-06-25 15:43:57.579
+!MESSAGE Conflict for 'com.genuitec.eclipse.ast.deploy.core.runonservershortcut.debug':
+HandlerActivation(commandId=com.genuitec.eclipse.ast.deploy.core.runonservershortcut.debug,
+	handler=org.eclipse.debug.internal.ui.launchConfigurations.LaunchShortcutExtension$LaunchCommandHandler@16c8fd8,
+	expression=,sourcePriority=0)
+HandlerActivation(commandId=com.genuitec.eclipse.ast.deploy.core.runonservershortcut.debug,
+	handler=org.eclipse.debug.internal.ui.launchConfigurations.LaunchShortcutExtension$LaunchCommandHandler@57c63b,
+	expression=,sourcePriority=0)
+
+!ENTRY org.eclipse.osgi 2 1 2013-06-25 15:43:58.875
+!MESSAGE NLS unused message: ContentAssistProposal_label in: org.hibernate.eclipse.console.HibernateConsoleMessages
+
+!ENTRY org.eclipse.osgi 2 1 2013-06-25 15:43:58.876
+!MESSAGE NLS unused message: ContentAssistProposal_tooltip in: org.hibernate.eclipse.console.HibernateConsoleMessages
+
+!ENTRY org.eclipse.osgi 2 1 2013-06-25 15:43:58.876
+!MESSAGE NLS unused message: ContentAssistProposal_image in: org.hibernate.eclipse.console.HibernateConsoleMessages
+
+!ENTRY org.eclipse.osgi 2 1 2013-06-25 15:43:58.877
+!MESSAGE NLS unused message: ContentAssistProposal_description in: org.hibernate.eclipse.console.HibernateConsoleMessages
+
+!ENTRY org.eclipse.osgi 2 1 2013-06-25 15:43:58.878
+!MESSAGE NLS unused message: ContentAssistTip_label in: org.hibernate.eclipse.console.HibernateConsoleMessages
+
+!ENTRY org.eclipse.osgi 2 1 2013-06-25 15:43:58.879
+!MESSAGE NLS unused message: ContentAssistTip_tooltip in: org.hibernate.eclipse.console.HibernateConsoleMessages
+
+!ENTRY org.eclipse.osgi 2 1 2013-06-25 15:43:58.880
+!MESSAGE NLS unused message: ContentAssistTip_image in: org.hibernate.eclipse.console.HibernateConsoleMessages
+
+!ENTRY org.eclipse.osgi 2 1 2013-06-25 15:43:58.881
+!MESSAGE NLS unused message: ContentAssistTip_description in: org.hibernate.eclipse.console.HibernateConsoleMessages
+
+!ENTRY org.eclipse.osgi 2 1 2013-06-25 15:43:58.882
+!MESSAGE NLS unused message: ContentFormat_label in: org.hibernate.eclipse.console.HibernateConsoleMessages
+
+!ENTRY org.eclipse.osgi 2 1 2013-06-25 15:43:58.883
+!MESSAGE NLS unused message: ContentFormat_tooltip in: org.hibernate.eclipse.console.HibernateConsoleMessages
+
+!ENTRY org.eclipse.osgi 2 1 2013-06-25 15:43:58.884
+!MESSAGE NLS unused message: ContentFormat_image in: org.hibernate.eclipse.console.HibernateConsoleMessages
+
+!ENTRY org.eclipse.osgi 2 1 2013-06-25 15:43:58.885
+!MESSAGE NLS unused message: ContentFormat_description in: org.hibernate.eclipse.console.HibernateConsoleMessages
+
+!ENTRY org.eclipse.jdt.launching 4 118 2013-06-25 20:15:22.944
+!MESSAGE Cannot find a free socket for the debugger
+!SESSION 2013-06-26 08:35:41.696 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.6.0_13
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=zh_CN
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.jface 2 0 2013-06-26 08:35:56.565
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2013-06-26 08:35:56.565
+!MESSAGE A conflict occurred for SHIFT+DEL:
+Binding(SHIFT+DEL,
+	ParameterizedCommand(Command(org.eclipse.datatools.sqltools.result.removeAllInstances,Remove All Visible Results,
+		,
+		Category(org.eclipse.datatools.sqltools.result.category,SQL Results View,null,true),
+		,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(SHIFT+DEL,
+	ParameterizedCommand(Command(org.eclipse.ui.edit.cut,Cut,
+		Cut the selection to the clipboard,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.handlers.WidgetMethodHandler@57a184,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.dialogAndWindow,,,system)
+Binding(SHIFT+DEL,
+	ParameterizedCommand(Command(org.topcased.modeler.deleteModelObject,Delete From Model,
+		Allows the user to delete the selected graph element and its associated model element in a Topcased editor.,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.maven.ide.eclipse 4 0 2013-06-26 08:36:17.587
+!MESSAGE Unable to update index for central|http://repo1.maven.org/maven2
+!STACK 0
+java.io.IOException: Wagon exception connecting to Repository[d9d714e11cb097b3ffcec91cccc65d3e|http://repo1.maven.org/maven2/.index]
+	at org.sonatype.nexus.index.updater.DefaultIndexUpdater$WagonFetcher.connect(DefaultIndexUpdater.java:651)
+	at org.sonatype.nexus.index.updater.DefaultIndexUpdater.fetchAndUpdateIndex(DefaultIndexUpdater.java:120)
+	at org.maven.ide.eclipse.internal.index.NexusIndexManager.updateRemoteIndex(NexusIndexManager.java:1060)
+	at org.maven.ide.eclipse.internal.index.NexusIndexManager.updateIndex(NexusIndexManager.java:1013)
+	at org.maven.ide.eclipse.internal.index.NexusIndexManager$1.run(NexusIndexManager.java:624)
+	at org.maven.ide.eclipse.internal.index.IndexUpdaterJob.run(IndexUpdaterJob.java:71)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SESSION 2013-06-27 15:23:48.802 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.6.0_13
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=zh_CN
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.jface 2 0 2013-06-27 15:24:04.216
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2013-06-27 15:24:04.216
+!MESSAGE A conflict occurred for SHIFT+DEL:
+Binding(SHIFT+DEL,
+	ParameterizedCommand(Command(org.eclipse.datatools.sqltools.result.removeAllInstances,Remove All Visible Results,
+		,
+		Category(org.eclipse.datatools.sqltools.result.category,SQL Results View,null,true),
+		,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(SHIFT+DEL,
+	ParameterizedCommand(Command(org.eclipse.ui.edit.cut,Cut,
+		Cut the selection to the clipboard,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.handlers.WidgetMethodHandler@167d3c4,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.dialogAndWindow,,,system)
+Binding(SHIFT+DEL,
+	ParameterizedCommand(Command(org.topcased.modeler.deleteModelObject,Delete From Model,
+		Allows the user to delete the selected graph element and its associated model element in a Topcased editor.,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.maven.ide.eclipse 4 0 2013-06-27 15:24:32.429
+!MESSAGE Unable to update index for central|http://repo1.maven.org/maven2
+!STACK 0
+java.io.IOException: Wagon exception connecting to Repository[d9d714e11cb097b3ffcec91cccc65d3e|http://repo1.maven.org/maven2/.index]
+	at org.sonatype.nexus.index.updater.DefaultIndexUpdater$WagonFetcher.connect(DefaultIndexUpdater.java:651)
+	at org.sonatype.nexus.index.updater.DefaultIndexUpdater.fetchAndUpdateIndex(DefaultIndexUpdater.java:120)
+	at org.maven.ide.eclipse.internal.index.NexusIndexManager.updateRemoteIndex(NexusIndexManager.java:1060)
+	at org.maven.ide.eclipse.internal.index.NexusIndexManager.updateIndex(NexusIndexManager.java:1013)
+	at org.maven.ide.eclipse.internal.index.NexusIndexManager$1.run(NexusIndexManager.java:624)
+	at org.maven.ide.eclipse.internal.index.IndexUpdaterJob.run(IndexUpdaterJob.java:71)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)

@@ -1,0 +1,87 @@
+package cn.cadal.rec.apriori;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class AlgoApriori {
+	protected long startTimestamp; 	// start time of last execution
+	protected long endTimestamp; 	// end time of last execution
+
+	public ArrayList<Integer> countCandidate;		// the number of candidate in different dimensions
+	public int countUser;			// the number of users
+	public int countBook;			// the number of books
+	
+	public ArrayList<ArrayList<String>> dataSource;					// source data read from file
+	public HashMap<String, ArrayList<Integer>> oneDimenCorrelate;		// the first traverse of dataSource, One-Dimensional Correlation
+	public HashMap<ArrayList<String>, ArrayList<Integer>> xDimenCorrelate;			// X-Dimensional Correlate, mid result for x dimensional
+	public HashMap<ArrayList<String>, ArrayList<Integer>> nDimenCorrelate;			// N-Dimensional Correlate, the result of this program
+	
+	public AlgoApriori() {
+		this.startTimestamp = 0;
+		this.endTimestamp = 0;
+		this.countCandidate = new ArrayList<Integer>();
+		this.countUser = 0;
+		this.countBook = 0;
+		this.dataSource = new ArrayList<ArrayList<String>>();
+		this.oneDimenCorrelate = new HashMap<String, ArrayList<Integer>>();
+		this.xDimenCorrelate = new HashMap<ArrayList<String>, ArrayList<Integer>>();
+		this.nDimenCorrelate = new HashMap<ArrayList<String>, ArrayList<Integer>>();
+	}
+	public AlgoApriori(AlgoApriori algoApriori) {
+		this.startTimestamp = algoApriori.startTimestamp;
+		this.endTimestamp = algoApriori.endTimestamp;
+		this.countCandidate = algoApriori.countCandidate;
+		this.countUser = algoApriori.countUser;
+		this.countBook = algoApriori.countBook;
+		this.dataSource = algoApriori.dataSource;
+		this.oneDimenCorrelate = algoApriori.oneDimenCorrelate;
+		this.xDimenCorrelate = algoApriori.xDimenCorrelate;
+		this.nDimenCorrelate = algoApriori.nDimenCorrelate;
+	}
+	public AlgoApriori( ArrayList<Integer> countCandidate, 
+						int countUser, int countBook, 
+						ArrayList<ArrayList<String>> dataSource, 
+						HashMap<String, ArrayList<Integer>> oneDimenCorrelate, 
+						HashMap<ArrayList<String>, ArrayList<Integer>> xDimenCorrelate, 
+						HashMap<ArrayList<String>, ArrayList<Integer>> nDimenCorrelate){
+		this.startTimestamp = this.endTimestamp = 0;
+		this.countCandidate = countCandidate;
+		this.countUser = countUser;
+		this.countBook = countBook;
+		this.dataSource = dataSource;
+		this.oneDimenCorrelate = oneDimenCorrelate;
+		this.xDimenCorrelate = xDimenCorrelate;
+		this.nDimenCorrelate = nDimenCorrelate;
+	}
+	
+	/**
+	 * Read source file and store source into this.dataSource
+	 * @param fileName
+	 */
+	private void ReadSourceFile(String fileName) {
+		// ...
+	}
+	
+	/**
+	 * To calculate one-dimensional correlate by traverse this.dataSource
+	 */
+	public void CalOneDimenCorrelate(){
+		if(this.dataSource.size() <= 0) {
+			System.out.println("this.dataSource is none!");
+			System.exit(1);
+		}
+		
+		// ...
+	}
+	
+	
+	
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// Test
+		
+	}
+
+}

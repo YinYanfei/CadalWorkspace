@@ -1,0 +1,18 @@
+package cn.cadal.rec.priori;
+
+public class PrioriConfiguration {
+	public final String sourceFile;
+	public final String Destination;
+	
+	/**
+	 * Construct functions
+	 */
+	public PrioriConfiguration() {
+		this.sourceFile = "";
+	}
+	public PrioriConfiguration(String sourceFile) {
+		this().sourceFile = sourceFile;
+	}
+
+	
+}

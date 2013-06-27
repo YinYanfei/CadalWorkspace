@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="20" version="2.0">
+<workbench progressCount="12" version="2.0">
 <workbenchAdvisor/>
 <window height="768" maximized="true" width="1024" x="345" y="115">
 <fastViewData fastViewLocation="1024"/>
@@ -27,6 +27,7 @@
 <coolItem id="group.nav" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="198" y="22"/>
 <coolItem id="group.editor" itemType="typeGroupMarker"/>
+<coolItem id="org.jboss.tools.common.propertieseditor.PropertiesCompoundEditor" itemType="typePlaceholder" x="38" y="22"/>
 <coolItem id="org.eclipse.ui.DefaultTextEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.jdt.ui.ClassFileEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.jdt.ui.CompilationUnitEditor" itemType="typePlaceholder" x="-1" y="-1"/>
@@ -52,8 +53,9 @@
 <view id="org.eclipse.jdt.ui.TypeHierarchy" partName="Hierarchy"/>
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
-<expanded>&#x0A;<category IMemento.internal.id="Errors"/>
+<expanded>
 <category IMemento.internal.id="Warnings"/>
+<category IMemento.internal.id="Errors"/>
 </expanded>
 <columnWidths org.eclipse.ui.ide.locationField="0" org.eclipse.ui.ide.markerType="0" org.eclipse.ui.ide.pathField="0" org.eclipse.ui.ide.resourceField="0" org.eclipse.ui.ide.severityAndDescriptionField="0"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
@@ -105,7 +107,7 @@
 </view>
 <view id="org.eclipse.jdt.ui.JavadocView" partName="Javadoc"/>
 </views>
-<perspectives activePart="org.eclipse.ui.console.ConsoleView" activePerspective="org.eclipse.jdt.ui.JavaPerspective">
+<perspectives activePart="org.eclipse.jdt.ui.PackageExplorer" activePerspective="org.eclipse.jdt.ui.JavaPerspective">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="com.genuitec.myeclipse.perspective.MyEclipsePerspectiveFactory" id="com.genuitec.myeclipse.perspective.myeclipseperspective" label="MyEclipse Java Enterprise"/>
 <alwaysOnActionSet id="com.genuitec.myeclipse.actions.deploytools"/>
@@ -414,8 +416,8 @@
 <page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
 </folder>
 </info>
-<info part="org.eclipse.ui.editorss" ratio="0.21360256" ratioLeft="402" ratioRight="1480" relationship="2" relative="left"/>
-<info folder="true" part="bottom" ratio="0.6595059" ratioLeft="614" ratioRight="317" relationship="4" relative="org.eclipse.ui.editorss">
+<info part="org.eclipse.ui.editorss" ratio="0.25185972" ratioLeft="474" ratioRight="1408" relationship="2" relative="left"/>
+<info folder="true" part="bottom" ratio="0.7282492" ratioLeft="678" ratioRight="253" relationship="4" relative="org.eclipse.ui.editorss">
 <folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
 <page content="org.eclipse.jdt.ui.JavadocView" label="Javadoc"/>
@@ -474,50 +476,50 @@
 </trimLayout>
 </window>
 <mruList>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CassandraOp.java" tooltip="CassandraOp/src/cn/cadal/cadalSec/CassandraOp.java">
-<persistable path="/CassandraOp/src/cn/cadal/cadalSec/CassandraOp.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="AlgoAprioriClose.java" tooltip="DataMiningPro/src/ca/pfv/spmf/algorithms/frequentpatterns/apriori_close/AlgoAprioriClose.java">
+<persistable path="/DataMiningPro/src/ca/pfv/spmf/algorithms/frequentpatterns/apriori_close/AlgoAprioriClose.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Itemsets.java" tooltip="DataMiningPro/src/ca/pfv/spmf/patterns/itemset_array_integers_with_count/Itemsets.java">
+<persistable path="/DataMiningPro/src/ca/pfv/spmf/patterns/itemset_array_integers_with_count/Itemsets.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="AlgoApriori.java" tooltip="DataMiningPro/src/ca/pfv/spmf/algorithms/frequentpatterns/apriori/AlgoApriori.java">
+<persistable path="/DataMiningPro/src/ca/pfv/spmf/algorithms/frequentpatterns/apriori/AlgoApriori.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Itemset.java" tooltip="DataMiningPro/src/ca/pfv/spmf/patterns/itemset_array_integers_with_count/Itemset.java">
+<persistable path="/DataMiningPro/src/ca/pfv/spmf/patterns/itemset_array_integers_with_count/Itemset.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MainWindow.java" tooltip="DataMiningPro/src/ca/pfv/spmf/gui/MainWindow.java">
+<persistable path="/DataMiningPro/src/ca/pfv/spmf/gui/MainWindow.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="AlgoApriori.java" tooltip="CadalRec/src/cn/cadal/rec/apriori/AlgoApriori.java">
+<persistable path="/CadalRec/src/cn/cadal/rec/apriori/AlgoApriori.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Copy_1.java" tooltip="CadalRec/src/cn/cadal/rec/java/Copy_1.java">
+<persistable path="/CadalRec/src/cn/cadal/rec/java/Copy_1.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="HashSetTry.java" tooltip="CadalRec/src/cn/cadal/rec/java/HashSetTry.java">
+<persistable path="/CadalRec/src/cn/cadal/rec/java/HashSetTry.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="HashMapTry.java" tooltip="CadalRec/src/cn/cadal/rec/java/HashMapTry.java">
+<persistable path="/CadalRec/src/cn/cadal/rec/java/HashMapTry.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.jboss.tools.common.propertieseditor.PropertiesCompoundEditor" name="priori.properties" tooltip="CadalRec/priori.properties">
+<persistable path="/CadalRec/priori.properties"/>
+</file>
+<file factoryID="org.eclipse.jdt.ui.ClassFileEditorInputFactory" id="org.eclipse.jdt.ui.ClassFileEditor" name="File.class" tooltip="java.io.File">
+<persistable org.eclipse.jdt.ui.ClassFileIdentifier="=CadalRec/D:\/MyEclipse 8.5\/Common\/binary\/com.sun.java.jdk.win32.x86_1.6.0.013\/jre\/lib\/rt.jar&lt;java.io(File.class"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="APriori.java" tooltip="CadalRec/src/cn/cadal/rec/apriori/APriori.java">
+<persistable path="/CadalRec/src/cn/cadal/rec/apriori/APriori.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="PrioriConfiguration.java" tooltip="CadalRec/src/cn/cadal/rec/apriori/PrioriConfiguration.java">
+<persistable path="/CadalRec/src/cn/cadal/rec/apriori/PrioriConfiguration.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Configuration.java" tooltip="CadalRec/src/cn/cadal/rec/apriori/Configuration.java">
+<persistable path="/CadalRec/src/cn/cadal/rec/apriori/Configuration.java"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TestClient.java" tooltip="CassandraOp/src/cn/cadal/cassandra/TestClient.java">
 <persistable path="/CassandraOp/src/cn/cadal/cassandra/TestClient.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Master.java" tooltip="CollabStreamTwo/src/collabstream/streaming/Master.java">
-<persistable path="/CollabStreamTwo/src/collabstream/streaming/Master.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="StreamingDSGD.java" tooltip="CollabStreamTwo/src/collabstream/streaming/StreamingDSGD.java">
-<persistable path="/CollabStreamTwo/src/collabstream/streaming/StreamingDSGD.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="SpoutKafka.java" tooltip="CadalSec/src/cn/cadal/sec/storm/spout/SpoutKafka.java">
-<persistable path="/CadalSec/src/cn/cadal/sec/storm/spout/SpoutKafka.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CassandraOp.java" tooltip="CadalSec/src/cn/cadal/sec/storm/bolt/cassandra/CassandraOp.java">
-<persistable path="/CadalSec/src/cn/cadal/sec/storm/bolt/cassandra/CassandraOp.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="BoltCassandra.java" tooltip="CadalSec/src/cn/cadal/sec/storm/bolt/BoltCassandra.java">
-<persistable path="/CadalSec/src/cn/cadal/sec/storm/bolt/BoltCassandra.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="MANIFEST.MF" tooltip="CadalSec/MANIFEST.MF">
-<persistable path="/CadalSec/MANIFEST.MF"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Configuration.java" tooltip="CollabStreamTwo/src/collabstream/streaming/Configuration.java">
-<persistable path="/CollabStreamTwo/src/collabstream/streaming/Configuration.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TimeOp.java" tooltip="CassandraOp/src/cn/cadal/util/TimeOp.java">
-<persistable path="/CassandraOp/src/cn/cadal/util/TimeOp.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CqlOp.java" tooltip="CassandraOp/src/cn/cadal/cql/CqlOp.java">
-<persistable path="/CassandraOp/src/cn/cadal/cql/CqlOp.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Case.java" tooltip="CassandraOp/src/cn/cadal/cql/Case.java">
-<persistable path="/CassandraOp/src/cn/cadal/cql/Case.java"/>
-</file>
-<file factoryID="org.eclipse.jdt.ui.ClassFileEditorInputFactory" id="org.eclipse.jdt.ui.ClassFileEditor" name="DateFormat.class" tooltip="java.text.DateFormat">
-<persistable org.eclipse.jdt.ui.ClassFileIdentifier="=CassandraOp/D:\/MyEclipse 8.5\/Common\/binary\/com.sun.java.jdk.win32.x86_1.6.0.013\/jre\/lib\/rt.jar&lt;java.text(DateFormat.class"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="WorkingBlock.java" tooltip="CollabStreamTwo/src/collabstream/streaming/WorkingBlock.java">
-<persistable path="/CollabStreamTwo/src/collabstream/streaming/WorkingBlock.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Worker.java" tooltip="CollabStreamTwo/src/collabstream/streaming/Worker.java">
-<persistable path="/CollabStreamTwo/src/collabstream/streaming/Worker.java"/>
 </file>
 </mruList>
 </workbench>
