@@ -1,0 +1,25 @@
+package cn.cadal.rec.algo.amazon;
+
+/**
+ * The algorithm to calculate relate between different items just like:
+ * 
+ * For each item in item catalog I1:
+ * 		For each customer C who purchased I1:
+ * 			For echo item I2 purchased by customer C:
+ * 				Record that a customer purchased I1 and I2.
+ * 		For each item I2:
+ * 			Compute the similarity between I1 and I2.
+ * 
+ * The most import is to find a reasonable way to measure the distance between two items.
+ */
+
+public class AmazonRelatedItem {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+
+	}
+
+}

@@ -1,0 +1,5 @@
+package cn.cadal.rec.data;
+
+public class GetMetadata {
+
+}

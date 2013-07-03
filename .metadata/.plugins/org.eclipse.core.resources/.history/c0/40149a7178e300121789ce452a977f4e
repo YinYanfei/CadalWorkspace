@@ -1,0 +1,18 @@
+package cn.cadal.rec.tryJava;
+
+public class IntegerTry {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		char ch = 'b';
+		
+		if(!Character.isSpaceChar(ch)){
+			System.out.println("is space");
+		}else{
+			System.out.println("is not space");
+		}
+	}
+
+}

@@ -1,0 +1,41 @@
+package cn.cadal.rec.data;
+
+public class PgBookInfo {
+	public GetMetadata getMetadata = null;
+	private String file = "E:/Recommendation/ExpData/cbookInfo.dat";
+	
+	/**
+	 * Construct function
+	 */
+	public PgBookInfo(){
+		this.getMetadata = new GetMetadata();
+	}
+	public PgBookInfo(GetMetadata getMetadata) {
+		this.getMetadata = getMetadata;
+	}
+	
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		
+
+	}
+	
+	/**
+	 * Getter and Setter
+	 */
+	public GetMetadata getGetMetadata() {
+		return getMetadata;
+	}
+	public String getFile() {
+		return file;
+	}
+	public void setGetMetadata(GetMetadata getMetadata) {
+		this.getMetadata = getMetadata;
+	}
+	public void setFile(String file) {
+		this.file = file;
+	}
+
+}

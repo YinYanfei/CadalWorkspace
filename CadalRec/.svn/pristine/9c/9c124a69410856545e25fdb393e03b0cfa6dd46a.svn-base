@@ -1,0 +1,98 @@
+package cn.cadal.rec.algo.amazon;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * The algorithm to calculate relate between different items just like:
+ * 
+ * For each item in item catalog I1:
+ * 		For each customer C who purchased I1:
+ * 			For echo item I2 purchased by customer C:
+ * 				Record that a customer purchased I1 and I2.
+ * 		For each item I2:
+ * 			Compute the similarity between I1 and I2.
+ * 
+ * The most import is to find a reasonable way to measure the distance between two items.
+ */
+
+public class AmazonRelatedItem {
+	
+	private Map<Integer,List<Integer> > map_user_book = new HashMap<Integer,List<Integer>>();
+	private Map<Integer,List<Integer> > map_book_user = new HashMap<Integer,List<Integer>>();
+	
+	public AmazonRelatedItem(){
+		initial();
+	}
+	
+	public void initial(){
+		try{
+			String user_book_path = "C:\\Users\\hongxin\\Desktop\\user_book.dat";
+			String book_user_path = "C:\\Users\\hongxin\\Desktop\\book_user.dat";
+			
+			File user_book = new File(user_book_path);//每一行第一项代表用户id，后面所有项代表用户点击过的书的id
+			BufferedReader br_user_book = new BufferedReader(new FileReader(user_book));
+			
+			File book_user = new File(book_user_path);//每一行第一项代表书的id,后面所有项代表点击过这本书的用户id
+			BufferedReader br_book_user = new BufferedReader(new FileReader(book_user));
+			
+			String temp;
+			while((temp=br_book_user.readLine())!=null){
+				String[] array = temp.split(" ");
+				int key = Integer.parseInt(array[0]);
+				List<Integer> list = new ArrayList<Integer>();
+				for(int i = 1;i<array.length;++i){
+					list.add(Integer.parseInt(array[i]));
+				}
+				map_book_user.put(key, list);
+			}
+			
+			while((temp=br_user_book.readLine())!=null){
+				String[] array = temp.split(" ");
+				int key = Integer.parseInt(array[0]);
+				List<Integer> list = new ArrayList<Integer>();
+				for(int i = 1;i<array.length;++i){
+					list.add(Integer.parseInt(array[i]));
+				}
+				map_user_book.put(key, list);
+			}
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+
+	public void cal_similarity(){
+		for(int bookid: map_book_user.keySet()){
+			List<Integer> user_list = map_book_user.get(bookid);
+			List<Integer> record = new ArrayList<Integer>();
+			for(int userid: user_list){
+				List<Integer> book_list = map_user_book.get(userid);
+				for(int book:book_list){
+					//record that a user read bookid and book
+					record.add(book);
+				}
+			}
+			for(int eachbook :record){
+				double sim = similarity(bookid,eachbook);
+				//record the similarity between bookid and eachbook
+			}
+		}
+	}
+	
+	public double similarity(int bookid1,int bookid2){
+		double sim = 0.0;
+		return sim;
+	}
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		
+	}
+}

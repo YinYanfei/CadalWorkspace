@@ -1,0 +1,25 @@
+package cn.cadal.rec.tryJava;
+
+import java.io.IOException;
+import java.io.StringReader;
+
+import org.wltea.analyzer.core.IKSegmenter;
+import org.wltea.analyzer.core.Lexeme;
+import org.wltea.analyzer.lucene.IKAnalyzer;
+
+public class IKAnaUsing {
+
+	/**
+	 * @param args
+	 * @throws Exception 
+	 */
+	public static void main(String[] args) throws Exception {
+		String str = "张三说的确实在理";
+		StringReader reader = new StringReader(str); 
+		IKSegmenter iks = new IKSegmenter(reader, false);
+		Lexeme lexeme = null; 
+	    while((lexeme = iks.next())!=null) 
+	    	System.out.println(lexeme.getLexemeText()); 
+	}
+
+}

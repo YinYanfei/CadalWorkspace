@@ -1,0 +1,32 @@
+package cn.cadal.rec.algo.amazon;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Itemset {
+	public int key;
+	public List<Integer> val;
+
+	/**
+	 * Construct functions
+	 */
+	public Itemset() {
+		this.key = -1;
+		this.val = new ArrayList<Integer>();
+	}
+	
+	public Itemset(int key, ArrayList<Integer> val) {
+		this.key = key;
+		this.val = val;
+	}
+
+	
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

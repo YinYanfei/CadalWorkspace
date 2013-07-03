@@ -1,0 +1,98 @@
+package cn.cadal.rec.data;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.Reader;
+import java.io.StringReader;
+
+import org.wltea.analyzer.core.IKSegmenter;
+
+import cn.cadal.rec.algo.amazon.Itemset;
+
+public class PgBookInfo {
+	public GetMetadata getMetadata = null;
+	private String db_to_file = "E:/Recommendation/ExpData/cbookInfo.dat";
+	private String segment_file = "E:/Recommendation/ExpData/cbookInfo_seg.dat";
+	
+	private String str = "";
+	private Reader reader = null;
+	private IKSegmenter iks = null;
+	
+	/**
+	 * Construct function
+	 */
+	public PgBookInfo(){
+		this.getMetadata = new GetMetadata();
+		this.reader = new StringReader(this.str);
+		this.iks = new IKSegmenter(reader, true);
+	}
+	public PgBookInfo(GetMetadata getMetadata) {
+		this.getMetadata = getMetadata;
+		this.reader = new StringReader(this.str);
+		this.iks = new IKSegmenter(reader, true);
+	}
+	
+	/**
+	 * Search from postgresql to restore some columes of 'cbook' into file
+	 */
+	public void SearchDBWriteIntoFile() {
+		this.getGetMetadata().MetaData(this.getDb_to_file());
+	}
+	
+	/**
+	 * Segment information of each book
+	 */
+	public void SegmentInfoOfBook(){
+		File file = new File(this.db_to_file);
+		BufferedReader fileReader = null;
+		
+		try{
+			fileReader = new BufferedReader(new FileReader(file));
+			
+			String line = null;
+			while((line = fileReader.readLine()) != null) {
+				
+			}
+			
+			fileReader.close();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			if(fileReader != null) {
+				try{
+					fileReader.close();
+				}catch(Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+	
+	
+	/**
+	 * Main function
+	 */
+	public static void main(String [] args) {
+		PgBookInfo pbi = new PgBookInfo();
+		pbi.SearchDBWriteIntoFile();
+	}
+	
+	
+	/**
+	 * Getter and Setter
+	 */
+	public GetMetadata getGetMetadata() {
+		return getMetadata;
+	}
+	public String getDb_to_file() {
+		return db_to_file;
+	}
+	public void setGetMetadata(GetMetadata getMetadata) {
+		this.getMetadata = getMetadata;
+	}
+	public void setDb_to_file(String dbToFile) {
+		db_to_file = dbToFile;
+	}
+
+}

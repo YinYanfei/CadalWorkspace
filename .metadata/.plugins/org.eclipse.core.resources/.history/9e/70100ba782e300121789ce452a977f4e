@@ -1,0 +1,234 @@
+package cn.cadal.rec.algo.amazon;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+public class TextSimilarity {
+	
+	private String sourceFile = "";
+	private String destinFile = "";
+	
+	public Map<Integer, String[]> hashBooknoInfo = null;	// 用于计算随机的两个item之前的文本相似度
+	public List<String[]> listBooknoInfo = null;			// 用于全局计算所有item之前的文本相似度
+	
+	/**
+	 * Construct function
+	 */
+	public TextSimilarity(){
+	}
+	public TextSimilarity(String sourceFile, String destinFile){
+		this.sourceFile = sourceFile;
+		this.destinFile = destinFile;
+	}
+	
+	/**
+	 * Read sourceFile and store into this.hashBooknoInfo
+	 */
+	public void ReadIntoHashBooknoInfo() {
+		this.hashBooknoInfo = new HashMap<Integer, String[]>();
+		
+		File file = new File(this.sourceFile);
+		BufferedReader reader = null;
+		
+		try{
+			reader = new BufferedReader(new FileReader(file));
+			
+			String line = null;
+			while((line = reader.readLine()) != null) {
+				Integer bookno = null;
+				String []info = new String[4];
+				String []lineSplit = line.split(" #### ");
+				bookno = Integer.valueOf(lineSplit[0]);
+				info[0] = lineSplit[1];
+				info[1] = lineSplit[2];
+				info[2] = lineSplit[3];
+				info[3] = lineSplit[5];
+				
+				this.hashBooknoInfo.put(bookno, info);
+					
+			}
+			
+			reader.close();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try{
+				if(reader != null) {
+					reader.close();
+				}
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	/**
+	 * Read sourceFile and store into this.listBooknoInfo
+	 */	
+	public void ReadIntoListBooknoInfo(){
+		
+	}
+	
+	/**
+	 * Calculate the cosine similarity of two document
+	 * 
+	 * @param 
+	 * 		doc1 String type
+	 * @param 
+	 * 		doc2 String type
+	 * @return 
+	 * 		The cosine similar for doc1 and doc2
+	 */
+	public static double getSimilarity(String doc1, String doc2) {
+		if (doc1 != null && doc1.trim().length() > 0 && doc2 != null && doc2.trim().length() > 0) {
+			Map<Integer, int[]> AlgorithmMap = new HashMap<Integer, int[]>();
+			
+			//calculate the number of word for different documents
+			for (int i = 0; i < doc1.length(); i++) {
+				char d1 = doc1.charAt(i);
+				if(isHanZi(d1)){
+					int charIndex = getGB2312Id(d1);
+					if(charIndex != -1){
+						int[] fq = AlgorithmMap.get(charIndex);
+						if(fq != null && fq.length == 2){
+							fq[0]++;
+						}else {
+							fq = new int[2];
+							fq[0] = 1;
+							fq[1] = 0;
+							AlgorithmMap.put(charIndex, fq);
+						}
+					}
+				}else{
+					if (!Character.isSpaceChar(d1)) {
+						int[] fq = AlgorithmMap.get(Integer.valueOf(d1));
+						if (fq != null && fq.length == 2) {
+							fq[0]++;
+						} else {
+							fq = new int[2];
+							fq[0] = 1;
+							fq[1] = 0;
+							AlgorithmMap.put(Integer.valueOf(d1), fq);
+						}
+					}
+				}
+			}
+			for (int i = 0; i < doc2.length(); i++) {
+				char d2 = doc2.charAt(i);
+				if(isHanZi(d2)){
+					int charIndex = getGB2312Id(d2);
+					if(charIndex != -1){
+						int[] fq = AlgorithmMap.get(charIndex);
+						if(fq != null && fq.length == 2){
+							fq[1]++;
+						}else {
+							fq = new int[2];
+							fq[0] = 0;
+							fq[1] = 1;
+							AlgorithmMap.put(charIndex, fq);
+						}
+					}
+				}else{
+					if (!Character.isSpaceChar(d2)) {
+						int[] fq = AlgorithmMap.get(Integer.valueOf(d2));
+						if (fq != null && fq.length == 2) {
+							fq[1]++;
+						} else {
+							fq = new int[2];
+							fq[0] = 0;
+							fq[1] = 1;
+							AlgorithmMap.put(Integer.valueOf(d2), fq);
+						}
+					}
+				}
+			}
+			
+			// iterator hash-map to calculate cosine similar
+			Iterator<Integer> iterator = AlgorithmMap.keySet().iterator();
+			double sqdoc1 = 0;
+			double sqdoc2 = 0;
+			double denominator = 0; 
+			while(iterator.hasNext()){
+				int[] c = AlgorithmMap.get(iterator.next());
+				denominator += c[0]*c[1];
+				sqdoc1 += c[0]*c[0];
+				sqdoc2 += c[1]*c[1];
+			}
+			
+			return denominator / Math.sqrt(sqdoc1*sqdoc2);
+		} else {
+			return 0.0;
+		}
+	}
+
+	/**
+	 * Chinese or not
+	 * 
+	 * @param ch
+	 * 		Chinese word
+	 * @return
+	 * 		true or false
+	 */
+	public static boolean isHanZi(char ch) {
+		return (ch >= 0x4E00 && ch <= 0x9FA5);
+
+	}
+
+	/**
+	 * To get code of GB2312 or ASCII
+	 * 
+	 * @param ch 
+	 * 		Chinese of GB2312 or ASCII(#128)
+	 * @return 
+	 * 		The place of ch in code GB2312,-1 for unidentification
+	 */
+	public static short getGB2312Id(char ch) {
+		try {
+			byte[] buffer = Character.toString(ch).getBytes("GB2312");
+			if (buffer.length != 2) {
+				return -1;	// 正常情况下buffer应该是两个字节，否则说明ch不属于GB2312编码，故返回'?'，此时说明不认识该字符
+			}
+			int b0 = (int) (buffer[0] & 0x0FF) - 161; // 编码从A1开始，因此减去0xA1=161
+			int b1 = (int) (buffer[1] & 0x0FF) - 161; // 第一个字符和最后一个字符没有汉字，因此每个区只收16*6-2=94个汉字
+			return (short) (b0 * 94 + b1);
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		return -1;
+	}
+
+	
+	
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		TextSimilarity csa = new TextSimilarity();
+		String doc1 = "中国人google";
+		String doc2 = "中国人good";
+		System.out.println(csa.getSimilarity(doc1, doc2));
+	}
+	
+	/**
+	 * Getters and Setters
+	 */
+	public String getSourceFile() {
+		return sourceFile;
+	}
+	public String getDestinFile() {
+		return destinFile;
+	}
+	public void setSourceFile(String sourceFile) {
+		this.sourceFile = sourceFile;
+	}
+	public void setDestinFile(String destinFile) {
+		this.destinFile = destinFile;
+	}
+
+}

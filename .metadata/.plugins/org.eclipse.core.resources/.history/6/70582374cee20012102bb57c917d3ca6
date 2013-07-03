@@ -1,0 +1,22 @@
+package cn.cadal.rec.data;
+
+public class PgBookInfo {
+
+	public GetMetadata getMetadata = null;
+	
+	/**
+	 * Construct function
+	 */
+	public PgBookInfo(){
+		
+	}
+	
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -1,0 +1,15 @@
+package cn.cadal.rec.tryJava;
+
+public class IntegerTry {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		String str = "a";
+		
+		System.out.println(Integer.valueOf(str));
+
+	}
+
+}

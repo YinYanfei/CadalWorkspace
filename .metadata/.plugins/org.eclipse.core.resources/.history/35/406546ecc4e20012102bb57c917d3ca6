@@ -1,0 +1,15 @@
+package cn.cadal.rec.data;
+
+public class PgBookInfo {
+
+	public GetMetadata getMetadata = new GetMetadata();
+	
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
