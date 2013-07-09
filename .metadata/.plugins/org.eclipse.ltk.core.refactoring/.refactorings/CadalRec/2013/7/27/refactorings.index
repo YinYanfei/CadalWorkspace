@@ -5,3 +5,38 @@
 1372756344640	Delete elements
 1372767224727	Rename local variable 'reader'
 1372820905484	Delete elements
+1372838176790	Copy compilation unit
+1372838196688	Copy compilation unit
+1372838201026	Delete element
+1372840756606	Rename local variable 'zero'
+1372847517244	Copy compilation unit
+1372847521225	Copy compilation unit
+1372847525210	Copy compilation unit
+1372847536588	Delete elements
+1372847571400	Delete element
+1372848266595	Rename type 'MainTestApriori_saveToFile'
+1372903560095	Rename package 'cn.cadal.rec.algo.amazon'
+1372918906952	Rename package 'cn.cadal.rec.algo.descSimilar'
+1372925367162	Rename package 'cn.cadal.rec.algo.lda'
+1372925973472	Rename package 'cn.cadal.rec.alo.usercf'
+1372937383666	Rename package 'cn.cadal.rec.algo.descSimilar'
+1372938241762	Rename local variable 'sqdoc1'
+1372938248797	Rename local variable 'sqdoc2'
+1372938575096	Rename local variable 'AlgorithmMap'
+1372988105803	Rename package 'cn.cadal.rec.algo.descSimilar'
+1372990659625	Rename local variable 'sql'
+1372990686124	Rename local variable 'queryComment'
+1373024571695	Rename local variable 'userOne'
+1373024581277	Rename local variable 'userTwo'
+1373024622702	Rename local variable 'userOne'
+1373024629704	Rename local variable 'userTwo'
+1373025988772	Rename method 'PrintHashUsernoBookno'
+1373026006312	Rename method 'PrintListUsernoBookno'
+1373026024442	Rename local variable 'hashUsernoBookno'
+1373026036464	Rename local variable 'listUsernoBookno'
+1373028020523	Rename local variable 'usernoInfoOther'
+1373028072830	Rename local variable 'tagInfoOther'
+1373028685908	Rename local variable 'usernoInfo'
+1373028698958	Rename local variable 'usernoInfoOther'
+1373029043299	Rename local variable 'userInfoOuter'
+1373029053407	Rename local variable 'userInfoInner'

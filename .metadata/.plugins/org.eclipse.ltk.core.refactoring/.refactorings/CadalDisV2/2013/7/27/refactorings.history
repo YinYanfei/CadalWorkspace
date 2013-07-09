@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 1 source folder(s) to &apos;lib&apos;&#x0D;&#x0A;- Original project: &apos;CadalDisV2&apos;&#x0D;&#x0A;- Destination element: &apos;lib&apos;&#x0D;&#x0A;- Original element: &apos;CadalDisV2/libs/mysql-connector-java-5.1.22-bin.jar&apos;" description="Copy source folder" element1="/libs\/mysql-connector-java-5.1.22-bin.jar" flags="6" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyRoots" roots="1" stamp="1372988069011" target="/CadalRec/lib" version="1.0"/>
+</session>

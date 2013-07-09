@@ -1,0 +1,24 @@
+package cn.cadal.rec.result.tags;
+
+public class TagRecResults {
+
+	private String DIR = "E:/Recommendation/DemoPro/tags/";
+	
+	public 
+	
+	/**
+	 * Construct functions
+	 */
+	
+	
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// Result and Analyze
+
+	}
+
+	
+	
+}

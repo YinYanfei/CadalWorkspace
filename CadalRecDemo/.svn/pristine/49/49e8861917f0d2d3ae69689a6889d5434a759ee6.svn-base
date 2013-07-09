@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="CadalRecDemo"
+  id="myeclipse.1373344560556"
+  context-root="/CadalRecDemo"
+  j2ee-spec="5.0"
+  archive="CadalRecDemo.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebContent" />
+  </attributes>
+</project-module>
+

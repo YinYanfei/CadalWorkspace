@@ -1,0 +1,208 @@
+package cn.cadal.rec.algo.tags;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+public class TagAnalyze {
+	private String DESTIN = "E:/Recommendation/Tags/anaTags.dat";
+	private String URL = "jdbc:mysql://10.15.62.230:3306/CadalTag";
+	private String USERNAME = "root";
+	private String PASSWORD = "Cadal205";
+	
+	private final int UPPER = 5;
+
+	public Connection conn = null;
+	
+	public Map<String, String> resMap = null;
+	public Map<String, String> tagBookidMap = null;
+	
+	/**
+	 * Construct functions
+	 */
+	public TagAnalyze(){
+		this.resMap = new HashMap<String, String>();
+		this.tagBookidMap = new HashMap<String, String>();
+		this.conn = this.ConnectMySql();
+	}
+	public TagAnalyze(String destin) {
+		this.DESTIN = destin;
+		this.resMap = new HashMap<String, String>();
+		this.tagBookidMap = new HashMap<String, String>();
+		this.conn = this.ConnectMySql();
+	}
+	public TagAnalyze(String url, String username, String password){
+		this.URL = url;
+		this.USERNAME = username;
+		this.PASSWORD = password;
+		this.resMap = new HashMap<String, String>();
+		this.tagBookidMap = new HashMap<String, String>();
+		this.conn = this.ConnectMySql();
+	}
+	public TagAnalyze(String destin, String url, String username, String password) {
+		this.DESTIN = destin;
+		this.URL = url;
+		this.USERNAME = username;
+		this.PASSWORD = password;
+		this.resMap = new HashMap<String, String>();
+		this.tagBookidMap = new HashMap<String, String>();
+		this.conn = this.ConnectMySql();
+	}
+	
+	/**
+	 * Destruct function
+	 * 
+	 * 		You must call this function to destruct this.resMap
+	 */
+	public void Destruct(){
+		try{
+			if(this.conn != null) {
+				this.conn.close();
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			if(this.conn != null) {
+				try{
+					this.conn.close();
+				}catch(Exception e){
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+	
+	/**
+	 * Private function to create link for MySQL
+	 * 
+	 * @return
+	 * 		return and assign to this.conn
+	 */
+	private Connection ConnectMySql(){
+		Connection con = null;
+		int count = 0;
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+
+			con = DriverManager.getConnection(this.URL, this.USERNAME, this.PASSWORD);
+
+			while ((con == null) && ((count++) < this.UPPER)) {
+				con = DriverManager.getConnection(this.URL, this.USERNAME, this.PASSWORD);
+				System.out.println("Connect mysql more than one time...");
+				Thread.sleep(500);
+			}
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+		return con;
+
+	}
+	
+	/**
+	 * To query from MySQL by id, and store into this.resMap
+	 * 
+	 * @param id
+	 * 		id is indexed in MySQL | db:CadalTag | table:res_tag
+	 */
+	public void QueryMysql(int id){
+		String queryCommend = "select res_code, tag_name_0, tag_name_1, tag_name_2, tag_name_3, tag_name_4, tag_name_5, tag_name_6, " +
+							  "tag_name_7, tag_name_8, tag_name_9, tag_name_10, tag_name_11, tag_name_12, tag_name_13, tag_name_14, tag_name_15 " +
+							  "from res_tag where id = " + id + ";";
+		try{
+			Statement statement = this.conn.createStatement();
+			ResultSet rs = statement.executeQuery(queryCommend);
+			
+			while (rs.next()) {
+				String tagStr = "";
+				for(int index = 0; index < 16; ++index) {
+					String colName = "tag_name_" + index;
+					if(!rs.getString(colName).equals("")){
+						tagStr+= rs.getString(colName) + "$";
+					}
+				}
+				
+				if(!this.resMap.containsKey("res_code")){
+					this.resMap.put(rs.getString("res_code"), tagStr);
+				}
+			}
+			
+//			this.conn.close();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	/**
+	 * To get total information in MySQL
+	 */
+	public void QueryMysql(){
+		int maxId = 1505000;
+		try{
+			for(int i = 0; i < maxId; ++i) {
+				this.QueryMysql(i);
+				
+				Iterator iter = this.resMap.entrySet().iterator(); 
+				while (iter.hasNext()) { 
+				    Map.Entry entry = (Map.Entry) iter.next(); 
+				    String key = (String)entry.getKey(); 
+				    String val = (String)entry.getValue();
+				    
+				    String [] bookidArr = val.split("$");
+				    for(int j = 0; j < bookidArr.length - 1; ++j) {
+				    	
+				    }
+				} 
+				
+				
+			}
+			
+			System.out.println(this.resMap.size());
+			
+//			this.conn.close();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Print the value of this.resMap
+	 */
+	@SuppressWarnings("unchecked")
+	public void Print(){
+		Iterator iter = this.resMap.entrySet().iterator(); 
+		while (iter.hasNext()) { 
+		    Map.Entry entry = (Map.Entry) iter.next(); 
+		    Object key = entry.getKey(); 
+		    Object val = entry.getValue();
+		    
+		    System.out.println("------------");
+		    System.out.println(key);
+		    System.out.println(val);
+		} 
+	}
+	
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// Analyze 
+		TagAnalyze analyzer = new TagAnalyze();
+		
+//		analyzer.QueryMysql(678);
+//		analyzer.QueryMysql(679);
+//		analyzer.QueryMysql(680);
+//		analyzer.QueryMysql(681);
+		
+//		analyzer.Print();
+	
+		analyzer.QueryMysql();
+		
+		analyzer.Destruct();
+	}
+
+}

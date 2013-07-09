@@ -1,0 +1,88 @@
+package cn.cadal.rec.result.tags;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class TagRecResults {
+
+	private String DIR = "E:/Recommendation/DemoPro/tags/";
+	private String ANATAGS = "anaTags.dat";
+	private String TAGNO_TAGNAME = "tagno_tagname.map";
+	private String ANATAGS_OP_FORWARD = "anaTags_op_forward.dat";
+	private String BOOKNO_BOOKID = "bookno_bookid.map";
+	
+	public List<String> bookidResultList = null;
+	
+	/**
+	 * Construct functions
+	 */
+	public TagRecResults(){
+	}
+	public TagRecResults(String DIR){
+		this.DIR = DIR;
+		this.bookidResultList = new ArrayList<String>();
+	}
+	
+	/**
+	 * 
+	 * @param booid
+	 * @return
+	 */
+	private List<String> TagNames(String booid){
+		
+		
+		return null;
+	}
+	
+	/**
+	 * 
+	 * @param tagNames
+	 * @return
+	 */
+	private List<Integer> TagNos(List<String> tagNames){
+
+		return null;
+	}
+	
+	/**
+	 * 
+	 * @param tagNos
+	 * @return
+	 */
+	private List<Integer> BookNos(List<Integer> tagNos){
+		
+		return null;
+	}
+	
+	/**
+	 * 
+	 * @param bookNos
+	 */
+	private void BookIds(List<Integer> bookNos){
+		
+	}
+	
+	/**
+	 * This function is port for servlet
+	 * 
+	 * @param bookid
+	 * 		this bookid is used to find more recommendation
+	 */
+	public void Connector(String bookid){
+		List<String> tagNames = this.TagNames(bookid);
+		List<Integer> tagNos = this.TagNos(tagNames);
+		List<Integer> bookNos = this.BookNos(tagNos);
+		this.BookIds(bookNos);
+	}
+	
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// Result and Analyze
+
+	}
+
+	
+	
+}

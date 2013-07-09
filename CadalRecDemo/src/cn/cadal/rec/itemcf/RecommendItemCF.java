@@ -1,0 +1,86 @@
+package cn.cadal.rec.itemcf;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import cn.cadal.rec.common.Book;
+
+public class RecommendItemCF {
+
+	public RecommendItemCF() {
+	}
+
+
+
+	/**
+	 * @param args
+	 * @throws SQLException
+	 */
+	public static void main(String[] args) {
+		// for test
+		RecommendItemCF r = new RecommendItemCF();
+		List<Book> list = r.getRecommendation("07018720");
+		for (Book book : list) {
+			System.out.println("---------------");
+			System.out.println("boonName: " + book.getBookName());
+			System.out.println("press: " + book.getPress());
+			System.out.println("author: " + book.getAuthor());
+			System.out.println();
+		}
+		list.clear();
+	}
+
+	/**
+	 * 
+	 * @param bookNo
+	 * @return 与该书最相近的书 ,最多200本
+	 */
+	public List<Book> getRecommendation(String bookNo) {
+		List<Book> list = new ArrayList<Book>();
+		int bookid = Book.getidByBookNo(bookNo);
+		if (bookid == -1) {// 输入的书号有错误
+			return null;
+		}
+		String filePath = "D:\\CADAL\\Recommendation\\common\\item_sim_cosine_pri_op.res";
+		File f = new File(filePath);
+		BufferedReader br = null;
+		try {
+			br = new BufferedReader(new FileReader(f));
+			String temp = "";
+			while ((temp = br.readLine()) != null) {
+				String[] arr = temp.split(" ");
+				if (Integer.parseInt(arr[0]) == bookid) {
+					for (int i = 1; i < arr.length - 1; i = i + 2) {
+						if (i == 41)
+							break;
+						int id = Integer.parseInt(arr[i]);
+						String bkNo = Book.getBookNobyId(id);
+						List<String> info = Book.getBookInfo(bkNo);
+						String bkName = info.get(1);
+						String bkPress = info.get(2);
+						String bkAuthor = info.get(3);
+						Book book = new Book(bkNo, bkName, bkPress, bkAuthor);
+						list.add(book);
+					}
+					break;
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (br != null) {
+				try {
+					br.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return list;
+	}
+
+}

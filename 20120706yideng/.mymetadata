@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="20120706yideng"
+  id="myeclipse.1372928449137"
+  context-root="/20120706yideng"
+  j2ee-spec="5.0"
+  archive="20120706yideng.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

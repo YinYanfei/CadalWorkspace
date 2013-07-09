@@ -1,0 +1,218 @@
+package cn.cadal.rec;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+public class Recommend {
+
+	private Connection con = null;
+
+	public Recommend() {
+		String url = "jdbc:postgresql://10.15.62.71:5432/cadal_metadata_full_dbo2";
+		String username = "cadal";
+		String password = "Cadal205";
+
+		con = connectPG(url, username, password);
+	}
+
+	public Connection connectPG(String url, String username, String password) {
+		Connection con = null;
+		try {
+			Class.forName("org.postgresql.Driver");
+			try {
+				con = DriverManager.getConnection(url, username, password);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		} catch (ClassNotFoundException e1) {
+			e1.printStackTrace();
+		}
+		return con;
+	}
+
+	/**
+	 * @param args
+	 * @throws SQLException
+	 */
+	public static void main(String[] args) {
+		// for test
+		Recommend r = new Recommend();
+		List<Book> list = r.getRecommendation("07018720");
+		for (Book book : list) {
+			System.out.println("---------------");
+			System.out.println("boonName: " + book.getBookName());
+			System.out.println("press: " + book.getPress());
+			System.out.println("author: " + book.getAuthor());
+			System.out.println();
+		}
+		list.clear();
+	}
+
+	/**
+	 * 
+	 * @param bookNo
+	 * @return 与该书最相近的书 ,最多200本
+	 */
+	public List<Book> getRecommendation(String bookNo) {
+		List<Book> list = new ArrayList<Book>();
+		int bookid = getidByBookNo(bookNo);
+		if (bookid == -1) {// 输入的书号有错误
+			return null;
+		}
+		String filePath = "D:\\CADAL\\Recommendation\\data\\item_sim_cosine_pri_op.res";
+		File f = new File(filePath);
+		BufferedReader br = null;
+		try {
+			br = new BufferedReader(new FileReader(f));
+			String temp = "";
+			while ((temp = br.readLine()) != null) {
+				String[] arr = temp.split(" ");
+				if (Integer.parseInt(arr[0]) == bookid) {
+					for (int i = 1; i < arr.length - 1; i = i + 2) {
+						if (i == 41)
+							break;
+						int id = Integer.parseInt(arr[i]);
+						String bkNo = getBookNobyId(id);
+						List<String> info = getBookInfo(bkNo);
+						String bkName = info.get(1);
+						String bkPress = info.get(2);
+						String bkAuthor = info.get(3);
+						Book book = new Book(bkNo, bkName, bkPress, bkAuthor);
+						list.add(book);
+					}
+					break;
+				}
+			}
+			this.con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (br != null) {
+				try {
+					br.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return list;
+	}
+
+	/**
+	 * 
+	 * @param bookNo
+	 *            书号
+	 * @return List<String> [ bookNo bookName bookPress bookAuthor ]
+	 * 
+	 */
+	public List<String> getBookInfo(String bookNo) {
+		List<String> info = new ArrayList<String>();
+		String sql = "select * from cbook where \"BookNo\"='" + bookNo + "'";
+		ResultSet rs = null;
+		boolean flag = false;
+		try {
+			Statement statement = con.createStatement();
+			rs = statement.executeQuery(sql);
+			while (rs.next()) {
+				flag = true;
+				String bookName = rs.getString("Title");
+				String author = rs.getString("Creator");
+				String press = rs.getString("Publisher");
+				info.add(bookNo);
+				info.add(bookName);
+				info.add(press);
+				info.add(author);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		if (flag == false)
+			return null;
+		else
+			return info;
+	}
+
+	/**
+	 * 
+	 * @param bookid
+	 *            处理之后的id（1到1670000+）
+	 * @return bookNo 数据库中的8位书号
+	 */
+	public String getBookNobyId(int bookid) {
+		String bookNo = "";
+		String filePath = "D:\\CADAL\\Recommendation\\bookid-bookno-map\\bookno_bookid_new.map";
+		File f = new File(filePath);
+		BufferedReader br = null;
+		try {
+			br = new BufferedReader(new FileReader(f));
+			String temp = "";
+			while ((temp = br.readLine()) != null) {
+				String[] arr = temp.split(" ");
+				if (Integer.parseInt(arr[0]) == bookid) {
+					bookNo = arr[1];
+					break;
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (br != null) {
+				try {
+					br.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return bookNo;
+	}
+
+	/**
+	 * 
+	 * @param bookNo
+	 *            数据库中的8位书号
+	 * @return bookid 处理之后的id（1到1670000+）
+	 */
+	public int getidByBookNo(String bookNo) {
+		int id = 0;
+		String filePath = "D:\\CADAL\\Recommendation\\bookid-bookno-map\\bookno_bookid_new.map";
+		File f = new File(filePath);
+		BufferedReader br = null;
+		boolean flag = false;
+		try {
+			br = new BufferedReader(new FileReader(f));
+			String temp = "";
+			while ((temp = br.readLine()) != null) {
+				String[] arr = temp.split(" ");
+				id++;
+				if (arr[1].equals(bookNo)) {
+					flag = true;
+					break;
+				}
+			}
+			if (flag == false) {
+				return -1;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (br != null) {
+				try {
+					br.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return id;
+	}
+}
