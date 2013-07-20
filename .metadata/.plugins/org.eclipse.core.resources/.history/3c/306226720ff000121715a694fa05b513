@@ -1,0 +1,162 @@
+package cn.cadal.rec.algo.utilize.optimize;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+import cn.cadal.rec.algo.descsimilar.TextSimilarity;
+import cn.cadal.rec.common.Book;
+import cn.cadal.rec.common.QueryInfoFromPg;
+
+public class RemoveAbnormal {
+
+	public TextSimilarity ts = null;
+	public QueryInfoFromPg qifp = null;
+	
+	public List<Book> bookinfoList = null;
+	public Map<String, Double> scoreMap = null;
+	
+	/**
+	 * Constructor functions
+	 */
+	public RemoveAbnormal(){
+		this.ts = new TextSimilarity();
+		this.bookinfoList = new ArrayList<Book>();
+		this.scoreMap = new HashMap<String, Double>();
+		this.qifp = new QueryInfoFromPg();
+	}
+
+	/**
+	 * Calculate score for each book
+	 * 
+	 * @param bookidList
+	 */
+	@SuppressWarnings("unchecked")
+	public List<String> CalScoreForEachBook(List<String> bookidList){
+		// Query information
+		this.QueryInfoFromPg(bookidList);
+		
+		double scoreFloat = 0.0;
+		for(int i = 0; i < this.bookinfoList.size(); ++i){
+			scoreFloat = 0.0;
+			for(int j = 0; j < this.bookinfoList.size(); ++j) {
+				if(i != j) {
+					scoreFloat += this.CalSimilar(this.bookinfoList.get(i), this.bookinfoList.get(j));
+				}
+			}
+			this.scoreMap.put(this.bookinfoList.get(i).getBookNo(), scoreFloat);
+		}
+		
+		// print information
+		Iterator iter = this.scoreMap.keySet().iterator(); 
+		while (iter.hasNext()) { 
+		    Object key = iter.next(); 
+		    Object val = this.scoreMap.get(key);
+		    
+		    System.out.println(key + "  " + val);
+		} 
+		
+		// return result without singular point
+		return this.DetermineBookid();
+	}
+	
+	/**
+	 * This function is used to query information from pg-db
+	 * 
+	 * @param bookidList
+	 */
+	private void QueryInfoFromPg(List<String> bookidList){
+		this.bookinfoList = this.qifp.QueryMetaData(bookidList);
+		
+		// print information
+		for(int i = 0; i < this.bookinfoList.size(); ++i) {
+			System.out.println(this.bookinfoList.get(i).getBookNo() + " ## " + 
+							   this.bookinfoList.get(i).getBookName() + " ## " + 
+							   this.bookinfoList.get(i).getAuthor() + " ## " + 
+							   this.bookinfoList.get(i).getPress());
+		}
+		
+	}
+	
+	/**
+	 * Calculate similar for two books
+	 * 
+	 * @param book1
+	 * @param book2
+	 * @return
+	 */
+	private double CalSimilar(Book book1, Book book2){
+		double score = 0.0;
+		
+		score = this.ts.Similarity(book1.getBookName(), book2.getBookName()) * 0.6 + 
+				this.ts.Similarity(book1.getAuthor(), book2.getAuthor()) * 0.1 + 
+				this.ts.Similarity(book1.getPress(), book2.getPress()) * 0.1 + 
+				this.ts.Similarity(book1.getBookType(), book2.getBookType()) * 0.2;
+//		
+		// We can add other similar calculate method in this place.
+		// ...
+		
+		return score;
+	}
+	
+	/**
+	 * 
+	 */
+	private List<String> DetermineBookid(){
+		List<String> bookidDeter = new ArrayList<String>();
+		
+		return bookidDeter;
+	}
+	
+	
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// Analyze and Test
+		RemoveAbnormal ra = new RemoveAbnormal();
+		List<String> bookidList = new ArrayList<String>();
+		
+//		bookidList.add("07018734");
+//		bookidList.add("09000046");
+//		bookidList.add("33152803");
+//		bookidList.add("04504475");
+//		bookidList.add("06100009");
+		bookidList.add("07046999");
+		bookidList.add("32007666");
+		bookidList.add("04400269");
+		bookidList.add("16020251");
+		
+		List<String> bookidDone = ra.CalScoreForEachBook(bookidList);
+	}
+
+	/**
+	 * Getter and Setter functions
+	 */
+	public TextSimilarity getTs() {
+		return ts;
+	}
+
+	public List<Book> getBookinfoList() {
+		return bookinfoList;
+	}
+
+	public Map<String, Double> getScoreMap() {
+		return scoreMap;
+	}
+
+	public void setTs(TextSimilarity ts) {
+		this.ts = ts;
+	}
+
+	public void setBookinfoList(List<Book> bookinfoList) {
+		this.bookinfoList = bookinfoList;
+	}
+
+	public void setScoreMap(Map<String, Double> scoreMap) {
+		this.scoreMap = scoreMap;
+	}
+
+}

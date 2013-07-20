@@ -1,0 +1,73 @@
+package cn.cadal.rec.tryJava;
+
+import java.util.ArrayList;
+import java.util.BitSet;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class BitSetTry {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// Analyze and Test
+		BitSet bs1 = new BitSet();
+		bs1.set(1, false);
+		bs1.set(2, true);
+		
+		BitSet bs2 = new BitSet();
+		bs2.set(1, false);
+		bs2.set(3, true);
+		
+		System.out.println(bs1.length());
+//		bs1.and(bs2);
+		bs1.or(bs2);
+		System.out.println(bs1.length());
+		for(int i = 0; i < bs1.length(); ++i) {
+			System.out.println(bs1.get(i));
+		}
+		
+		// List
+		List<String> strList= new ArrayList<String>();
+		
+		strList.add("one");
+		strList.add("two");
+		
+		System.out.println(strList.indexOf("two"));
+
+		// list bitset
+		List<BitSet> bitsetList= new ArrayList<BitSet>();
+		bitsetList.add(new BitSet());
+		bitsetList.add(new BitSet());
+		bitsetList.add(new BitSet());
+		
+		bitsetList.set(2, null);
+		
+		for(int i = 0; i < bitsetList.size(); ++i){
+			if(bitsetList.get(i) == null){
+				System.out.println(i);
+			}
+		}
+		
+		String s="this is a 中国 test,   powerful split";
+		System.out.println(s);
+		String[] arr=s.split("[^a-zA-Z]+"); //6个单词的数组
+		for(int i=0;i<arr.length;i++)
+		      System.out.println(arr[i]);
+		
+		String str = "123abc这个中文cde123abc也要提取123ab"; 
+		System.out.println(str);
+		Pattern p = null;
+		Matcher m = null;
+		String value = null;
+		p = Pattern.compile("([\u4e00-\u9fa5[0-9a-zA-Z]+])");
+		m = p.matcher(str);
+		while (m.find()) {
+			value = m.group(0);
+			System.out.println(value);
+		}
+	}
+
+}

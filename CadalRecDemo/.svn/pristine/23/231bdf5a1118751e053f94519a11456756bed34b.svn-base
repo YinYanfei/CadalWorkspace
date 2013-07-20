@@ -1,0 +1,61 @@
+package cn.cadal.rec.servelet;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import cn.cadal.rec.common.Book;
+import cn.cadal.rec.common.QueryInfoFromPg;
+import cn.cadal.rec.freqitem.FreqItemRecResult;
+import cn.cadal.rec.itemcf.RecommendItemCF;
+import cn.cadal.rec.tags.TagRecResults;
+import cn.cadal.rec.usercf.RecommendationUserCF;
+
+public class RecController extends HttpServlet{
+	private static final long serialVersionUID = 1L;
+
+	public void doPost(HttpServletRequest request, HttpServletResponse response){
+		String algoType = request.getParameter("algoType");
+		String id = request.getParameter("id");
+		System.out.println(algoType + " " + id);
+		try{
+			QueryInfoFromPg queryFromPg = new QueryInfoFromPg();
+			List<Book> resBookInfo = new ArrayList<Book>();
+			if(algoType.equals("ItemCF")) {
+				RecommendItemCF recItemCF = new RecommendItemCF();
+				resBookInfo = recItemCF.getRecommendation(id);
+			}else if(algoType.equals("UserCF")){
+				RecommendationUserCF recUserCF = new RecommendationUserCF();
+				resBookInfo = recUserCF.getRecommendation(Integer.valueOf(id));
+			}else if(algoType.equals("Tags")) {
+				TagRecResults tagRec = new TagRecResults();
+				tagRec.Connector(id);
+				resBookInfo = queryFromPg.QueryMetaData(tagRec.getBookidResultList());
+			}else if(algoType.equals("FreqItem")) {
+				FreqItemRecResult freqItemRec = new FreqItemRecResult();
+				freqItemRec.FindTwoItemFreqRec(id);
+				resBookInfo = queryFromPg.QueryMetaData(freqItemRec.getTwoItemRec());
+			}else{
+				System.out.println("Error function!");
+			}
+			
+			// return to *.jsp
+			RequestDispatcher dispatcher = request.getRequestDispatcher("RecTest.jsp");
+			request.setAttribute("resBookInfo", resBookInfo);
+			dispatcher.forward(request, response);
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
+		this.doPost(request, response);
+	}
+}

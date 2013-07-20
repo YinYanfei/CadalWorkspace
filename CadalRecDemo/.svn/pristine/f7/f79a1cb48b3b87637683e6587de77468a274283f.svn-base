@@ -1,0 +1,155 @@
+package cn.cadal.rec.itemcf;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import cn.cadal.rec.common.Book;
+import cn.cadal.rec.common.QueryInfoFromPg;
+
+public class RecommendItemCF {
+
+	public RecommendItemCF() {
+	}
+
+	/**
+	 * @param args
+	 * @throws SQLException
+	 */
+	public static void main(String[] args) {
+//		RecommendItemCF r = new RecommendItemCF();
+//		List<Book> list = r.getRecommendation("07018734");
+//		for (Book book : list) {
+//			System.out.println("---------------");
+//			System.out.println("boonName: " + book.getBookName());
+//			System.out.println("press: " + book.getPress());
+//			System.out.println("author: " + book.getAuthor());
+//			System.out.println();
+//		}
+//		list.clear();
+	}
+
+	/**
+	 * 
+	 * @param bookid
+	 *            处理之后的id（1到1670000+）
+	 * @return bookNo 数据库中的8位书号
+	 */
+	public String getBookNobyId(int bookid) {
+		String bookNo = "";
+		String filePath = "D:\\CADAL\\Recommendation\\common\\bookno_bookid.map";
+		File f = new File(filePath);
+		BufferedReader br = null;
+		try {
+			br = new BufferedReader(new FileReader(f));
+			String temp = "";
+			while ((temp = br.readLine()) != null) {
+				String[] arr = temp.split(" ");
+				if (Integer.parseInt(arr[0]) == bookid) {
+					bookNo = arr[1];
+					break;
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (br != null) {
+				try {
+					br.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return bookNo;
+	}
+
+	/**
+	 * 
+	 * @param bookNo
+	 *            数据库中的8位书号
+	 * @return bookid 处理之后的id（1到1670000+）
+	 */
+	public int getidByBookNo(String bookNo) {
+		int id = 0;
+		String filePath = "D:\\CADAL\\Recommendation\\common\\bookno_bookid.map";
+		File f = new File(filePath);
+		BufferedReader br = null;
+		boolean flag = false;
+		try {
+			br = new BufferedReader(new FileReader(f));
+			String temp = "";
+			while ((temp = br.readLine()) != null) {
+				String[] arr = temp.split(" ");
+				id++;
+				if (arr[1].equals(bookNo)) {
+					flag = true;
+					break;
+				}
+			}
+			if (flag == false) {
+				return -1;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (br != null) {
+				try {
+					br.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return id;
+	}
+	
+	/**
+	 * 
+	 * @param bookNo
+	 * @return 与该书最相近的书 ,最多200本
+	 */
+	public List<Book> getRecommendation(String bookNo) {
+		List<String> recList = new ArrayList<String>();
+		int bookid = this.getidByBookNo(bookNo);
+		if (bookid == -1) {// 输入的书号有错误
+			return null;
+		}
+		String filePath = "D:\\CADAL\\Recommendation\\common\\item_sim_cosine_pri_op.res";
+		File f = new File(filePath);
+		BufferedReader br = null;
+		try {
+			br = new BufferedReader(new FileReader(f));
+			String temp = "";
+			while ((temp = br.readLine()) != null) {
+				String[] arr = temp.split(" ");
+				if (Integer.parseInt(arr[0]) == bookid) {
+					for (int i = 1; i < arr.length - 1; i = i + 2) {
+						if (i == 41)
+							break;
+						int id = Integer.parseInt(arr[i]);
+						String bkNo = this.getBookNobyId(id);
+						recList.add(bkNo);
+					}
+					break;
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (br != null) {
+				try {
+					br.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		QueryInfoFromPg qifp = new QueryInfoFromPg();
+		return qifp.QueryMetaData(recList);
+	}
+
+}

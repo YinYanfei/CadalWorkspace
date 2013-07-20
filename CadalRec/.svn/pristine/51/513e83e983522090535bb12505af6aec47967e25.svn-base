@@ -1,0 +1,13 @@
+package cn.cadal.rec.algo.utilize.optimize;
+
+public class RemoveAbnormal {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// Analyze and Test
+
+	}
+
+}

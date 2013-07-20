@@ -8,44 +8,118 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.cadal.rec.common.Book;
+import cn.cadal.rec.common.QueryInfoFromPg;
 
 public class RecommendItemCF {
 
 	public RecommendItemCF() {
 	}
 
-
-
 	/**
 	 * @param args
 	 * @throws SQLException
 	 */
 	public static void main(String[] args) {
-		// for test
 		RecommendItemCF r = new RecommendItemCF();
-		List<Book> list = r.getRecommendation("07018720");
+		List<Book> list = r.getRecommendation("07018734");
 		for (Book book : list) {
-			System.out.println("---------------");
-			System.out.println("boonName: " + book.getBookName());
-			System.out.println("press: " + book.getPress());
-			System.out.println("author: " + book.getAuthor());
-			System.out.println();
+//			System.out.println("---------------");
+			System.out.println(book.getBookNo());
+//			System.out.println("boonName: " + book.getBookName());
+//			System.out.println("press: " + book.getPress());
+//			System.out.println("author: " + book.getAuthor());
+//			System.out.println();
 		}
 		list.clear();
 	}
 
 	/**
 	 * 
+	 * @param bookid
+	 *            处理之后的id（1到1670000+）
+	 * @return bookNo 数据库中的8位书号
+	 */
+	public String getBookNobyId(int bookid) {
+		String bookNo = "";
+		String filePath = "E:\\Recommendation\\ExpData\\bookno_bookid.map";
+		File f = new File(filePath);
+		BufferedReader br = null;
+		try {
+			br = new BufferedReader(new FileReader(f));
+			String temp = "";
+			while ((temp = br.readLine()) != null) {
+				String[] arr = temp.split(" ");
+				if (Integer.parseInt(arr[0]) == bookid) {
+					bookNo = arr[1];
+					break;
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (br != null) {
+				try {
+					br.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return bookNo;
+	}
+
+	/**
+	 * 
 	 * @param bookNo
-	 * @return 与该书最相近的书 ,最多200本
+	 *            数据库中的8位书号
+	 * @return bookid 处理之后的id（1到1670000+）
+	 */
+	public int getidByBookNo(String bookNo) {
+		int id = 0;
+		String filePath = "E:\\Recommendation\\ExpData\\bookno_bookid.map";
+		File f = new File(filePath);
+		BufferedReader br = null;
+		boolean flag = false;
+		try {
+			br = new BufferedReader(new FileReader(f));
+			String temp = "";
+			while ((temp = br.readLine()) != null) {
+				String[] arr = temp.split(" ");
+				id++;
+				if (arr[1].equals(bookNo)) {
+					flag = true;
+					break;
+				}
+			}
+			if (flag == false) {//找不到与输入书号相对应的图书id
+				return -1;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (br != null) {
+				try {
+					br.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return id;
+	}
+	
+	/**
+	 * 
+	 * @param bookNo
+	 * @return 与该书最相近的书 ,最多20本
 	 */
 	public List<Book> getRecommendation(String bookNo) {
-		List<Book> list = new ArrayList<Book>();
-		int bookid = Book.getidByBookNo(bookNo);
+		List<String> recList = new ArrayList<String>();
+		int bookid = this.getidByBookNo(bookNo);
 		if (bookid == -1) {// 输入的书号有错误
 			return null;
 		}
-		String filePath = "D:\\CADAL\\Recommendation\\common\\item_sim_cosine_pri_op.res";
+		String filePath = "E:\\Recommendation\\ExpData\\item_sim_cosine_pri_op.res";
 		File f = new File(filePath);
 		BufferedReader br = null;
 		try {
@@ -58,13 +132,8 @@ public class RecommendItemCF {
 						if (i == 41)
 							break;
 						int id = Integer.parseInt(arr[i]);
-						String bkNo = Book.getBookNobyId(id);
-						List<String> info = Book.getBookInfo(bkNo);
-						String bkName = info.get(1);
-						String bkPress = info.get(2);
-						String bkAuthor = info.get(3);
-						Book book = new Book(bkNo, bkName, bkPress, bkAuthor);
-						list.add(book);
+						String bkNo = this.getBookNobyId(id);
+						recList.add(bkNo);
 					}
 					break;
 				}
@@ -80,7 +149,7 @@ public class RecommendItemCF {
 				}
 			}
 		}
-		return list;
+		QueryInfoFromPg qifp = new QueryInfoFromPg();
+		return qifp.QueryMetaData(recList);
 	}
-
 }

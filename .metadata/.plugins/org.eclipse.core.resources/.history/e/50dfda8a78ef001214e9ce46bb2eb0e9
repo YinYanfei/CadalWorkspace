@@ -1,0 +1,41 @@
+package cn.cadal.rec.algo.sgd;
+
+public class SGD {
+
+	private String DIR = "E:/Recommendation/LFM/";
+	private String PROPERTY = "properties.txt";
+	private String TRAIN = "train.txt";
+	private String TEST = "test.txt";
+	
+	private String RES_USER = "user.txt";
+	private String RES_ITEM = "item.txt";
+	
+	/**
+	 * Constructor functions
+	 */
+	public SGD(){
+	}
+	
+	/**
+	 * To train the model for this data-set
+	 */
+	public void Train(){
+		
+	}
+	
+	/**
+	 * Test and evaluate the model
+	 */
+	public void Test(){
+		
+	}
+	
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

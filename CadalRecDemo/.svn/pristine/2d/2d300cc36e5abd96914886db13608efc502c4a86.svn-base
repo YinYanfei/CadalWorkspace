@@ -1,0 +1,81 @@
+package cn.cadal.rec.freqitem;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class FreqItemRecResult {
+
+	private String DIR = "E:/Recommendation/FreqItemset/";
+	private String TWOITEM = "10.res.grep.deal.2.dat";
+	private String FOURITEM = "10.res.grep.deal.4.dat";
+	
+	public List<String> twoItemRec = null;
+	public List<String> fourItemRec = null;
+	
+	/**
+	 * Constructor functions
+	 */
+	public FreqItemRecResult(){
+		this.twoItemRec = new ArrayList<String>();
+		this.fourItemRec = new ArrayList<String>();
+	}
+	public FreqItemRecResult(String twoItem, String fourItem){
+		this.TWOITEM = twoItem;
+		this.FOURITEM = fourItem;
+		this.twoItemRec = new ArrayList<String>();
+		this.fourItemRec = new ArrayList<String>();
+	}
+	
+	/**
+	 * This function is used to find the result of recommendation for two-item-frequent.
+	 * 
+	 * @param bookid
+	 */
+	public void FindTwoItemFreqRec(String bookid){
+		// Pass
+	}
+	
+	/**
+	 * This function is used to find the result of recommendation for four-item-frequent.
+	 * 
+	 * @param bookid
+	 */
+	public void FindFourItemFreqRec(String bookid) {
+		// Pass
+	}
+	
+	/**
+	 * This function is the port for web-service.
+	 * 
+	 * @param bookid
+	 */
+	public void Connector(String bookid){
+		this.FindTwoItemFreqRec(bookid);
+		System.out.println("Two frequent item can be used by scan this.twoItemRec");
+		
+		this.FindFourItemFreqRec(bookid);
+		System.out.println("Four frequent item can be used by scan this.fourItemRec");
+	}
+	
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// Analyze and Test
+		FreqItemRecResult firr = new FreqItemRecResult();
+		String bookid = "";
+		
+		System.out.println("Two-item-freq result: ");
+		firr.FindTwoItemFreqRec(bookid);
+		for(String item : firr.twoItemRec) {
+			System.out.println(item);
+		}
+		
+		System.out.println("Four-item-freq result: ");
+		firr.FindFourItemFreqRec(bookid);
+		for(String item : firr.fourItemRec) {
+			System.out.println(item);
+		}
+	}
+
+}

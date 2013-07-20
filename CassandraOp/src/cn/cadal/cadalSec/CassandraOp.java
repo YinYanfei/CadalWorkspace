@@ -298,6 +298,6 @@ public class CassandraOp {
 		CassandraOp co = new CassandraOp();
 		
 //		co.GetCassandraInfo("2013-03-19 12:00", "2013-06-05 12:00", "cassandraInfoWin.txt"); // "2013-03-19 12:00", "2013-06-05 12:00"
-		co.QueryRecordMinute("2013-06-21 15:52");
+		co.QueryRecordMinute("2013-07-10 09:52");
 	}
 }

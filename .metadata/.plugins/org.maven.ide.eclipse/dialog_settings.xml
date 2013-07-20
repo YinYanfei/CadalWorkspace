@@ -2,10 +2,10 @@
 <section name="Workbench">
 	<section name="wizardPage">
 		<list key="groupId">
-			<item value="CadalRecDemo"/>
+			<item value="jcdl_searchLucene"/>
 		</list>
 		<list key="artifactId">
-			<item value="CadalRecDemo"/>
+			<item value="jcdl_searchLucene"/>
 		</list>
 		<list key="version">
 			<item value="0.0.1-SNAPSHOT"/>

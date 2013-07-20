@@ -1,1 +1,6 @@
 1373347336077	Delete element
+1373422433507	Rename package 'cn.cadal.rec.result.tags'
+1373543074408	Delete element
+1373544057735	Rename type 'TagRecController'
+1373545479454	Rename local variable 'type'
+1373545848596	Rename type 'ItemCFRecController'

@@ -1,0 +1,10 @@
+1373891975183	Rename type 'TextSimComp'
+1373896410804	Delete elements
+1374036859743	Rename package 'cn.cadal.rec.algo.coldstart'
+1374037209570	Rename package 'cn.cadal.rec.algo.common'
+1374042413097	Rename local variable 'resBookinfo'
+1374120397532	Delete element
+1374130849602	Move compilation unit
+1374148172625	Delete element
+1374200133501	Delete element
+1374282223948	Rename method 'CalScoreForEachBook'

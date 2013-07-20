@@ -1,0 +1,15 @@
+package cn.cadal.rec.common;
+
+public class QueryInfoFromPg {
+
+	
+	
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// Test and Analyze
+
+	}
+
+}

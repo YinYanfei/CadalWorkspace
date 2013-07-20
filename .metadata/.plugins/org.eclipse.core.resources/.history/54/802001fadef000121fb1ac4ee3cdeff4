@@ -1,0 +1,334 @@
+package cn.cadal.rec.algo.utilize.optimize;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import cn.cadal.rec.common.Book;
+import cn.cadal.rec.common.QueryInfoFromPg;
+
+public class RemoveAbnormal {
+
+	public QueryInfoFromPg qifp = null;
+	
+	public List<Book> bookinfoList = null;
+	public Map<String, Double> scoreMap = null;
+	
+	/**
+	 * Constructor functions
+	 */
+	public RemoveAbnormal(){
+		this.bookinfoList = new ArrayList<Book>();
+		this.scoreMap = new HashMap<String, Double>();
+		this.qifp = new QueryInfoFromPg();
+	}
+
+	/**
+	 * Calculate score for each book
+	 * 
+	 * @param bookidList
+	 */
+	@SuppressWarnings("unchecked")
+	public List<String> CalScoreForEachBookByAverageScore(List<String> bookidList){
+		// Query information
+		this.QueryInfoFromPg(bookidList);
+		
+		double scoreFloat = 0.0;
+		for(int i = 0; i < this.bookinfoList.size(); ++i){
+			scoreFloat = 0.0;
+			for(int j = 0; j < this.bookinfoList.size(); ++j) {
+				if(i != j) {
+					scoreFloat += this.CalSimilar(this.bookinfoList.get(i), this.bookinfoList.get(j));
+				}
+			}
+			scoreFloat = scoreFloat / (this.bookinfoList.size() - 1);		// to get average score
+			this.scoreMap.put(this.bookinfoList.get(i).getBookNo(), scoreFloat);
+		}
+		
+		// print information
+		Iterator iter = this.scoreMap.keySet().iterator(); 
+		while (iter.hasNext()) { 
+		    Object key = iter.next(); 
+		    Object val = this.scoreMap.get(key);
+		    
+		    System.out.println(key + "  " + val);
+		} 
+		
+		// return result without singular point
+		return this.DetermineBookid();
+	}
+	
+	/**
+	 * Calculate score for each book [Another method]
+	 * 
+	 * @param bookidList
+	 */
+	@SuppressWarnings("unchecked")
+	public List<String> CalScoreForEachBookByDensity(List<String> bookidList){
+		// Query information
+		this.QueryInfoFromPg(bookidList);
+		
+		// Hold
+		int HOLDNUM = this.bookinfoList.size() / 3;
+		
+		double scoreFloat = 0.0;
+		double [] scoreArrForOneBook = new double[this.bookinfoList.size() - 1];
+		
+		System.out.println(scoreArrForOneBook.length);
+		
+		int idx = 0;
+		for(int i = 0; i < this.bookinfoList.size(); ++i){
+			scoreFloat = 0.0;
+			idx = 0;
+			for(int j = 0; j < this.bookinfoList.size(); ++j) {
+				if(i != j) {
+					scoreArrForOneBook[idx] = this.CalSimilar(this.bookinfoList.get(i), this.bookinfoList.get(j)); 
+					idx++;
+				}
+			}
+			
+			Arrays.sort(scoreArrForOneBook);
+			for(int t = 0; t < HOLDNUM; ++t){
+				scoreFloat += scoreArrForOneBook[idx - t - 1];
+			}
+			scoreFloat = scoreFloat / HOLDNUM;		// to get average score
+			this.scoreMap.put(this.bookinfoList.get(i).getBookNo(), scoreFloat);
+		}
+		
+		// print information
+		Iterator iter = this.scoreMap.keySet().iterator(); 
+		while (iter.hasNext()) { 
+		    Object key = iter.next(); 
+		    Object val = this.scoreMap.get(key);
+		    
+		    System.out.println(key + "  " + val);
+		} 
+		
+		// return result without singular point
+		return this.DetermineBookid();
+	}
+	
+	/**
+	 * This function is used to query information from pg-db
+	 * 
+	 * @param bookidList
+	 */
+	private void QueryInfoFromPg(List<String> bookidList){
+		this.bookinfoList = this.qifp.QueryMetaData(bookidList);
+		
+		// print information
+		for(int i = 0; i < this.bookinfoList.size(); ++i) {
+			System.out.println(this.bookinfoList.get(i).getBookNo() + " ## " + 
+							   this.bookinfoList.get(i).getBookName() + " ## " + 
+							   this.bookinfoList.get(i).getAuthor() + " ## " + 
+							   this.bookinfoList.get(i).getPress() + " ## " +
+							   this.bookinfoList.get(i).getBookType());
+		}
+	}
+	
+	/**
+	 * Calculate similar for two books
+	 * 
+	 * @param book1
+	 * @param book2
+	 * @return
+	 */
+	private double CalSimilar(Book book1, Book book2){
+		double score = 0.0;
+		
+		// Only calculate title similar
+		score = this.Similarity(book1.getBookName(), book2.getBookName());
+
+		// Calculate title/creator/publisher/type similar
+//		score = this.Similarity(book1.getBookName(), book2.getBookName()) * 0.6 + 
+//				this.Similarity(book1.getAuthor(), book2.getAuthor()) * 0.1 + 
+//				this.Similarity(book1.getPress(), book2.getPress()) * 0.1 + 
+//				this.Similarity(book1.getBookType(), book2.getBookType()) * 0.2;
+
+		
+		// We can add other similar calculate method in this place.
+		// ...
+		
+		return score;
+	}
+	/**
+	 * This function is used to calculate similar for two text
+	 * 
+	 * @param doc1
+	 * @param doc2
+	 * @return
+	 */
+	private double Similarity(String doc1, String doc2) {
+        if (doc1 != null && doc1.trim().length() > 0 && doc2 != null && doc2.trim().length() > 0) {
+            Map<String, int[]> AlgorithmMap = new HashMap<String, int[]>();
+            
+            List<String> doc1List = new ArrayList<String>();
+            List<String> doc2List = new ArrayList<String>();
+            
+            // Extract word for doc1 and doc2
+            Pattern patternChi = Pattern.compile("[\u4E00-\u9FA5]");
+            Pattern patternEng = Pattern.compile("\\w+");
+            Matcher matc = patternChi.matcher(doc1);
+            while (matc.find()) {
+                 doc1List.add(matc.group());
+            }
+            
+            matc = patternEng.matcher(doc1);
+            while (matc.find()) {
+                 doc1List.add(matc.group());
+            }
+            // doc2
+            matc = patternChi.matcher(doc2);
+            while (matc.find()) {
+                 doc2List.add(matc.group());
+            }
+            matc = patternEng.matcher(doc2);
+            while (matc.find()) {
+                 doc2List.add(matc.group());
+            }
+            
+            //calculate the number of word for different documents
+            double res = 0.0;
+
+            for (int i = 0; i < doc1List.size(); i++) {
+            	int[] fq = AlgorithmMap.get(doc1List.get(i));
+				if(fq != null && fq.length == 2){
+					fq[0]++;
+				}else {
+					fq = new int[2];
+					fq[0] = 1;
+					fq[1] = 0;
+					AlgorithmMap.put(doc1List.get(i), fq);
+				}
+            }
+            for (int i = 0; i < doc2List.size(); i++) {
+				int[] fq = AlgorithmMap.get(doc2List.get(i));
+				if (fq != null && fq.length == 2) {
+					fq[1]++;
+				} else {
+					fq = new int[2];
+					fq[0] = 0;
+					fq[1] = 1;
+					AlgorithmMap.put(doc2List.get(i), fq);
+				}
+            }
+            
+            // iterator hash-map to calculate cosine similar
+            Iterator<String> iterator = AlgorithmMap.keySet().iterator();
+            double sqdoc1 = 0;
+            double sqdoc2 = 0;
+            double denominator = 0; 
+            while(iterator.hasNext()){
+                 int[] c = AlgorithmMap.get(iterator.next());
+                 denominator += c[0]*c[1];
+                 sqdoc1 += c[0]*c[0];
+                 sqdoc2 += c[1]*c[1];
+            }
+            
+            res = denominator / Math.sqrt(sqdoc1*sqdoc2);
+            
+            if(Double.isNaN(res)) {
+                 res = 0.0;
+            }
+
+            return res;
+        }else{
+        	return 0.0;
+        }
+	}
+	
+	/**
+	 * This function is used to evaluate whether one book should be deleted or not
+	 */
+	private List<String> DetermineBookid(){
+		double LIMIT = 0.01;
+		List<String> bookidDeter = new ArrayList<String>();
+		
+		// Simple evaluate
+		Iterator<String> iterator = this.scoreMap.keySet().iterator();
+		while(iterator.hasNext()){
+			String key = iterator.next();
+			double val = this.scoreMap.get(key);
+			
+			if(val > LIMIT){
+				bookidDeter.add(key);
+			}
+		}
+		
+		return bookidDeter;
+	}
+	
+	
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// Analyze and Test
+		RemoveAbnormal ra = new RemoveAbnormal();
+		List<String> bookidList = new ArrayList<String>();
+		
+//		bookidList.add("07018734");
+//		bookidList.add("09000046");
+//		bookidList.add("33152803");
+//		bookidList.add("04504475");
+//		bookidList.add("06100009");
+//		bookidList.add("07046999");
+//		bookidList.add("32007666");
+//		bookidList.add("04400269");
+//		bookidList.add("16020251");
+
+		bookidList.add("07001879");
+		bookidList.add("06238149");
+		bookidList.add("13059757");
+		bookidList.add("04101476");
+		bookidList.add("04100376");
+		bookidList.add("06205231");
+		bookidList.add("06205007");
+		bookidList.add("03018741");
+		bookidList.add("03018703");
+		bookidList.add("03018760");
+		bookidList.add("32023662");
+		bookidList.add("32032992");
+		bookidList.add("32044127");
+		bookidList.add("06300001");
+		bookidList.add("06342977");
+		bookidList.add("16004804");
+		bookidList.add("09000046");
+		bookidList.add("09006962");
+		bookidList.add("13056911");
+		bookidList.add("11416704");
+		
+		List<String> bookidDone = ra.CalScoreForEachBookByAverageScore(bookidList);		// score average method
+//		List<String> bookidDone = ra.CalScoreForEachBookByDensity(bookidList);			// score density method
+		
+		// print info
+		for(int i = 0; i < bookidDone.size(); ++i) {
+			System.out.println(bookidDone.get(i));
+		}
+	}
+
+	/**
+	 * Getter and Setter functions
+	 */
+	public List<Book> getBookinfoList() {
+		return bookinfoList;
+	}
+
+	public Map<String, Double> getScoreMap() {
+		return scoreMap;
+	}
+
+	public void setBookinfoList(List<Book> bookinfoList) {
+		this.bookinfoList = bookinfoList;
+	}
+
+	public void setScoreMap(Map<String, Double> scoreMap) {
+		this.scoreMap = scoreMap;
+	}
+
+}

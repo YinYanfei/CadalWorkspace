@@ -1,0 +1,18 @@
+package cn.cadal.rec.algo.tags;
+
+public class DimOp {
+
+	private String fileDir = "E:/Recommendation/Tags/dim.info.dat";
+	private String destin = "E:/Recommendation/Tags/dim.info.op.dat";
+	
+	
+	
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
