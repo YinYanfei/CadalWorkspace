@@ -1,0 +1,67 @@
+package cn.cadal.rec.ol.api;
+
+import java.util.List;
+
+import cn.cadal.rec.ol.common.Book;
+import cn.cadal.rec.ol.common.User;
+
+public class RecImplement implements RecInterface {
+	
+	
+
+	@Override
+	public List<Book> RecBookByBook(String bookid) {
+		
+		
+		return null;
+	}
+
+	@Override
+	public List<Book> RecBookByUserName(String userName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Book> RecBookByUserTags(List<String> listTags) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<String> RecTagsByBook(String bookid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<String> RecTagsByUserName(String userName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<String> RecTagsByUserTags(List<String> listTags) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<User> RecUserByBook(String bookid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<User> RecUserByUserName(String userName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<User> RecUserByUserTags(List<String> listTags) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

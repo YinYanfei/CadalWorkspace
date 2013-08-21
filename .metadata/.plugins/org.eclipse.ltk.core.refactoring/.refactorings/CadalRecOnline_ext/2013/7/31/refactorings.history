@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;cn.cadal.rec.common&apos; to &apos;cn.cadal.rec.bookinfo&apos;&#x0D;&#x0A;- Original project: &apos;CadalRecOnline_ext&apos;&#x0D;&#x0A;- Original element: &apos;CadalRecOnline_ext/src/cn.cadal.rec.common&apos;&#x0D;&#x0A;- Renamed element: &apos;CadalRecOnline_ext/src/cn.cadal.rec.bookinfo&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;cn.cadal.rec.common&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;cn.cadal.rec.common" name="cn.cadal.rec.bookinfo" qualified="false" references="true" stamp="1375102118153" textual="false" version="1.0"/>
+</session>

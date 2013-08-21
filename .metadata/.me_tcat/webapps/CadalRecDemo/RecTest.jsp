@@ -34,11 +34,12 @@
 					<tr>
 						<td>
 							<form name="infoNeeded" action="UniqAlgoServ" method="post">
-								选择算法：
+								推荐结果来源：
 								<select name="algoType" id="algoType">  
         							<option value="ItemCF">ItemCF</option>  
       								<option value="UserCF">UserCF</option>  
-        							<option value="Tags">Tags</option>  
+        							<option value="Tags">Tags</option>
+        							<option value="SGD">SGD</option>  
         							<option value="FreqItem">FreqItem</option> 
         							<option value="ColdStart">ColdStart</option>         
       							</select> 

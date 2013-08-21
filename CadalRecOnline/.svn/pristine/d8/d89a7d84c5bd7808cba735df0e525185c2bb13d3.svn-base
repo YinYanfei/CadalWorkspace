@@ -1,0 +1,93 @@
+/**
+ * 
+ */
+package cn.cadal.rec.ol.algoext;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+public class AlgoFreqItem extends RecAlgo{
+	
+	/**
+	 * Construct function
+	 */
+	public AlgoFreqItem() {
+		super();
+	}
+	public AlgoFreqItem(String dbname) {
+		super(dbname);
+	}
+
+	/**
+	 * Get recommendation by a single book-id
+	 * 
+	 * @param bookid
+	 * 				book-id, string type
+	 * @return		list of recommendation, book-id
+	 */
+	public List<String> RecBook(String bookid) {
+		List<String> recList = new ArrayList<String>();
+		String sql = SQLSet.QUERY_FREQITEM_BY_BOOKID_1;
+		String sql2 = SQLSet.QUERY_FREQITEM_BY_BOOKID_2;
+		int[] type = new int[1];
+		Object[] param = new Object[1];
+		
+		type[0] = java.sql.Types.VARCHAR;
+		param[0] = bookid;
+		List<Map> list = db.executeQuery(sql,param,type);
+		List<Map> list2 = db.executeQuery(sql2,param,type);
+		
+		for(int i = 0;i<list.size();++i){
+			Map map = list.get(i);
+			for(Iterator it = map.keySet().iterator();it.hasNext();){
+				String columnName = it.next().toString();
+				recList.add(map.get(columnName).toString());
+			}
+		}
+		
+		for(int i = 0;i<list2.size();++i){
+			Map map = list2.get(i);
+			for(Iterator it = map.keySet().iterator();it.hasNext();){
+				String columnName = it.next().toString();
+				if(!recList.contains(map.get(columnName).toString())){
+					recList.add(map.get(columnName).toString());
+				}
+			}
+		}
+		return recList;
+	}
+	
+	/**
+	 * Get recommendation by a list of book-id
+	 * 
+	 * @param listBookid
+	 * 				list of book-id, string type
+	 * @return		list of recommendation, book-id
+	 */
+	public List<String> RecBook(List<String> listBookid) {
+		List<String> recList = new ArrayList<String>();
+		for(int i = 0; i< listBookid.size(); ++i){
+			for(String bookid : RecBook(listBookid.get(i))){
+				if(!recList.contains(bookid))
+				{
+					recList.add(bookid);
+				}
+			}
+		}
+		return recList;
+	}
+	
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// Analyze and Test
+
+		AlgoFreqItem freq = new AlgoFreqItem();
+		for(String id : freq.RecBook("07018720"))
+			System.out.println(id);
+	}
+	
+}

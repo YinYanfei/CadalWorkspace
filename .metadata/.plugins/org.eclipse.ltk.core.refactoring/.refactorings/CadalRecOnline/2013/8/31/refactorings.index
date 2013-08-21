@@ -1,0 +1,6 @@
+1375342899518	Rename local variable 'book'
+1375342910988	Rename local variable 'book'
+1375342925028	Rename local variable 'book2'
+1375406356823	Rename compilation unit 'DbWrapper.java'
+1375491569526	Encapsulate field 'DBName'
+1375492985608	Rename local variable 'userReadBookId'

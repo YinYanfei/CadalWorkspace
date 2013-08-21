@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workbench progressCount="12" version="2.0">
 <workbenchAdvisor/>
-<window height="1040" maximized="true" width="960" x="960" y="0">
+<window height="1040" maximized="true" minimized="true" width="960" x="960" y="0">
 <fastViewData fastViewLocation="1024"/>
 <perspectiveBar>
 <itemSize x="160"/>
 </perspectiveBar>
 <coolbarLayout locked="0">
 <coolItem id="group.file" itemType="typeGroupMarker"/>
-<coolItem id="org.eclipse.ui.workbench.file" itemType="typeToolBarContribution" x="101" y="22"/>
+<coolItem id="org.eclipse.ui.workbench.file" itemType="typeToolBarContribution" x="259" y="22"/>
 <coolItem id="additions" itemType="typeGroupMarker"/>
 <coolItem id="com.genuitec.eclipse.j2eedt.core.ejb" itemType="typeToolBarContribution" x="55" y="22"/>
 <coolItem id="com.genuitec.eclipse.uml.actions" itemType="typeToolBarContribution" x="61" y="22"/>
@@ -21,14 +21,14 @@
 <coolItem id="com.genuitec.myeclipse.actions.screencapture" itemType="typeToolBarContribution" x="55" y="22"/>
 <coolItem id="org.eclipse.debug.ui.launchActionSet" itemType="typeToolBarContribution" x="175" y="22"/>
 <coolItem id="org.eclipse.jdt.ui.ClassFileEditor" itemType="typePlaceholder" x="-1" y="-1"/>
-<coolItem id="org.eclipse.jdt.ui.CompilationUnitEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="org.eclipse.jdt.ui.CompilationUnitEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.jdt.ui.JavaElementCreationActionSet" itemType="typeToolBarContribution" x="101" y="22"/>
 <coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="101" y="22"/>
 <coolItem id="org.eclipse.ui.DefaultTextEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="107" y="22"/>
 <coolItem id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.wst.xml.ui.perspective.NewFileToolBar" itemType="typeToolBarContribution" x="-1" y="-1"/>
-<coolItem id="org.eclipse.wst.xml.ui.design.DesignToolBar" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="org.eclipse.wst.xml.ui.design.DesignToolBar" itemType="typeToolBarContribution" x="115" y="22"/>
 <coolItem id="org.jboss.tools.common.model.ui.editor.EditorPartWrapper" itemType="typePlaceholder" x="38" y="22"/>
 <coolItem id="org.jboss.tools.common.propertieseditor.PropertiesCompoundEditor" itemType="typePlaceholder" x="38" y="22"/>
 <coolItem id="group.nav" itemType="typeGroupMarker"/>
@@ -43,57 +43,28 @@
 <editorArea activeWorkbook="DefaultEditorWorkbook">
 <info part="DefaultEditorWorkbook">
 <folder appearance="1" expanded="2">
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
-</presentation>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
 </editorArea>
-<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="RemoveAbnormal.java" partName="RemoveAbnormal.java" path="D:/CadalWorkspace/CadalRec/src/cn/cadal/rec/algo/utilize/optimize/RemoveAbnormal.java" title="RemoveAbnormal.java" tooltip="CadalRec/src/cn/cadal/rec/algo/utilize/optimize/RemoveAbnormal.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/CadalRec/src/cn/cadal/rec/algo/utilize/optimize/RemoveAbnormal.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="5407" selectionTopPixel="2818"/>
-</editor>
 </editors>
 <views>
+<view id="org.springframework.ide.eclipse.ui.navigator.springExplorer" partName="Spring Explorer"/>
 <view id="com.genuitec.eclipse.ui.HTMLView" partName="Web Browser">
+<viewState/>
+</view>
+<view id="com.genuitec.eclipse.ast.deploy.core.serverview" partName="Servers">
 <viewState/>
 </view>
 <view id="org.eclipse.jdt.ui.TypeHierarchy" partName="Hierarchy">
 <viewState hidefields="false" hidelocaltypes="false" hidenonpublic="false" hidestatic="false" link_editors="0" mv_vertical_scroll="0" orientation="3" qualified_names="0" ratio="350" showinherited="false" sortbydefiningtype="false" vertical_scroll="0" view="2" workingSetName=""/>
 </view>
-<view id="uky.article.imageviewer.views.ImageView" partName="Image Preview">
-<viewState/>
-</view>
 <view id="org.eclipse.jdt.callhierarchy.view" partName="Call Hierarchy">
 <viewState search_scope_type="1"/>
 </view>
-<view id="org.eclipse.ui.views.TaskList" partName="Tasks">
-<viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.completionField" categoryGroup="none" markerContentGenerator="org.eclipse.ui.ide.tasksGenerator" partName="Tasks">
-<columnWidths org.eclipse.ui.ide.completionField="40" org.eclipse.ui.ide.descriptionField="304" org.eclipse.ui.ide.locationField="64" org.eclipse.ui.ide.markerType="94" org.eclipse.ui.ide.pathField="124" org.eclipse.ui.ide.priorityField="20" org.eclipse.ui.ide.resourceField="94"/>
-<visible IMemento.internal.id="org.eclipse.ui.ide.completionField"/>
-<visible IMemento.internal.id="org.eclipse.ui.ide.priorityField"/>
-<visible IMemento.internal.id="org.eclipse.ui.ide.descriptionField"/>
-<visible IMemento.internal.id="org.eclipse.ui.ide.resourceField"/>
-<visible IMemento.internal.id="org.eclipse.ui.ide.pathField"/>
-<visible IMemento.internal.id="org.eclipse.ui.ide.locationField"/>
-<visible IMemento.internal.id="org.eclipse.ui.ide.markerType"/>
-</viewState>
-</view>
-<view id="org.eclipse.ui.views.ContentOutline" partName="Outline">
-<viewState/>
-</view>
-<view id="org.springframework.ide.eclipse.ui.navigator.springExplorer" partName="Spring Explorer"/>
-<view id="org.eclipse.wst.common.snippets.internal.ui.SnippetsView" partName="Snippets"/>
-<view id="com.genuitec.eclipse.ast.deploy.core.serverview" partName="Servers">
-<viewState/>
-</view>
-<view id="org.eclipse.ui.views.PropertySheet" partName="Properties">
-<viewState/>
-</view>
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
-<expanded>
-<category IMemento.internal.id="Warnings"/>
+<expanded>&#x0A;<category IMemento.internal.id="Warnings"/>
 <category IMemento.internal.id="Errors"/>
 </expanded>
 <columnWidths org.eclipse.ui.ide.locationField="0" org.eclipse.ui.ide.markerType="0" org.eclipse.ui.ide.pathField="0" org.eclipse.ui.ide.resourceField="0" org.eclipse.ui.ide.severityAndDescriptionField="0"/>
@@ -103,6 +74,9 @@
 <visible IMemento.internal.id="org.eclipse.ui.ide.locationField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.markerType"/>
 </viewState>
+</view>
+<view id="org.eclipse.ui.console.ConsoleView" partName="Console">
+<viewState/>
 </view>
 <view id="org.eclipse.jdt.ui.PackageExplorer" partName="Package Explorer">
 <viewState group_libraries="1" layout="2" linkWithEditor="0" rootMode="1" workingSetName="">
@@ -134,7 +108,19 @@
 </customFilters>
 </viewState>
 </view>
-<view id="org.eclipse.ui.console.ConsoleView" partName="Console">
+<view id="org.eclipse.ui.views.TaskList" partName="Tasks">
+<viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.completionField" categoryGroup="none" markerContentGenerator="org.eclipse.ui.ide.tasksGenerator" partName="Tasks">
+<columnWidths org.eclipse.ui.ide.completionField="40" org.eclipse.ui.ide.descriptionField="304" org.eclipse.ui.ide.locationField="64" org.eclipse.ui.ide.markerType="94" org.eclipse.ui.ide.pathField="124" org.eclipse.ui.ide.priorityField="20" org.eclipse.ui.ide.resourceField="94"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.completionField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.priorityField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.descriptionField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.resourceField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.pathField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.locationField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.markerType"/>
+</viewState>
+</view>
+<view id="org.eclipse.ui.views.ContentOutline" partName="Outline">
 <viewState/>
 </view>
 <view id="org.eclipse.jdt.ui.SourceView" partName="Declaration">
@@ -249,62 +235,42 @@
 <view id="com.genuitec.eclipse.ui.HTMLView"/>
 <view id="org.eclipse.ui.console.ConsoleView"/>
 <view id="com.genuitec.eclipse.ast.deploy.core.serverview"/>
-<fastViewBars>
-<fastViewBar fastViewLocation="131072" id="org.eclipse.ui.internal.ViewStack@103bf9f" orientation="512" selectedTabId="org.eclipse.ui.views.PropertySheet" style="0">
-<fastViews>
-<view id="org.eclipse.ui.views.PropertySheet" ratio="0.3"/>
+<fastViewBars>&#x0A;<fastViewBar fastViewLocation="131072" id="org.eclipse.ui.internal.ViewStack@103bf9f" orientation="512" selectedTabId="org.eclipse.ui.views.PropertySheet" style="0">&#x0A;<fastViews>&#x0A;<view id="org.eclipse.ui.views.PropertySheet" ratio="0.3"/>
 </fastViews>
 </fastViewBar>
-<fastViewBar fastViewLocation="131072" id="org.eclipse.ui.internal.ViewStack@cf7100" orientation="512" selectedTabId="org.eclipse.ui.views.ContentOutline" style="0">
-<fastViews>
-<view id="org.eclipse.ui.views.ContentOutline" ratio="0.3"/>
+<fastViewBar fastViewLocation="131072" id="org.eclipse.ui.internal.ViewStack@cf7100" orientation="512" selectedTabId="org.eclipse.ui.views.ContentOutline" style="0">&#x0A;<fastViews>&#x0A;<view id="org.eclipse.ui.views.ContentOutline" ratio="0.3"/>
 </fastViews>
 </fastViewBar>
-<fastViewBar fastViewLocation="16384" id="bottomleft" orientation="512" selectedTabId="uky.article.imageviewer.views.ImageView" style="0">
-<fastViews>
-<view id="uky.article.imageviewer.views.ImageView" ratio="0.3"/>
+<fastViewBar fastViewLocation="16384" id="bottomleft" orientation="512" selectedTabId="uky.article.imageviewer.views.ImageView" style="0">&#x0A;<fastViews>&#x0A;<view id="uky.article.imageviewer.views.ImageView" ratio="0.3"/>
 <view id="org.eclipse.wst.common.snippets.internal.ui.SnippetsView" ratio="0.3"/>
 </fastViews>
 </fastViewBar>
 </fastViewBars>
-<layout>
-<mainWindow>
-<info folder="true" part="cvslocation">
-<folder appearance="2" expanded="2">
-<page content="org.eclipse.team.ccvs.ui.RepositoriesView" label="LabelNotFound"/>
+<layout>&#x0A;<mainWindow>&#x0A;<info folder="true" part="cvslocation">&#x0A;<folder appearance="2" expanded="2">&#x0A;<page content="org.eclipse.team.ccvs.ui.RepositoriesView" label="LabelNotFound"/>
 </folder>
 </info>
-<info folder="true" part="stickyFolderRight" ratio="0.7497309" ratioLeft="1393" ratioRight="465" relationship="2" relative="cvslocation">
-<folder appearance="2" expanded="2">
-<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
+<info folder="true" part="stickyFolderRight" ratio="0.7497309" ratioLeft="1393" ratioRight="465" relationship="2" relative="cvslocation">&#x0A;<folder appearance="2" expanded="2">&#x0A;<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
 <page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
 </folder>
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.19299191" ratioLeft="358" ratioRight="1497" relationship="2" relative="cvslocation"/>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@cf7100" ratio="0.74983186" ratioLeft="1115" ratioRight="372" relationship="2" relative="org.eclipse.ui.editorss">
-<folder appearance="2" expanded="2">
-<page content="org.eclipse.ui.views.ContentOutline" label="LabelNotFound"/>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@cf7100" ratio="0.74983186" ratioLeft="1115" ratioRight="372" relationship="2" relative="org.eclipse.ui.editorss">&#x0A;<folder appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.views.ContentOutline" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@103bf9f" ratio="0.54925054" ratioLeft="513" ratioRight="421" relationship="4" relative="org.eclipse.ui.internal.ViewStack@cf7100">
-<folder appearance="2" expanded="2">
-<page content="org.eclipse.ui.views.PropertySheet" label="LabelNotFound"/>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@103bf9f" ratio="0.54925054" ratioLeft="513" ratioRight="421" relationship="4" relative="org.eclipse.ui.internal.ViewStack@cf7100">&#x0A;<folder appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.views.PropertySheet" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
-<info folder="true" part="bottom" ratio="0.4489796" ratioLeft="418" ratioRight="513" relationship="4" relative="org.eclipse.ui.editorss">
-<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
-<page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
+<info folder="true" part="bottom" ratio="0.4489796" ratioLeft="418" ratioRight="513" relationship="4" relative="org.eclipse.ui.editorss">&#x0A;<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
 <page content="org.eclipse.ui.views.TaskList" label="Tasks"/>
 <page content="com.genuitec.eclipse.ui.HTMLView" label="Web Browser"/>
 <page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
 <page content="com.genuitec.eclipse.ast.deploy.core.serverview" label="Servers"/>
 <page content="org.eclipse.search.ui.views.SearchView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.views.BookmarkView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
 <part id="1"/>
 <part id="2"/>
 <part id="3"/>
@@ -312,20 +278,15 @@
 </presentation>
 </folder>
 </info>
-<info folder="true" part="topleft" ratio="0.3993576" ratioLeft="373" ratioRight="561" relationship="4" relative="cvslocation">
-<folder activePageID="org.eclipse.jdt.ui.PackageExplorer" appearance="2" expanded="2">
-<page content="org.eclipse.jdt.ui.PackageExplorer" label="Package Explorer"/>
+<info folder="true" part="topleft" ratio="0.3993576" ratioLeft="373" ratioRight="561" relationship="4" relative="cvslocation">&#x0A;<folder activePageID="org.eclipse.jdt.ui.PackageExplorer" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.jdt.ui.PackageExplorer" label="Package Explorer"/>
 <page content="org.eclipse.jdt.ui.TypeHierarchy" label="Hierarchy"/>
 <page content="org.eclipse.ui.views.ResourceNavigator" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
 <part id="1"/>
 </presentation>
 </folder>
 </info>
-<info folder="true" part="bottomleft" ratio="0.54925054" ratioLeft="513" ratioRight="421" relationship="4" relative="topleft">
-<folder appearance="2" expanded="2">
-<page content="uky.article.imageviewer.views.ImageView" label="LabelNotFound"/>
+<info folder="true" part="bottomleft" ratio="0.54925054" ratioLeft="513" ratioRight="421" relationship="4" relative="topleft">&#x0A;<folder appearance="2" expanded="2">&#x0A;<page content="uky.article.imageviewer.views.ImageView" label="LabelNotFound"/>
 <page content="org.eclipse.wst.common.snippets.internal.ui.SnippetsView" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
@@ -436,13 +397,13 @@
 <perspective_action id="org.eclipse.debug.ui.DebugPerspective"/>
 <perspective_action id="org.eclipse.jdt.ui.JavaBrowsingPerspective"/>
 <hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
-<view id="org.eclipse.jdt.ui.PackageExplorer"/>
-<view id="org.eclipse.jdt.ui.TypeHierarchy"/>
 <view id="org.eclipse.ui.views.ProblemView"/>
 <view id="org.eclipse.jdt.ui.JavadocView"/>
 <view id="org.eclipse.jdt.ui.SourceView"/>
 <view id="org.eclipse.ui.console.ConsoleView"/>
 <view id="org.eclipse.jdt.callhierarchy.view"/>
+<view id="org.eclipse.jdt.ui.PackageExplorer"/>
+<view id="org.eclipse.jdt.ui.TypeHierarchy"/>
 <fastViewBars>
 <fastViewBar fastViewLocation="131072" id="right" orientation="256" selectedTabId="org.eclipse.ui.views.ContentOutline" style="0">
 <fastViews>
@@ -477,8 +438,8 @@
 <page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
 </folder>
 </info>
-<info part="org.eclipse.ui.editorss" ratio="0.2502657" ratioLeft="471" ratioRight="1411" relationship="2" relative="left"/>
-<info folder="true" part="bottom" ratio="0.23308271" ratioLeft="217" ratioRight="714" relationship="4" relative="org.eclipse.ui.editorss">
+<info part="org.eclipse.ui.editorss" ratio="0.18065888" ratioLeft="340" ratioRight="1542" relationship="2" relative="left"/>
+<info folder="true" part="bottom" ratio="0.65843177" ratioLeft="613" ratioRight="318" relationship="4" relative="org.eclipse.ui.editorss">
 <folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
 <page content="org.eclipse.jdt.ui.JavadocView" label="Javadoc"/>
@@ -517,177 +478,13 @@
 </perspective>
 </perspectives>
 <workingSets/>
-<navigationHistory>
-<editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/CadalRec/src/cn/cadal/rec/algo/descsimilar/TextSimilarity.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/CadalRec/src/cn/cadal/rec/tryJava/TextSimilarity.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/CadalRec/src/cn/cadal/rec/tryJava/ShinglingTry.java"/>
-<editor factoryID="org.eclipse.jdt.ui.ClassFileEditorInputFactory" id="org.eclipse.jdt.ui.ClassFileEditor" org.eclipse.jdt.ui.ClassFileIdentifier="=CadalRec/D:\/MyEclipse 8.5\/Common\/binary\/com.sun.java.jdk.win32.x86_1.6.0.013\/jre\/lib\/rt.jar&lt;java.lang(Character.class"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/CadalRec/src/cn/cadal/rec/algo/utilize/optimize/DistanceCal.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/CadalRec/src/cn/cadal/rec/algo/utilize/optimize/RemoveAbnormal.java"/>
-</editors>
-<item historyLabel="TextSimilarity.java" index="0">
-<position/>
-</item>
-<item historyLabel="ShinglingTry.java" index="2">
-<position info="not_deleted" x="1691" y="0"/>
-</item>
-<item historyLabel="TextSimilarity.java" index="0">
-<position/>
-</item>
-<item historyLabel="TextSimilarity.java" index="0">
-<position/>
-</item>
-<item historyLabel="ShinglingTry.java" index="2">
-<position info="not_deleted" x="1691" y="0"/>
-</item>
-<item historyLabel="TextSimilarity.java" index="0">
-<position/>
-</item>
-<item historyLabel="TextSimilarity.java" index="0">
-<position/>
-</item>
-<item historyLabel="TextSimilarity.java" index="0">
-<position/>
-</item>
-<item historyLabel="TextSimilarity.java" index="0">
-<position/>
-</item>
-<item historyLabel="TextSimilarity.java" index="0">
-<position/>
-</item>
-<item historyLabel="TextSimilarity.java" index="0">
-<position/>
-</item>
-<item historyLabel="TextSimilarity.java" index="0">
-<position/>
-</item>
-<item historyLabel="Character.class" index="3">
-<position info="not_deleted" x="186230" y="11"/>
-</item>
-<item historyLabel="TextSimilarity.java" index="0">
-<position/>
-</item>
-<item historyLabel="TextSimilarity.java" index="1">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="TextSimilarity.java" index="0">
-<position/>
-</item>
-<item historyLabel="ShinglingTry.java" index="2">
-<position info="not_deleted" x="1691" y="0"/>
-</item>
-<item historyLabel="TextSimilarity.java" index="0">
-<position/>
-</item>
-<item historyLabel="DistanceCal.java" index="4">
-<position/>
-</item>
-<item historyLabel="TextSimilarity.java" index="0">
-<position/>
-</item>
-<item historyLabel="DistanceCal.java" index="4">
-<position/>
-</item>
-<item historyLabel="TextSimilarity.java" index="0">
-<position/>
-</item>
-<item historyLabel="TextSimilarity.java" index="0">
-<position/>
-</item>
-<item historyLabel="TextSimilarity.java" index="0">
-<position/>
-</item>
-<item historyLabel="DistanceCal.java" index="4">
-<position/>
-</item>
-<item historyLabel="RemoveAbnormal.java" index="5">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="RemoveAbnormal.java" index="5">
-<position info="not_deleted" x="5394" y="0"/>
-</item>
-<item historyLabel="DistanceCal.java" index="4">
-<position/>
-</item>
-<item historyLabel="RemoveAbnormal.java" index="5">
-<position info="not_deleted" x="2916" y="0"/>
-</item>
-<item historyLabel="DistanceCal.java" index="4">
-<position/>
-</item>
-<item historyLabel="RemoveAbnormal.java" index="5">
-<position info="not_deleted" x="4671" y="0"/>
-</item>
-<item historyLabel="DistanceCal.java" index="4">
-<position/>
-</item>
-<item historyLabel="RemoveAbnormal.java" index="5">
-<position info="not_deleted" x="4671" y="0"/>
-</item>
-<item historyLabel="DistanceCal.java" index="4">
-<position/>
-</item>
-<item historyLabel="RemoveAbnormal.java" index="5">
-<position info="not_deleted" x="4659" y="0"/>
-</item>
-<item historyLabel="DistanceCal.java" index="4">
-<position/>
-</item>
-<item historyLabel="RemoveAbnormal.java" index="5">
-<position info="not_deleted" x="4340" y="0"/>
-</item>
-<item historyLabel="DistanceCal.java" index="4">
-<position/>
-</item>
-<item historyLabel="RemoveAbnormal.java" index="5">
-<position info="not_deleted" x="4340" y="0"/>
-</item>
-<item historyLabel="DistanceCal.java" index="4">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="RemoveAbnormal.java" index="5">
-<position info="not_deleted" x="4340" y="0"/>
-</item>
-<item historyLabel="TextSimilarity.java" index="0">
-<position info="not_deleted" x="3679" y="225"/>
-</item>
-<item historyLabel="RemoveAbnormal.java" index="5">
-<position info="not_deleted" x="4340" y="0"/>
-</item>
-<item historyLabel="RemoveAbnormal.java" index="5">
-<position info="not_deleted" x="4161" y="0"/>
-</item>
-<item historyLabel="RemoveAbnormal.java" index="5">
-<position/>
-</item>
-<item historyLabel="RemoveAbnormal.java" index="5">
-<position/>
-</item>
-<item historyLabel="RemoveAbnormal.java" index="5">
-<position/>
-</item>
-<item historyLabel="RemoveAbnormal.java" index="5">
-<position info="not_deleted" x="5520" y="0"/>
-</item>
-<item historyLabel="TextSimilarity.java" index="0">
-<position info="not_deleted" x="3425" y="0"/>
-</item>
-<item active="true" historyLabel="RemoveAbnormal.java" index="5">
-<position info="not_deleted" x="5520" y="0"/>
-</item>
-</navigationHistory>
+<navigationHistory/>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
 </page>
 <workbenchWindowAdvisor/>
 <actionBarAdvisor/>
 <trimLayout>
-<trimArea IMemento.internal.id="16384">
-<trimItem IMemento.internal.id="bottomleft"/>
-</trimArea>
 <trimArea IMemento.internal.id="131072">
-<trimItem IMemento.internal.id="org.eclipse.ui.internal.ViewStack@cf7100"/>
-<trimItem IMemento.internal.id="org.eclipse.ui.internal.ViewStack@103bf9f"/>
 <trimItem IMemento.internal.id="right"/>
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.ViewStack@108beb8"/>
 </trimArea>
@@ -702,50 +499,50 @@
 </trimLayout>
 </window>
 <mruList>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TextSimilarity.java" tooltip="CadalRec/src/cn/cadal/rec/algo/descsimilar/TextSimilarity.java">
-<persistable path="/CadalRec/src/cn/cadal/rec/algo/descsimilar/TextSimilarity.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.jboss.tools.common.propertieseditor.PropertiesCompoundEditor" name="priori.properties" tooltip="CadalRec/priori.properties">
+<persistable path="/CadalRec/priori.properties"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DistanceCal.java" tooltip="CadalRec/src/cn/cadal/rec/algo/utilize/optimize/DistanceCal.java">
-<persistable path="/CadalRec/src/cn/cadal/rec/algo/utilize/optimize/DistanceCal.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="MANIFEST.MF" tooltip="CadalRecOnline/MANIFEST.MF">
+<persistable path="/CadalRecOnline/MANIFEST.MF"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="RemoveAbnormal.java" tooltip="CadalRec/src/cn/cadal/rec/algo/utilize/optimize/RemoveAbnormal.java">
-<persistable path="/CadalRec/src/cn/cadal/rec/algo/utilize/optimize/RemoveAbnormal.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" name="ds.config.xml" tooltip="CadalRecOnline/ds.config.xml">
+<persistable path="/CadalRecOnline/ds.config.xml"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TextSimilarity.java" tooltip="CadalRec/src/cn/cadal/rec/tryJava/TextSimilarity.java">
-<persistable path="/CadalRec/src/cn/cadal/rec/tryJava/TextSimilarity.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DBAgent.java" tooltip="CadalRecOnline/src/cn/cadal/rec/ol/dao/DBAgent.java">
+<persistable path="/CadalRecOnline/src/cn/cadal/rec/ol/dao/DBAgent.java"/>
 </file>
-<file factoryID="org.eclipse.jdt.ui.ClassFileEditorInputFactory" id="org.eclipse.jdt.ui.ClassFileEditor" name="Character.class" tooltip="java.lang.Character">
-<persistable org.eclipse.jdt.ui.ClassFileIdentifier="=CadalRec/D:\/MyEclipse 8.5\/Common\/binary\/com.sun.java.jdk.win32.x86_1.6.0.013\/jre\/lib\/rt.jar&lt;java.lang(Character.class"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ParseDSConfig.java" tooltip="CadalRecOnline/src/cn/cadal/rec/ol/dao/ParseDSConfig.java">
+<persistable path="/CadalRecOnline/src/cn/cadal/rec/ol/dao/ParseDSConfig.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ShinglingTry.java" tooltip="CadalRec/src/cn/cadal/rec/tryJava/ShinglingTry.java">
-<persistable path="/CadalRec/src/cn/cadal/rec/tryJava/ShinglingTry.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="SQLSet.java" tooltip="CadalRecOnline/src/cn/cadal/rec/ol/dao/SQLSet.java">
+<persistable path="/CadalRecOnline/src/cn/cadal/rec/ol/dao/SQLSet.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ColdStartByTags.java" tooltip="CadalRec/src/cn/cadal/rec/algo/utilze/coldstart/ColdStartByTags.java">
-<persistable path="/CadalRec/src/cn/cadal/rec/algo/utilze/coldstart/ColdStartByTags.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DBConnectionPool.java" tooltip="CadalRecOnline/src/cn/cadal/rec/ol/dao/DBConnectionPool.java">
+<persistable path="/CadalRecOnline/src/cn/cadal/rec/ol/dao/DBConnectionPool.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="RemoveDuplicate.java" tooltip="CadalRec/src/cn/cadal/rec/algo/utilize/optimize/RemoveDuplicate.java">
-<persistable path="/CadalRec/src/cn/cadal/rec/algo/utilize/optimize/RemoveDuplicate.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DBConnectionManager.java" tooltip="CadalRecOnline/src/cn/cadal/rec/ol/dao/DBConnectionManager.java">
+<persistable path="/CadalRecOnline/src/cn/cadal/rec/ol/dao/DBConnectionManager.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="RecommendItemCF.java" tooltip="CadalRecDemo/src/cn/cadal/rec/itemcf/RecommendItemCF.java">
-<persistable path="/CadalRecDemo/src/cn/cadal/rec/itemcf/RecommendItemCF.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CassandraOp.java" tooltip="CadalSec/src/cn/cadal/sec/storm/bolt/cassandra/CassandraOp.java">
+<persistable path="/CadalSec/src/cn/cadal/sec/storm/bolt/cassandra/CassandraOp.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="AmazonItemCF.java" tooltip="CadalRec/src/cn/cadal/rec/algo/itemcf/AmazonItemCF.java">
-<persistable path="/CadalRec/src/cn/cadal/rec/algo/itemcf/AmazonItemCF.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="RecServer.java" tooltip="CadalRecOnline/src/cn/cadal/rec/ol/thrift/server/RecServer.java">
+<persistable path="/CadalRecOnline/src/cn/cadal/rec/ol/thrift/server/RecServer.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Itemset.java" tooltip="CadalRec/src/cn/cadal/rec/algo/itemcf/Itemset.java">
-<persistable path="/CadalRec/src/cn/cadal/rec/algo/itemcf/Itemset.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="AssistImplement.java" tooltip="CadalRecOnline/src/cn/cadal/rec/ol/api/AssistImplement.java">
+<persistable path="/CadalRecOnline/src/cn/cadal/rec/ol/api/AssistImplement.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Search.java" tooltip="AudioSearch/src/cn/cadal/audio/search/Search.java">
-<persistable path="/AudioSearch/src/cn/cadal/audio/search/Search.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="AlgoFreqItem.java" tooltip="CadalRecOnline/src/cn/cadal/rec/ol/algo/AlgoFreqItem.java">
+<persistable path="/CadalRecOnline/src/cn/cadal/rec/ol/algo/AlgoFreqItem.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="GetMetadata.java" tooltip="AudioSearch/src/cn/cadal/audio/index/GetMetadata.java">
-<persistable path="/AudioSearch/src/cn/cadal/audio/index/GetMetadata.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="RemoveDuplicate.java" tooltip="CadalRecOnline/src/cn/cadal/rec/ol/optimize/RemoveDuplicate.java">
+<persistable path="/CadalRecOnline/src/cn/cadal/rec/ol/optimize/RemoveDuplicate.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="QueryInfoFromPg.java" tooltip="CadalRec/src/cn/cadal/rec/common/QueryInfoFromPg.java">
-<persistable path="/CadalRec/src/cn/cadal/rec/common/QueryInfoFromPg.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="AlgoUserCF.java" tooltip="CadalRecOnline/src/cn/cadal/rec/ol/algo/AlgoUserCF.java">
+<persistable path="/CadalRecOnline/src/cn/cadal/rec/ol/algo/AlgoUserCF.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Book.java" tooltip="CadalRec/src/cn/cadal/rec/common/Book.java">
-<persistable path="/CadalRec/src/cn/cadal/rec/common/Book.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="RecEditOp.java" tooltip="CadalRecOnline/src/cn/cadal/rec/ol/edit/RecEditOp.java">
+<persistable path="/CadalRecOnline/src/cn/cadal/rec/ol/edit/RecEditOp.java"/>
 </file>
 </mruList>
 </workbench>

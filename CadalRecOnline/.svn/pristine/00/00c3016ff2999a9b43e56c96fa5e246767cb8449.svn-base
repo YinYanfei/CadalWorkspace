@@ -1,0 +1,215 @@
+package cn.cadal.rec.ol.api;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import cn.cadal.rec.ol.algo.AlgoFreqItem;
+import cn.cadal.rec.ol.algo.AlgoItemCF;
+import cn.cadal.rec.ol.algo.AlgoTags;
+import cn.cadal.rec.ol.algo.AlgoUserCF;
+import cn.cadal.rec.ol.algo.RecAlgo;
+import cn.cadal.rec.ol.common.Book;
+import cn.cadal.rec.ol.common.BookInfo;
+import cn.cadal.rec.ol.common.User;
+import cn.cadal.rec.ol.common.UserInfo;
+
+public class RecImplement implements RecInterface {
+	private String DBName = "cadalrectest-77";
+	
+	private AlgoFreqItem algoFreqItem = null;
+	private AlgoItemCF algoItemCF = null;
+	private AlgoUserCF algoUserCF = null;
+	private AlgoTags algoTags = null;
+	
+	private BookInfo bookInfo = null;
+	private UserInfo userInfo = null;
+	
+	/**
+	 * Construct functions
+	 */
+	public RecImplement(){
+		this.algoFreqItem = new AlgoFreqItem(this.DBName);
+		this.algoItemCF = new AlgoItemCF(this.DBName);
+		this.algoUserCF = new AlgoUserCF(this.DBName);
+		this.algoTags = new AlgoTags(this.DBName);
+		
+		this.bookInfo = new BookInfo(this.DBName);
+		this.userInfo = new UserInfo(this.DBName);
+	}
+	public RecImplement(String dbname) {
+		this.DBName = dbname;
+		this.algoFreqItem = new AlgoFreqItem(dbname);
+		this.algoItemCF = new AlgoItemCF(dbname);
+		this.algoUserCF = new AlgoUserCF(dbname);
+		this.algoTags = new AlgoTags(dbname);
+		
+		this.bookInfo = new BookInfo(dbname);
+		this.userInfo = new UserInfo(dbname);
+	}
+
+	/**
+	 * API - Recommendation books by a single bookid
+	 * 
+	 * @param bookid
+	 * 				bookid, String type
+	 * @return List of book, Book object 
+	 */
+	@Override
+	public List<Book> RecBookByBook(String bookid) {
+		List<String> listBookidRes = new ArrayList<String>();
+		
+		listBookidRes = this.algoFreqItem.RecBook(bookid);
+		listBookidRes.addAll(this.algoItemCF.RecBook(bookid));
+		listBookidRes.addAll(this.algoTags.RecTags(bookid));
+		
+		System.out.println(listBookidRes.size());
+		
+		return null;
+	}
+
+	/**
+	 * 
+	 * 
+	 * @param userName
+	 * 
+	 * @return 
+	 */
+	@Override
+	public List<Book> RecBookByUserName(String userName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/**
+	 * 
+	 * @param listTags
+	 * @return 
+	 */
+	@Override
+	public List<Book> RecBookByUserTags(List<String> listTags) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/**
+	 * 
+	 * 
+	 * @param bookid
+	 * @return 
+	 */
+	@Override
+	public List<String> RecTagsByBook(String bookid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/**
+	 * 
+	 * @param userName
+	 * @return
+	 */
+	@Override
+	public List<String> RecTagsByUserName(String userName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/**
+	 * 
+	 * @param listTags
+	 * @return 
+	 */
+	@Override
+	public List<String> RecTagsByUserTags(List<String> listTags) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/**
+	 * 
+	 * @param bookid
+	 * @return
+	 */
+	@Override
+	public List<User> RecUserByBook(String bookid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/**
+	 * 
+	 * @param userName
+	 * @return
+	 */
+	@Override
+	public List<User> RecUserByUserName(String userName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/**
+	 * 
+	 * @param listTags
+	 * @return
+	 */
+	@Override
+	public List<User> RecUserByUserTags(List<String> listTags) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// Analyze and Test
+
+	}
+	
+	/**
+	 * Getter and Setter
+	 */
+	public String getDBName() {
+		return DBName;
+	}
+	public RecAlgo getAlgoFreqItem() {
+		return algoFreqItem;
+	}
+	public RecAlgo getAlgoItemCF() {
+		return algoItemCF;
+	}
+	public RecAlgo getAlgoUserCF() {
+		return algoUserCF;
+	}
+	public RecAlgo getAlgoTags() {
+		return algoTags;
+	}
+	public void setDBName(String dBName) {
+		DBName = dBName;
+	}
+	public void setAlgoFreqItem(AlgoFreqItem algoFreqItem) {
+		this.algoFreqItem = algoFreqItem;
+	}
+	public void setAlgoItemCF(AlgoItemCF algoItemCF) {
+		this.algoItemCF = algoItemCF;
+	}
+	public void setAlgoUserCF(AlgoUserCF algoUserCF) {
+		this.algoUserCF = algoUserCF;
+	}
+	public void setAlgoTags(AlgoTags algoTags) {
+		this.algoTags = algoTags;
+	}
+	public BookInfo getBookInfo() {
+		return bookInfo;
+	}
+	public UserInfo getUserInfo() {
+		return userInfo;
+	}
+	public void setBookInfo(BookInfo bookInfo) {
+		this.bookInfo = bookInfo;
+	}
+	public void setUserInfo(UserInfo userInfo) {
+		this.userInfo = userInfo;
+	}
+}

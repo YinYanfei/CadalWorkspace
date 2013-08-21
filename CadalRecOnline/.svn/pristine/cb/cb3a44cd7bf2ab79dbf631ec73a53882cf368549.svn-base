@@ -1,0 +1,25 @@
+package cn.cadal.rec.ol.qa;
+
+public class SQLSetQA {
+
+	/*
+	 * 
+	 */
+	public static String INSERT_REC_RESULT = "INSERT INTO R_RESULT(user_no, time) VALUES(?, ?);";
+
+	/*
+	 * 
+	 */
+	public static String QUERY_MAX_REC_RESULT_ID = "SELECT MAX(rec_result_id) FROM R_RESULT WHERE user_no = ?;";
+	
+	/*
+	 * 
+	 */
+	public static String INSERT_REC_RESULT_DETAIL = "INSERT INTO R_RESULT_DETAIL(rec_result_id, book_id, display) VALUES(?, ?, ?);";
+	
+	/*
+	 * 
+	 */
+	public static String QUERY_EDIT_REC = "SELECT book_id FROM R_EDIT WHERE edit_date = ? AND edit_type = ?;";
+	
+}

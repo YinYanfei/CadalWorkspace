@@ -1,0 +1,13 @@
+package cn.cadal.rec.ol.algo;
+
+public class RecFreqItem extends AbstractRecAlgo{
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

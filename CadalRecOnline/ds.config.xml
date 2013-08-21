@@ -1,0 +1,31 @@
+<ds-config>
+	<pool>
+		<type>mysql</type>
+		<name>cadalrectest-75</name>
+		<driver>com.mysql.jdbc.Driver</driver>
+		<url>jdbc:mysql://10.15.62.75:3306/cadalrectest</url>
+		<username>Yanfei</username>
+		<password>Yanfei</password>
+		<maxconn>100</maxconn>
+	</pool>
+
+	<pool>
+		<type>mysql</type>
+		<name>cadalrectest-76</name>
+		<driver>com.mysql.jdbc.Driver</driver>
+		<url>jdbc:mysql://10.15.62.76:3306/cadalrectest</url>
+		<username>Yanfei</username>
+		<password>Yanfei</password>
+		<maxconn>100</maxconn>
+	</pool>
+
+	<pool>
+		<type>mysql</type>
+		<name>cadalrectest-77</name>
+		<driver>com.mysql.jdbc.Driver</driver>
+		<url>jdbc:mysql://10.15.62.77:3306/cadalrectest</url>
+		<username>Yanfei</username>
+		<password>Yanfei</password>
+		<maxconn>100</maxconn>
+	</pool>
+</ds-config>

@@ -1,0 +1,11 @@
+<ds-config>
+<pool>
+<type>mysql</type>
+<name>cadalrectest</name>
+<driver>com.mysql.jdbc.Driver</driver>
+<url>jdbc:mysql://10.15.62.75:3306/cadalrectest</url>
+<username>Yanfei</username>
+<password>Yanfei</password>
+<maxconn>100</maxconn>
+</pool>
+</ds-config>

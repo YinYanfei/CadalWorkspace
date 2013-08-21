@@ -1,0 +1,42 @@
+package cn.cadal.rec.ol.algo;
+
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+import cn.cadal.rec.ol.common.Book;
+import cn.cadal.rec.ol.dao.DBAgent;
+
+public class RecFreqItem extends AbstractRecAlgo{
+
+	public static void main(String[] args) {
+		//for test
+	}
+
+	/**
+	 * freqitem
+	 * 
+	 * @param bookno
+	 * @return
+	 */
+	public List<Book> getRecbyFreqitem(int bookno) {
+		List<Integer> recList = new ArrayList<Integer>();
+		String sql = "select * from  A_FREQ_ITEM where item_no_1=" + bookno;
+		String sql2 = "select * from A_FREQ_ITEM where item_no_2=" + bookno;
+		try {
+			ResultSet rs = DBAgent.query(sql);
+			while (rs.next()) {
+				int bookidsecond = Integer.parseInt(rs.getString("item_no_2"));
+				recList.add(bookidsecond);
+			}
+			ResultSet rs2 = DBAgent.query(sql2);
+			while (rs2.next()) {
+				int bookidsecond = Integer.parseInt(rs2.getString("item_no_1"));
+				recList.add(bookidsecond);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return getBookInfoByBookNo(recList);
+	}
+}

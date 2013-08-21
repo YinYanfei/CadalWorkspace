@@ -1,0 +1,17 @@
+package cn.cadal.rec.ol.algoext;
+
+public class AlgoFreqItem extends RecAlgo {
+
+	public AlgoFreqItem() {
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -1,0 +1,399 @@
+package cn.cadal.rec.ol.api;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import cn.cadal.rec.ol.algo.AlgoFreqItem;
+import cn.cadal.rec.ol.algo.AlgoItemCF;
+import cn.cadal.rec.ol.algo.AlgoTags;
+import cn.cadal.rec.ol.algo.AlgoUserCF;
+import cn.cadal.rec.ol.algo.RecAlgo;
+import cn.cadal.rec.ol.common.Book;
+import cn.cadal.rec.ol.common.BookInfo;
+import cn.cadal.rec.ol.common.User;
+import cn.cadal.rec.ol.common.UserInfo;
+import cn.cadal.rec.ol.optimize.RemoveAbnormal;
+import cn.cadal.rec.ol.optimize.RemoveDuplicate;
+import cn.cadal.rec.ol.optimize.UserRelated;
+
+public class RecImplement implements RecInterface {
+	private String DBName = "cadalrectest-77";
+	
+	private AlgoFreqItem algoFreqItem = null;
+	private AlgoItemCF algoItemCF = null;
+	private AlgoUserCF algoUserCF = null;
+	private AlgoTags algoTags = null;
+	
+	private BookInfo bookInfo = null;
+	private UserInfo userInfo = null;
+	
+	private RemoveDuplicate removeDuplicate = null;
+	private RemoveAbnormal removeAbnoraml = null;
+	private UserRelated userRelated = null;
+	
+	/**
+	 * Construct functions
+	 */
+	public RecImplement(){
+		this.algoFreqItem = new AlgoFreqItem(this.DBName);
+		this.algoItemCF = new AlgoItemCF(this.DBName);
+		this.algoUserCF = new AlgoUserCF(this.DBName);
+		this.algoTags = new AlgoTags(this.DBName);
+		
+		this.bookInfo = new BookInfo(this.DBName);
+		this.userInfo = new UserInfo(this.DBName);
+		
+		this.removeDuplicate = new RemoveDuplicate();
+		this.removeAbnoraml  = new RemoveAbnormal();
+		this.userRelated     = new UserRelated(this.DBName);
+	}
+	public RecImplement(String dbname) {
+		this.DBName = dbname;
+		this.algoFreqItem = new AlgoFreqItem(dbname);
+		this.algoItemCF = new AlgoItemCF(dbname);
+		this.algoUserCF = new AlgoUserCF(dbname);
+		this.algoTags = new AlgoTags(dbname);
+		
+		this.bookInfo = new BookInfo(dbname);
+		this.userInfo = new UserInfo(dbname);
+		
+		this.removeDuplicate = new RemoveDuplicate();
+		this.removeAbnoraml  = new RemoveAbnormal();
+		this.userRelated     = new UserRelated(dbname);
+	}
+
+	/***********************************************************
+	** Book Recommendation                                    **
+	***********************************************************/
+	
+	/**
+	 * API - Recommendation books by a single bookid
+	 * 
+	 * @param bookid
+	 * 				bookid, String type
+	 * @return List of book, Book object 
+	 */
+	@Override
+	public List<Book> RecBookByBook(String bookid) {
+		try{
+			List<String> listBookidRes = new ArrayList<String>();
+			List<Book> listBookRes = new ArrayList<Book>();
+			
+			// FreqItem
+			listBookidRes = this.algoFreqItem.RecBook(bookid);
+			// ItemCF
+			listBookidRes.addAll(this.algoItemCF.RecBook(bookid));
+			// Tags
+			List<String> tagList = this.algoTags.RecTags(bookid);
+			listBookidRes.addAll(this.algoTags.RecBook(tagList));
+			
+			listBookRes = this.bookInfo.ObtainListBookInfoByListID(listBookidRes);
+			
+			return this.OptimizeOP(listBookRes);
+		}catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	/**
+	 * API - Recommendation books by user's name
+	 * 
+	 * @param userName
+	 * 				user's name
+	 * @return list of Book object
+	 */
+	@Override
+	public List<Book> RecBookByUserName(String userName) {
+		try{			
+			List<String> listBookidRes = new ArrayList<String>();
+			
+			List<String> listBookid = this.userRelated.ObtainUserReadedBook(userName);
+			List<String> listTags   = this.algoTags.RecTags(listBookid);
+			List<String> listUsers  = this.algoUserCF.RecUser(userName);
+
+			/*
+			 * 下面的这四个算法的使用以及流程上都没有问题，不过有三个地方需要做一些事情：
+			 * 		-- 算法返回的结果太多，而且没有经过排序，这里抽取出来了一部分，不过不可解释
+			 * 		-- 算法的速度太慢，应该做一些优化，实际上和上面的这一条有些关系
+			 * 		-- 上面的listTags是在RecTags函数返回的结果，实际上应该从DB中U_EXT相关表中得到，这个还没有具体的方法做到了这一点
+			 */
+			
+			// FreqItem
+			listBookidRes = this.algoFreqItem.RecBook(listBookid);
+			
+			// ItemCF
+			listBookidRes.addAll(this.algoItemCF.RecBook(listBookid).subList(0, 200));
+			
+			// Tags
+			listBookidRes.addAll(this.algoTags.RecBook(listTags.subList(0, 5)));
+			
+			// UserCF
+			listBookidRes.addAll(this.userRelated.ObtainUserReadedBook(listUsers.subList(0, 5)));
+			
+			// Get Book objects
+			List<Book> listBook = this.bookInfo.ObtainListBookInfoByListID(listBookidRes);
+			
+			return this.OptimizeOP(userName, listBook);
+		}catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	/**
+	 * API - Recommendation books by a list of tags
+	 * 
+	 * @param listTags
+	 * 				list of tags(user interests)
+	 * @return list of Book object
+	 */
+	@Override
+	public List<Book> RecBookByUserTags(List<String> listTags) {
+		try{
+			List<String> listBookidRes = new ArrayList<String>();
+			
+			// 这里只使用了一种推荐的算法，实际上可以有多个，具体以后再说
+			listBookidRes = this.algoTags.RecBook(listTags);
+			
+			List<Book> listBook = this.bookInfo.ObtainListBookInfoByListID(listBookidRes);
+			
+			return this.OptimizeOP(listBook);
+		}catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	/**
+	 * Optimize operator - remove abnormal, duplicate
+	 * 
+	 * @param listBook
+	 * 				list of book object
+	 * @return		list of book optimized
+	 */
+	private List<Book> OptimizeOP(List<Book> listBook) {
+		List<Book> listBookRes = new ArrayList<Book>();
+		
+		listBookRes = this.removeDuplicate.RemoveDupFunc(listBook);
+		listBookRes = this.removeAbnoraml.CalScoreForEachBookByAverageScore(listBookRes);
+		
+		return listBookRes;
+	}
+	
+	/**
+	 * Optimize operator - remove abnormal, duplicate and user read history
+	 * 
+	 * @param username
+	 * 				user name
+	 * @param listBook
+	 * 				list of book object
+	 * @return		list of book object optimized
+	 */
+	private List<Book> OptimizeOP(String username, List<Book> listBook) {
+		List<Book> listBookRes = new ArrayList<Book>();
+		
+		listBookRes = this.removeDuplicate.RemoveDupFunc(listBook);
+		listBookRes = this.removeAbnoraml.CalScoreForEachBookByAverageScore(listBookRes);
+		
+		return this.userRelated.CheckBookByUserHistory(username, listBookRes);
+	}
+
+	/***********************************************************
+	** Tags Recommendation                                    **
+	***********************************************************/
+	
+	/**
+	 * API - Recommendation tags by book-id
+	 * 
+	 * @param bookid
+	 * 				book-id
+	 * @return 		list of tag-names
+	 */
+	@Override
+	public List<String> RecTagsByBook(String bookid) {
+		try{
+			List<String> listBookid = this.algoItemCF.RecBook(bookid);
+			List<String> listTagsRes = new ArrayList<String>();
+			
+			listTagsRes.addAll(this.algoTags.RecTags(bookid));		// for the single book-id
+			listTagsRes.addAll(this.algoTags.RecTags(listBookid));	// for list of book-id which are recommended
+			
+			return listTagsRes;
+		}catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	/**
+	 * API - Recommendation tags by user-name
+	 * 
+	 * @param userName
+	 * 				user's name
+	 * @return		list of tag-names
+	 */
+	@Override
+	public List<String> RecTagsByUserName(String userName) {
+		try{
+			List<String> listTagsRes = new ArrayList<String>();
+			
+//			List<String> listUserInterest = new ArrayList<String>();				// 用户的兴趣这个地方现在还没有具体的实现，主要是在数据库
+			List<String> listBookid = this.userRelated.ObtainUserReadedBook(userName);
+			
+//			listTagsRes.addAll(this.algoTags.RecTagsByUserInterest(listUserInterest));
+			listTagsRes.addAll(this.algoTags.RecTags(listBookid));
+			
+			return listTagsRes;
+		}catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	/**
+	 * API - Recommendation tags by list of tags
+	 * 
+	 * @param listTags
+	 * 				We see this tags as user-interests
+	 * @return 		list of tag-names
+	 */
+	@Override
+	public List<String> RecTagsByUserTags(List<String> listTags) {
+		return this.algoTags.RecTagsByUserInterest(listTags);		// 这里只是简简单单的这样得到了结果，可以进行拓展
+	}
+
+	/***********************************************************
+	** User Recommendation                                    **
+	***********************************************************/
+	
+	/**
+	 * API - Recommendation users by a single book-id
+	 * 
+	 * @param bookid
+	 * 				book-id
+	 * @return		list of User object
+	 */
+	@Override
+	public List<User> RecUserByBook(String bookid) {
+		int SIZE = 50;
+		List<String> listUserName = new ArrayList<String>();
+
+		try{
+			UserInfo userInfo = new UserInfo(this.DBName);
+			UserRelated userRelated = new UserRelated(this.DBName);
+			
+			List<String> listBookidSim = this.algoItemCF.RecBook(bookid);		// similar book, which is used to find more user
+			if(listBookidSim.size() > 10) {
+				listBookidSim = listBookidSim.subList(0, 10);
+			}
+			
+			System.out.println(listBookidSim.size());
+			
+			listUserName.addAll(userRelated.ObtainUserNameByBookid(bookid));
+			if(listUserName.size() < SIZE) {
+				listUserName.addAll(userRelated.ObtainUserNameByListBookid(listBookidSim));
+			}
+			
+			return userInfo.ObtainListUserInfoByListName(listUserName);
+		}catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	/**
+	 * API - Recommendation users by a single user name
+	 * 
+	 * @param userName
+	 * 				user's name
+	 * @return		list of User object
+	 */
+	@Override
+	public List<User> RecUserByUserName(String userName) {
+		List<String> listUserName = this.algoUserCF.RecUser(userName);
+		UserInfo userInfo = new UserInfo(this.DBName);
+		
+		return userInfo.ObtainListUserInfoByListName(listUserName);
+	}
+
+	/**
+	 * API - Recommendation users by a list of tags
+	 * 
+	 * @param listTags
+	 * 				list of tag name
+	 * @return		list of User object
+	 */
+	@Override
+	public List<User> RecUserByUserTags(List<String> listTags) {
+		
+		// 这个方法现在还不能够支持
+		
+		return null;
+	}
+	
+	/**
+	 * Getter and Setter
+	 */
+	public String getDBName() {
+		return DBName;
+	}
+	public RecAlgo getAlgoFreqItem() {
+		return algoFreqItem;
+	}
+	public RecAlgo getAlgoItemCF() {
+		return algoItemCF;
+	}
+	public RecAlgo getAlgoUserCF() {
+		return algoUserCF;
+	}
+	public RecAlgo getAlgoTags() {
+		return algoTags;
+	}
+	public void setDBName(String dBName) {
+		DBName = dBName;
+	}
+	public void setAlgoFreqItem(AlgoFreqItem algoFreqItem) {
+		this.algoFreqItem = algoFreqItem;
+	}
+	public void setAlgoItemCF(AlgoItemCF algoItemCF) {
+		this.algoItemCF = algoItemCF;
+	}
+	public void setAlgoUserCF(AlgoUserCF algoUserCF) {
+		this.algoUserCF = algoUserCF;
+	}
+	public void setAlgoTags(AlgoTags algoTags) {
+		this.algoTags = algoTags;
+	}
+	public BookInfo getBookInfo() {
+		return bookInfo;
+	}
+	public UserInfo getUserInfo() {
+		return userInfo;
+	}
+	public void setBookInfo(BookInfo bookInfo) {
+		this.bookInfo = bookInfo;
+	}
+	public void setUserInfo(UserInfo userInfo) {
+		this.userInfo = userInfo;
+	}
+	public RemoveDuplicate getRemoveDuplicate() {
+		return removeDuplicate;
+	}
+	public RemoveAbnormal getRemoveAbnoraml() {
+		return removeAbnoraml;
+	}
+	public UserRelated getUserRelated() {
+		return userRelated;
+	}
+	public void setRemoveDuplicate(RemoveDuplicate removeDuplicate) {
+		this.removeDuplicate = removeDuplicate;
+	}
+	public void setRemoveAbnoraml(RemoveAbnormal removeAbnoraml) {
+		this.removeAbnoraml = removeAbnoraml;
+	}
+	public void setUserRelated(UserRelated userRelated) {
+		this.userRelated = userRelated;
+	}
+	
+}

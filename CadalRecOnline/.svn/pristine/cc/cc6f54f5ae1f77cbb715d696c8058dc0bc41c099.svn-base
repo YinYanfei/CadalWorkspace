@@ -1,0 +1,78 @@
+package cn.cadal.rec.ol.common;
+
+import java.util.List;
+
+public class BookInfo {
+
+	// ... for db op
+	
+	/**
+	 * Construct function
+	 */
+	public BookInfo(){}
+//	public BookInfo(...){
+//		
+//	}
+	
+	/**
+	 * To obtain information for a single book by the no of it
+	 * 
+	 * @param bookno
+	 * 				no integer for book
+	 * @return
+	 * 				object book
+	 */
+	public Book ObtainSingleBookInfoByNO(int bookno) {
+		
+		return null;
+	}
+	
+	/**
+	 * To obtain information for a single book by the id of it
+	 * 
+	 * @param bookid
+	 * 				id string for book
+	 * @return
+	 * 				object book
+	 */
+	public Book ObtainSingleBookInfoByID(String bookid) {
+		
+		return null;
+	}
+	
+	/**
+	 * To obtain information for a list book by list number for books
+	 * 
+	 * @param listno
+	 * 				list integer of book number
+	 * @return
+	 * 				list of book object
+	 */
+	public List<Book> ObtainListBookInfoByListNO(List<Integer> listno) {
+		
+		return null;
+	}
+	
+	/**
+	 * To obtain information for a list book by list id for books
+	 * 
+	 * @param listid
+	 * 				list string of book id
+	 * @return
+	 * 				list of book object
+	 */
+	public List<Book> ObtainListBookInfoByListID(List<String> listid) {
+		
+		return null;
+	}
+	
+	// 可能还需要一些方法来处理几个特定属性的获取等工作,userinfo同样存在这样的需求
+	
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// Analyze and test
+
+	}
+}

@@ -1,0 +1,26 @@
+package cn.cadal.rec.ol.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class DBAgentExt {
+	
+	public String DBName;
+	public static DBConnectionManager DBCM = DBConnectionManager.getInstance();
+
+	public DBAgentExt(String dbName){
+		this.DBName = dbName;
+	}
+
+	
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// Analyze and Test
+		
+	}
+
+}

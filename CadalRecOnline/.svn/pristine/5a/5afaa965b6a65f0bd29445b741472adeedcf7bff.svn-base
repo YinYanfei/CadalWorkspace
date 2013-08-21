@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Main-Class: cn.cadal.rec.ol.thrift.server.RecServer
+Class-Path: /home/cadal/libRec/commons-codec-1.3.jar /home/cadal/libRec/commons-lang-2.5.jar /home/cadal/libRec/commons-logging-1.1.jar 
+  /home/cadal/libRec/httpclient-4.0.1.jar /home/cadal/libRec/httpcore-4.0.1.jar /home/cadal/libRec/jdom-2.0.5.jar /home/cadal/libRec/libthrift-0.8.0-snapshot.jar 
+  /home/cadal/libRec/log4j-1.2.14.jar /home/cadal/libRec/mysql-connector-java-5.1.24.jar /home/cadal/libRec/slf4j-api-1.5.8.jar 
+  /home/cadal/libRec/slf4j-log4j12-1.5.8.jar 

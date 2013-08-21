@@ -44,6 +44,10 @@ public class RecController extends HttpServlet{
 				TagRecResults tagRec = new TagRecResults();
 				tagRec.Connector(id);
 				resBookInfo = queryFromPg.QueryMetaData(tagRec.getBookidResultList());
+			}else if(algoType.equals("SGD")){
+				RecommendSGD recommendSGD = new RecommendSGD();
+				resBookInfo = recommendSGD.getRecommendation(Integer.parseInt(id));
+				
 			}else if(algoType.equals("FreqItem")) {
 				FreqItemRecResult freqItemRec = new FreqItemRecResult();
 				freqItemRec.FindTwoItemFreqRec(id);
@@ -60,7 +64,7 @@ public class RecController extends HttpServlet{
 			}else{
 				System.out.println("Error function!");
 			}
-			if(!(algoType.equals("UserCF")||algoType.equals("ColdStart"))){
+			if(!(algoType.equals("SGD")||algoType.equals("UserCF")||algoType.equals("ColdStart"))){
 				QueryInfoFromPg qifp = new QueryInfoFromPg();
 				book = qifp.QueryMetaDataUniq(id);
 			}

@@ -1,0 +1,31 @@
+package cn.cadal.rec.ol.api;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import cn.cadal.rec.ol.common.Book;
+import cn.cadal.rec.ol.common.User;
+
+public class Main {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// Analyze and Test
+		RecInterface ri = new RecImplement();
+		
+		List<String> listTags = new ArrayList<String>();
+		listTags.add("民国");
+		listTags.add("浙江大学");
+		listTags.add("study");
+		
+		List<User> res = ri.RecUserByUserName("Yanfei");
+		
+		for(int i = 0; i < res.size(); ++i) {
+			System.out.println(res.get(i).getUserName());
+		}
+
+	}
+
+}

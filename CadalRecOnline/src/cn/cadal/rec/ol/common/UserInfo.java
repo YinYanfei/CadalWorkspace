@@ -1,0 +1,221 @@
+package cn.cadal.rec.ol.common;
+
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+import cn.cadal.rec.ol.dao.DBAgent;
+import cn.cadal.rec.ol.dao.SQLSet;
+
+public class UserInfo {
+
+	private DBAgent db = null;
+	
+	/**
+	 * Construct functions
+	 */
+	public UserInfo() {}
+	public UserInfo(String dbName) {
+		this.db = new DBAgent(dbName);
+	}
+	
+	/**
+	 * To extract the result of db-op
+	 * 
+	 * @param list
+	 * 			list for map
+	 * @return	list of user object
+	 */
+	@SuppressWarnings("unchecked")
+	private List<User> DealResList(List<Map> list) {
+		List<User> listUser = new ArrayList<User>();
+		
+		for(int i = 0;i<list.size();++i){
+			User user = new User();
+			
+			Map map = list.get(i);
+			for(Iterator it = map.keySet().iterator();it.hasNext();){
+				String columnName = it.next().toString();
+				if(columnName.equals("user_id")){
+					user.setUserId(Integer.valueOf(map.get(columnName).toString()));
+				}else if(columnName.equals("user_name")){
+					user.setUserName(map.get(columnName).toString());
+				}else if(columnName.equals("user_hometown")) {
+					user.setUserHometown(map.get(columnName).toString());
+				}else if(columnName.equals("user_school")) {
+					user.setUserSchool(map.get(columnName).toString());
+				}else if(columnName.equals("user_birthday")) {
+					user.setUserBirthday((Timestamp) map.get(columnName));
+				}else if(columnName.equals("user_gender")) {
+					user.setUserGender(map.get(columnName).toString());
+				}else if(columnName.equals("user_email")) {
+					user.setUserEmail(map.get(columnName).toString());
+				}else if(columnName.equals("user_register_time")) {
+					user.setUserRegisterTime(map.get(columnName).toString());
+				}
+			}
+			
+			listUser.add(user);
+		}
+		
+		return listUser;
+	}
+
+	/**
+	 * Obtain single user information by single number of user
+	 * 
+	 * @param userno
+	 * 				number integer for user
+	 * @return
+	 * 				user object
+	 */
+	@SuppressWarnings("unchecked")
+	public User ObtainSingleUserInfoByNO(int userno) {
+		Object[] param = new Object[1];
+		int[] type     = new int[1];
+
+		param[0] = userno;
+		type[0]  = java.sql.Types.INTEGER;
+		
+		List<Map> list = db.executeQuery(SQLSet.QUERY_USER_INFO_BY_NO, param, type);
+		
+		List<User> listUser = this.DealResList(list);
+		
+		return listUser.size() > 0?listUser.get(0):null;
+	}
+	
+	/**
+	 * Obtain single user information by single id of user
+	 * 
+	 * @param userid
+	 * 				id integer for user
+	 * @return
+	 * 				user object
+	 */
+	@SuppressWarnings("unchecked")
+	public User ObtainSingleUserInfoByID(int userid) {
+		Object[] param = new Object[1];
+		int[] type     = new int[1];
+
+		param[0] = userid;
+		type[0]  = java.sql.Types.INTEGER;
+		
+		List<Map> list = db.executeQuery(SQLSet.QUERY_USER_INFO_BY_ID, param, type);
+		
+		List<User> listUser = this.DealResList(list);
+		
+		return listUser.size() > 0?listUser.get(0):null;
+	}
+	
+	/**
+	 * Obtain single user information by name for user. [user name in system is single]
+	 * 
+	 * @param username
+	 * 				user name string for user
+	 * @return
+	 * 				user object
+	 */
+	@SuppressWarnings("unchecked")
+	public User ObtainSingleUserInfoByName(String username) {
+		Object[] param = new Object[1];
+		int[] type     = new int[1];
+
+		param[0] = username;
+		type[0]  = java.sql.Types.VARCHAR;
+		
+		List<Map> list = db.executeQuery(SQLSet.QUERY_USER_INFO_BY_NAME, param, type);
+		
+		List<User> listUser = this.DealResList(list);
+		
+		return listUser.size() > 0?listUser.get(0):null;
+	}
+	
+	/**
+	 * Obtain a list of user information by a list of no
+	 * 
+	 * @param listuserno
+	 * 				list of no
+	 * @return
+	 * 				list of user object
+	 */
+	public List<User> ObtainListUserInfoByListNO(List<Integer> listuserno) {
+		List<User> listUser = new ArrayList<User>();
+		
+		for(int i = 0; i < listuserno.size(); ++i) {
+			User user = this.ObtainSingleUserInfoByNO(listuserno.get(i));
+			if(user != null) {
+				listUser.add(user);
+			}
+		}
+		
+		return listUser;
+	}
+	
+	/**
+	 * Obtain a list of user information by a list of id
+	 * 
+	 * @param listuserid
+	 * 				list of id
+	 * @return
+	 * 				list of user object
+	 */
+	public List<User> ObtainListUserInfoByListID(List<Integer> listuserid) {
+		List<User> listUser = new ArrayList<User>();
+		
+		for(int i = 0; i < listuserid.size(); ++i) {
+			User user = this.ObtainSingleUserInfoByID(listuserid.get(i));
+			if(user != null) {
+				listUser.add(user);
+			}
+		}
+		
+		return listUser;
+	}
+	
+	/**
+	 * Obtain a list of user information by a list of user name
+	 * 
+	 * @param listusername
+	 * 				list of user name
+	 * @return
+	 * 				list of user object
+	 */
+	public List<User> ObtainListUserInfoByListName(List<String> listusername) {
+		List<User> listUser = new ArrayList<User>();
+		
+		for(int i = 0; i < listusername.size(); ++i) {
+			User user = this.ObtainSingleUserInfoByName(listusername.get(i));
+			if(user != null) {
+				listUser.add(user);
+			}
+		}
+		
+		return listUser;
+	}
+	
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// Analyze and test
+//		String dbname = "cadalrectest";
+//		
+//		UserInfo ui = new UserInfo(dbname);
+//		
+		// ...
+	}
+
+	/**
+	 * Getter and Setter
+	 */
+	public DBAgent getDb() {
+		return db;
+	}
+
+	public void setDb(DBAgent db) {
+		this.db = db;
+	}
+	
+}

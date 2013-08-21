@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;CadalRecOnline_ext&apos;" deleteContents="true" description="Delete resource &apos;CadalRecOnline_ext&apos;" element1="/CadalRecOnline_ext" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1375340300622"/>
+</session>

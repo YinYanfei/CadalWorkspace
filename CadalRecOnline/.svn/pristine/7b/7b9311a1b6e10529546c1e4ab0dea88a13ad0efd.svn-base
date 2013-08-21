@@ -1,0 +1,55 @@
+package cn.cadal.rec.ol.algo;
+
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+import cn.cadal.rec.ol.common.Book;
+import cn.cadal.rec.ol.dao.DBAgent;
+
+public class RecUserCF  extends BaseRecAlgo{
+
+	public RecUserCF(){}
+	
+	public static void main(String[] args) {
+		
+	}
+	
+	/**
+	 * usercf, 相似用户看过的书
+	 * @param userno
+	 * @return 书的列表
+	 */
+	public List<Book> getRecbyUserCF(int userno) {
+		List<Integer> recList = new ArrayList<Integer>();
+		List<Integer> userList = new ArrayList<Integer>();
+		String sql = "select * from A_USER_CF where user_no_1=" + userno;
+		String sql2 = "select * from A_USER_CF where user_no_2=" + userno;;
+		try {
+			ResultSet rs = DBAgent.query(sql);
+			while (rs.next()) {
+				userList.add(Integer.parseInt(rs.getString("user_no_2")));
+			}
+			for (int userNo : userList) {
+				List<Integer> list = this.getBookofUser(userNo);
+				for (int bookno : list) {
+					recList.add(bookno);
+				}
+			}
+			userList.clear();
+			ResultSet rs2 = DBAgent.query(sql2);
+			while (rs2.next()) {
+				userList.add(Integer.parseInt(rs2.getString("user_no_1")));
+			}
+			for (int userNo : userList) {
+				List<Integer> list = this.getBookofUser(userNo);
+				for (int bookno : list) {
+					recList.add(bookno);
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return getBookInfoByBookNo(recList);
+	}
+}

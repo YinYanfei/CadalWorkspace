@@ -1,0 +1,52 @@
+/**
+ * 
+ */
+package cn.cadal.rec.ol.algoext;
+
+import java.util.List;
+
+public class AlgoFreqItem extends RecAlgo{
+	
+	/**
+	 * Construct function
+	 */
+	public AlgoFreqItem() {
+		super();
+	}
+	public AlgoFreqItem(String dbname) {
+		super(dbname);
+	}
+
+	/**
+	 * Get recommendation by a single book-id
+	 * 
+	 * @param bookid
+	 * 				book-id, string type
+	 * @return		list of recommendation, book-id
+	 */
+	public List<String> RecBook(String bookid) {
+		
+		return null;
+	}
+	
+	/**
+	 * Get recommendation by a list of book-id
+	 * 
+	 * @param listBookid
+	 * 				list of book-id, string type
+	 * @return		list of recommendation, book-id
+	 */
+	public List<String> RecBook(List<String> listBookid) {
+		
+		return null;
+	}
+	
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// Analyze and Test
+
+	}
+	
+}

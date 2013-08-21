@@ -1,0 +1,41 @@
+package cn.cadal.rec.ol.dao;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import com.mysql.jdbc.Connection;
+
+/**
+ * 
+ * @author hongxin
+ *
+ */
+public class DBAgent {
+
+	public static String DBName = "cadalrec";
+	
+	/**
+	 * 
+	 * @param sql:String
+	 * @return rs:ResultSet
+	 */
+	public static ResultSet query(String sql){
+
+		ResultSet rs = null;
+		DBConnectionManager DBCM = DBConnectionManager.getInstance();
+		Connection conn = DBCM.getConnection(DBName);
+		try{
+			PreparedStatement stm = conn.prepareStatement(sql);
+			rs = stm.executeQuery();
+			DBCM.freeConnection(DBName, conn);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return rs;
+	}
+	
+	
+	public static void main(String[] args) {
+		//for test
+	}
+
+}

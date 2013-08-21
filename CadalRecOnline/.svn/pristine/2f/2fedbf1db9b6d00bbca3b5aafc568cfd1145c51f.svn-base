@@ -1,0 +1,101 @@
+/**
+ * 
+ */
+package cn.cadal.rec.ol.algoext;
+
+import java.util.List;
+
+public class AlgoTags extends RecAlgo{
+	
+	/**
+	 * Construct function
+	 */
+	public AlgoTags() {
+		super();
+	}
+	public AlgoTags(String dbname) {
+		super(dbname);
+	}
+
+	/**
+	 * Get recommendation by a single tag(tagname)
+	 * 
+	 * @param tag
+	 * 				tagname, just like '民国'
+	 * @return		list of recommendation, book-id
+	 */
+	public List<String> RecBook(String tag) {
+		
+		return null;
+	}
+	
+	/**
+	 * Get recommendation by a list of tag(tagname)
+	 * 
+	 * @param listTags
+	 * 				list of tagname, string type
+	 * @return		list of recommendation, book-id
+	 */
+	public List<String> RecBook(List<String> listTags) {
+		
+		return null;
+	}
+	
+	/**
+	 * Get tags which are related with the single bookid(parameter)
+	 * 
+	 * @param bookid
+	 * 				bookid, string type
+	 * @return		list of tagname, string
+	 */
+	public List<String> RecTags(String bookid){
+		
+		return null;
+	}
+	
+	/**
+	 * Get list of tagname which are related with list of bookid(parameter)
+	 * 
+	 * @param listBookid
+	 * 				list of bookid
+	 * @return		list of tagname
+	 */
+	public List<String> RecTags(List<String> listBookid) {
+		
+		return null;
+	}
+	
+	/**
+	 * To get tags by the user's interest, such as occupation, tags and so on
+	 * 
+	 * @param interest
+	 * 				tags and other can be identified as interest
+	 * @return		list of tagname
+	 */
+	public List<String> RecTagsByUserInterest(String interest) {
+		// 对标签的推荐暂不考虑
+		return null;
+	}
+	
+	/**
+	 * To get list of tags by the user's interest, such as occupation, tags and so on
+	 * 
+	 * @param listInterest
+	 * 				list of tags and other can be identified as interest
+	 * @return		list of tagname
+	 */	
+	public List<String> RecTagsByUserInterest(List<String> listInterest) {
+		// 对标签的推荐暂不考虑
+		return null;
+	}
+	
+	
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// Analyze and Test
+
+	}
+
+}

@@ -1,0 +1,11 @@
+<ds-config>
+<pool>
+<type>mysql</type>
+<name>cadalrectest</name>
+<driver>com.mysql.jdbc.driver</driver>
+<url>jdbc:mysql://localhost:3306/cadalrectest</url>
+<username>sa</username>
+<password>123456</password>
+<maxconn>100</maxconn>
+</pool>
+</ds-config>

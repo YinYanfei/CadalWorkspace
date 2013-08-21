@@ -1,0 +1,29 @@
+1375579222135	Delete element
+1375579558311	Delete element
+1375580583591	Rename field 'bookName'
+1375580594935	Rename local variable 'bookName'
+1375580624127	Rename field 'press'
+1375580633025	Rename field 'author'
+1375580645565	Rename field 'booktype'
+1375580660559	Rename local variable 'press'
+1375580675305	Rename local variable 'author'
+1375580684306	Rename local variable 'booktype'
+1375586327353	Rename type 'InterfaceRec'
+1375586794117	Move compilation units
+1375619615659	Delete element
+1375619900098	Delete element
+1375703365220	Rename package 'cn.cadal.rec.ol.algoext'
+1375710992931	Delete element
+1375758376307	Delete element
+1375798156850	Move compilation unit
+1375850617071	Delete element
+1375851382243	Rename local variable 'type'
+1375852797934	Rename field 'QUERY_EDIT_REC'
+1376098469089	Delete element
+1376098541282	Delete element
+1376098725365	Rename type 'AssistAPI'
+1376098911848	Rename type 'AssistAbstract'
+1376099820746	Rename method 'QueryEditRecByDateType'
+1376099833593	Rename method 'QueryEditRecByDate'
+1376099851700	Rename method 'AlgoGetBooksBySingleTag'
+1376099860299	Rename method 'AlgoGetBooksByListTag'

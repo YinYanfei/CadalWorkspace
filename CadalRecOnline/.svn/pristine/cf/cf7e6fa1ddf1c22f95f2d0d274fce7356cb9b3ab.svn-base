@@ -1,0 +1,94 @@
+package cn.cadal.rec.ol.algo;
+
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+import cn.cadal.rec.ol.common.Book;
+import cn.cadal.rec.ol.dao.DBAgent;
+
+public class RecTags  extends AbstractRecAlgo{
+
+	public static void main(String[] args) {
+		//for test
+	}
+
+	/**
+	 * tags, 利用tag信息给用户推荐书
+	 * 
+	 * @param userno
+	 * @return
+	 */
+	public List<Book> getRecbyTags(int userno){
+		List<Book> recList = new ArrayList<Book>();
+		List<Integer> tagList = new ArrayList<Integer>();
+		tagList = this.getTagofUser(userno);
+		for(int tagno: tagList){
+			for(Book book: this.getBookofTag(tagno))
+				recList.add(book);
+		}
+		return recList;
+	}
+	
+	/**
+	 * 包含该某tag的所有的书 
+	 * @param tagno
+	 * @return
+	 */
+	public List<Book> getBookofTag(int tagno) {
+		List<Integer> recList = new ArrayList<Integer>();
+
+		String sql = "select * from A_TAG_SIM where tag_no=" + tagno;
+		try {
+			ResultSet rs = DBAgent.query(sql);
+			while (rs.next()) {
+				int bookid = Integer.parseInt(rs.getString("item_no"));
+				recList.add(bookid);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return getBookInfoByBookNo(recList);
+	}
+	
+	/**
+	 * 得到用户看过的书所包含的所有tag
+	 * 
+	 * @param userno
+	 * @return
+	 */
+	public List<Integer> getTagofUser(int userno) {
+		List<Integer> tagList = new ArrayList<Integer>();
+		List<Integer> bookList = new ArrayList<Integer>();
+
+		bookList = this.getBookofUser(userno);// 得到这个用户看过的所有书
+		for (int bookNo : bookList) {
+			for (int tag : this.getTagofBook(bookNo)) {
+				tagList.add(tag);
+			}
+		}
+		return tagList;
+	}
+	
+	/**
+	 * 得到某一本书的所有tagno
+	 * 
+	 * @param bookNo
+	 * @return
+	 */
+	private List<Integer> getTagofBook(int bookNo) {
+		List<Integer> tagList = new ArrayList<Integer>();
+		String sql = "select * from A_TAG_SIM where item_no=" + bookNo;
+		try{
+			ResultSet rs = DBAgent.query(sql);
+			while(rs.next()){
+				tagList.add(Integer.parseInt(rs.getString("tag_no")));
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return tagList;
+	}
+	
+
+}

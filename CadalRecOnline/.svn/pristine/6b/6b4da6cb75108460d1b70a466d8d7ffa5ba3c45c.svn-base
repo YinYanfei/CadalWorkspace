@@ -1,0 +1,13 @@
+package cn.cadal.rec.ol.optimize;
+
+public class UserRelated {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// Analyze and Test
+
+	}
+
+}

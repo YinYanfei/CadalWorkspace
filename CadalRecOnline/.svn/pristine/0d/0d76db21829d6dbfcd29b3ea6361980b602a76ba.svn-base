@@ -1,0 +1,52 @@
+/**
+ * 
+ */
+package cn.cadal.rec.ol.algoext;
+
+import java.util.List;
+
+public class AlgoUserCF extends RecAlgo{
+	
+	/**
+	 * Construct function
+	 */
+	public AlgoUserCF() {
+		super();
+	}
+	public AlgoUserCF(String dbname) {
+		super(dbname);
+	}
+
+	/**
+	 * To get similar users which are related with user-name in parameter
+	 * 
+	 * @param username
+	 * 				user-name, string type
+	 * @return		list of user-name
+	 */
+	public List<String> RecUser(String username) {
+		
+		return null;
+	}
+	
+	/**
+	 * To get list of similar users which are related with the list of user-name in parameter
+	 * 
+	 * @param listUsername
+	 * 				list of user-name
+	 * @return		list of user-name
+	 */
+	public List<String> RecUser(List<String> listUsername) {
+		
+		return null;
+	}
+	
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// Analyze and Test
+
+	}
+
+}

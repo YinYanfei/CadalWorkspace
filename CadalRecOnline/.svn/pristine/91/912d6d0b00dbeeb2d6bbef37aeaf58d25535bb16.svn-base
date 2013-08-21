@@ -1,0 +1,280 @@
+package cn.cadal.rec.ol.algo;
+
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+import cn.cadal.rec.ol.common.Book;
+import cn.cadal.rec.ol.dao.DBAgent;
+
+/**
+ * 
+ * @author hongxin
+ * 
+ */
+public class Recommendation {
+
+	public static void main(String[] args) {
+//		Recommendation r = new Recommendation();
+//		r.getRecByBookNo(2,"algoitemcf");//根据itemcf,给bookno为2的书推荐书
+//		r.getRecByBookNo(2, "algofreqitem");//根据algofreqitem,给bookno为2的书推荐书
+//		r.getRecByUserNo(1);//根据usercf,给用户no为2的用户推荐书
+//		r.getRecByTag(1);//列出包含tagno为1的tag的所有书
+	}
+
+	/**
+	 * itemcf 相似的书  freqitem频繁项集 
+	 * 
+	 * @param bookno
+	 * @param algoTable "algoitemcf" "algofreqitem"
+	 * @return
+	 */
+	public List<Book> getRecByBookNo(int bookno,String algoTable) {
+		List<Integer> recList = new ArrayList<Integer>();
+		String sql = "select * from " + algoTable + " where itemno_1=" + bookno;
+		String sql2 = "select * from " + algoTable + " where itemno_2=" + bookno;
+		try {
+			ResultSet rs = DBAgent.query(sql);
+			while (rs.next()) {
+				int bookidsecond = Integer.parseInt(rs.getString("itemno_2"));
+				recList.add(bookidsecond);
+			}
+			ResultSet rs2 = DBAgent.query(sql2);
+			while (rs2.next()) {
+				int bookidsecond = Integer.parseInt(rs2.getString("itemno_1"));
+				recList.add(bookidsecond);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return getBookInfoByBookNo(recList);
+	}
+
+	/**
+	 * usercf 相似用户看过的书
+	 * @param userno
+	 * @return
+	 */
+	public List<Book> getRecByUserNo(int userno) {
+		List<Integer> recList = new ArrayList<Integer>();
+		List<Integer> userList = new ArrayList<Integer>();
+		String sql = "select * from algousercf where userno_1=" + userno;
+		String sql2 = "select * from algousercf where userno_2=" + userno;;
+		try {
+			ResultSet rs = DBAgent.query(sql);
+			while (rs.next()) {
+				userList.add(Integer.parseInt(rs.getString("userno_2")));
+			}
+			for (int userNo : userList) {
+				List<Integer> list = this.getBookofUser(userNo);
+				for (int bookno : list) {
+					recList.add(bookno);
+				}
+			}
+			userList.clear();
+			ResultSet rs2 = DBAgent.query(sql2);
+			while (rs2.next()) {
+				userList.add(Integer.parseInt(rs2.getString("userno_1")));
+			}
+			for (int userNo : userList) {
+				List<Integer> list = this.getBookofUser(userNo);
+				for (int bookno : list) {
+					recList.add(bookno);
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return getBookInfoByBookNo(recList);
+	}
+
+	/**
+	 * 包含该某tag的所有的书
+	 * @param tagno
+	 * @return
+	 */
+	public List<Book> getRecByTag(int tagno) {
+		List<Integer> recList = new ArrayList<Integer>();
+
+		String sql = "select * from algotags where tagno=" + tagno;
+		try {
+			ResultSet rs = DBAgent.query(sql);
+			while (rs.next()) {
+				int bookid = Integer.parseInt(rs.getString("itemno"));
+				recList.add(bookid);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return getBookInfoByBookNo(recList);
+	}
+
+	/**
+	 * 根据bookno得到书的详细信息
+	 * 
+	 * @param bookList
+	 * @return
+	 */
+	private List<Book> getBookInfoByBookNo(List<Integer> bookNoList) {
+		List<Book> list = new ArrayList<Book>();
+		List<String> bookIdList = new ArrayList<String>();
+		bookIdList = this.getBookIdbyBookNo(bookNoList);//将bookno转换成bookid
+		for (String bookid : bookIdList) {
+			String sql = "select * from bookinfo where bookid=" + bookid;
+			try {
+				ResultSet rs = DBAgent.query(sql);
+				while (rs.next()) {
+					Book book = new Book();
+					book.setBookId(rs.getString("bookid"));
+					book.setBookName(rs.getString("booktitle"));
+					book.setAuthor(rs.getString("boolauthor"));
+					book.setPress(rs.getString("bookpublisher"));
+					list.add(book);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
+
+	/**
+	 * bookno(int)转换成bookid(String)
+	 * @param bookNoList
+	 * @return
+	 */
+	private List<String> getBookIdbyBookNo(List<Integer> bookNoList) {
+		List<String> bookIdList = new ArrayList<String>();
+		for (int bookno : bookNoList) {
+			String sql = "select * from bookidtobookno where bookno=" + bookno;
+			try {
+				ResultSet rs = DBAgent.query(sql);
+				while (rs.next()) {
+					bookIdList.add(rs.getString("bookid"));
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return bookIdList;
+	}
+
+	/**
+	 * bookid(String)转换成bookno(int)
+	 * @param bookNoList
+	 * @return
+	 */
+	private List<Integer> getBookNobyBookId(List<String> bookIdList) {
+		List<Integer> bookNoList = new ArrayList<Integer>();
+		for (String bookid : bookIdList) {
+			String sql = "select * from bookidtobookno where bookid=" + bookid;
+			try {
+				ResultSet rs = DBAgent.query(sql);
+				while (rs.next()) {
+					bookNoList.add(Integer.parseInt(rs.getString("bookno")));
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return bookNoList;
+	}
+	
+	/**
+	 * 得到用户看过的书所包含的所有tag
+	 * 
+	 * @param userno
+	 * @return
+	 */
+	public List<Integer> getTagofUser(int userno) {
+		List<Integer> tagList = new ArrayList<Integer>();
+		List<Integer> bookList = new ArrayList<Integer>();
+
+		bookList = this.getBookofUser(userno);// 得到这个用户看过的所有书
+		for (int bookNo : bookList) {
+			for (int tag : this.getTagofBook(bookNo)) {
+				tagList.add(tag);
+			}
+		}
+		return tagList;
+	}
+
+	/**
+	 * 得到用户的历史读书列表
+	 * 
+	 * @param userno
+	 * @return
+	 */
+	public List<Integer> getBookofUser(int userno) {
+		List<String> bookIdList = new ArrayList<String>();
+		String username = getUserNameByUserNo(userno);
+		String sql = "select * from userreadhistory where username=" + username;
+		try{
+			ResultSet rs = DBAgent.query(sql);
+			while(rs.next()){
+				bookIdList.add(rs.getString("bookid"));
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return this.getBookNobyBookId(bookIdList);
+	}
+
+	/**
+	 * 根据userno得到用户名
+	 * @param userno
+	 * @return
+	 */
+	public String getUserNameByUserNo(int userno){
+		String username = "";
+		String sql = "select * from usernametouserno where userno=" + userno;
+		try{
+			ResultSet rs = DBAgent.query(sql);
+			while(rs.next()){
+				username = rs.getString("username");
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return username;
+	}
+	/**
+	 * 得到某一本书的所有tagno
+	 * 
+	 * @param bookNo
+	 * @return
+	 */
+	private List<Integer> getTagofBook(int bookNo) {
+		List<Integer> tagList = new ArrayList<Integer>();
+		String sql = "select * from algotags where itemno=" + bookNo;
+		try{
+			ResultSet rs = DBAgent.query(sql);
+			while(rs.next()){
+				tagList.add(Integer.parseInt(rs.getString("tagno")));
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return tagList;
+	}
+	/**
+	 * 根据tagno得到tagname
+	 * @param tagNoList
+	 * @return
+	 */
+	public List<String> getTagNameByTagNo(List<Integer> tagNoList){
+		List<String> tagNameList = new ArrayList<String>();
+		for(int tagno:tagNoList){
+			String sql = "select * from tagnametotagno where tagno=" + tagno;
+			try{
+				ResultSet rs = DBAgent.query(sql);
+				while(rs.next()){
+					tagNameList.add(rs.getString("tagname"));
+				}
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+		return tagNameList;
+	}
+}

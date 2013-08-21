@@ -1,0 +1,29 @@
+package cn.cadal.rec.ol.common;
+
+public class SQLSet {
+
+	/*
+	 * 
+	 */
+	public static String QUERY_BOOK_INFO_BY_NO = "SELECT * FROM B_INFO WHERE book_id = (SELECT book_id FROM M_BOOK_ID_TO_NO WHERE book_no = ?);";
+	
+	/*
+	 * 
+	 */
+	public static String QUERY_BOOK_INFO_BY_ID = "SELECT * FROM B_INFO WHERE book_id = ?;";
+	
+	/*
+	 * 
+	 */
+	public static String QUERY_USER_INFO_BY_NO = "SELECT * FROM U_INFO WHERE user_name = (SELECT user_name FROM M_USER_NAME_TO_NO WHERE user_no = ?);";
+	
+	/*
+	 * 
+	 */
+	public static String QUERY_USER_INFO_BY_ID = "SELECT * FROM U_INFO WHERE user_id = ?;";
+	
+	/*
+	 * 
+	 */
+	public static String QUERY_USER_INFO_BY_NAME = "SELECT * FROM U_INFO WHERE user_name = ?;";
+}

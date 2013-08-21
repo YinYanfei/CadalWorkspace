@@ -1,7 +1,0 @@
-iters     20
-numLatent 5
-stepSize  0.1
-stepRate  0.95
-penalty   0.1
-numUser   45237
-numItem   310617

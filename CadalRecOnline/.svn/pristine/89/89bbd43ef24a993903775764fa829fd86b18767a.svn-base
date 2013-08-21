@@ -1,0 +1,102 @@
+package cn.cadal.rec.ol.common;
+
+import java.util.List;
+
+public class UserInfo {
+
+	// ... db op
+	
+	/**
+	 * Construct functions
+	 */
+	public UserInfo() {}
+//	public UserInfo(...) {
+//		
+//	}
+
+	/**
+	 * Obtain single user information by single number of user
+	 * 
+	 * @param userno
+	 * 				number integer for user
+	 * @return
+	 * 				user object
+	 */
+	public User ObtainSingleUserInfoByNO(int userno) {
+		
+		return null;
+	}
+	
+	/**
+	 * Obtain single user information by single id of user
+	 * 
+	 * @param userid
+	 * 				id integer for user
+	 * @return
+	 * 				user object
+	 */
+	public User ObtainSingleUserInfoByID(int userid) {
+		
+		return null;
+	}
+	
+	/**
+	 * Obtain single user information by name for user. [user name in system is single]
+	 * 
+	 * @param username
+	 * 				user name string for user
+	 * @return
+	 * 				user object
+	 */
+	public User ObtainSingleUserInfoByName(String username) {
+		
+		return null;
+	}
+	
+	/**
+	 * Obtain a list of user information by a list of no
+	 * 
+	 * @param listuserno
+	 * 				list of no
+	 * @return
+	 * 				list of user object
+	 */
+	public List<User> ObtainListUserInfoByListNO(List<Integer> listuserno) {
+		
+		return null;
+	}
+	
+	/**
+	 * Obtain a list of user information by a list of id
+	 * 
+	 * @param listuserid
+	 * 				list of id
+	 * @return
+	 * 				list of user object
+	 */
+	public List<User> ObtainListUserInfoByListID(List<Integer> listuserid) {
+		
+		return null;
+	}
+	
+	/**
+	 * Obtain a list of user information by a list of user name
+	 * 
+	 * @param listusername
+	 * 				list of user name
+	 * @return
+	 * 				list of user object
+	 */
+	public List<User> ObtainListUserInfoByListName(List<String> listusername) {
+		
+		return null;
+	}
+	
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// Analyze and test
+
+	}
+}

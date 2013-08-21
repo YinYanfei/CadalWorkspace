@@ -1,0 +1,97 @@
+package cn.cadal.rec.ol.algo;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+
+import cn.cadal.rec.ol.common.Book;
+import cn.cadal.rec.ol.optimize.RemoveAbnormal;
+import cn.cadal.rec.ol.optimize.RemoveDuplicate;
+
+/**
+ * 
+ * @author hongxin
+ * 
+ */
+public class Recommendation {
+	
+	public Recommendation(){
+		
+	}
+	
+	public static void main(String[] args) {
+		Recommendation rec = new Recommendation();
+		BaseRecAlgo ara = new BaseRecAlgo();
+		System.out.println("bookNo: " + ara.getBookId(112));
+		List<Book> bookList = rec.getRecForBook(112);
+		
+		System.out.println("rec size: " + bookList.size());
+		
+		RemoveDuplicate rd = new RemoveDuplicate();
+		RemoveAbnormal ra = new RemoveAbnormal();
+		
+		List<Book> bookList0 = rec.removeRepeat(bookList);
+		List<Book> bookList1 = rd.RemoveDupFunc(bookList0);
+		List<Book> bookList2 = ra.CalScoreForEachBookByAverageScore(bookList1);
+		
+		System.out.println("+++++++++++++推荐结果如下：++++++++++++++++++++++++++++");
+		for(Book book: bookList2){
+			System.out.println("----");
+			System.out.println(book.getBookName());
+		}
+		
+		System.out.println("预选集 size: " + bookList.size());
+		System.out.println("完全重复的去掉: " + bookList0.size());
+		System.out.println("去重后 size: " + bookList1.size());
+		System.out.println("去异后 size: " + bookList2.size());
+	}
+
+	
+	/**
+	 * 为用户userNo推荐图书,得到预选结果集
+	 * @param userNo
+	 * @return
+	 */
+	public List<Book> getRecForUser(int userNo){
+		RecUserCF recUserCF = new RecUserCF();
+		List<Book> bookList = new ArrayList<Book>();
+		for(Book book: recUserCF.getRecbyUserCF(userNo))
+			bookList.add(book);
+		
+		RecTags recTags = new RecTags();
+		for(Book book:recTags.getRecbyTags(userNo))
+			bookList.add(book);
+		
+		return bookList;
+	}
+	
+	/**
+	 * 推荐与bookNo相关的书
+	 * @param bookNo
+	 * @return 
+	 */
+	public List<Book>  getRecForBook(int bookNo){
+		RecFreqItem recFreqItem = new RecFreqItem();
+		List<Book> bookList =  new ArrayList<Book>();
+		for(Book book:recFreqItem.getRecbyFreqitem(bookNo))
+			bookList.add(book);
+		
+		RecItemCF recItemCF = new RecItemCF();
+		for(Book book:recItemCF.getRecbyItemCF(bookNo))
+			bookList.add(book);
+		
+		return bookList;
+	}
+	
+	/**
+	 * 简单去重
+	 * @param arlList
+	 */
+	private List<Book> removeRepeat(List<Book> arlList) {
+		HashSet<Book> h = new HashSet<Book>(arlList);
+		arlList.clear();
+		arlList.addAll(h);
+		return arlList;
+	}
+
+}

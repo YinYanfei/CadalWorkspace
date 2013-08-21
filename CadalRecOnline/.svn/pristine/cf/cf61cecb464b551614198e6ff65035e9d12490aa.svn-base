@@ -1,0 +1,109 @@
+/**
+ * 
+ */
+package cn.cadal.rec.ol.algo;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+public class AlgoUserCF extends RecAlgo{
+	
+	/**
+	 * Construct function
+	 */
+	public AlgoUserCF() {
+		super();
+	}
+	public AlgoUserCF(String dbname) {
+		super(dbname);
+	}
+
+	/**
+	 * To get similar users which are related with user-name in parameter
+	 * 
+	 * @param username
+	 * 				user-name, string type
+	 * @return		list of user-name
+	 */
+	public List<String> RecUser(String username) {
+		List<String> userNoList = new ArrayList<String>();
+		String sql = SQLSet.QUERY_USERNO_BY_USERNAME_1;
+		int[] type = new int[1];
+		Object[] param = new Object[1];
+		
+		type[0] = java.sql.Types.VARCHAR;
+		param[0] = username;
+		
+		List<Map> list = db.executeQuery(sql,param,type);
+		for(int i = 0;i< list.size(); ++i){
+			Map map = list.get(i);
+			for(Iterator iterator = map.keySet().iterator();iterator.hasNext();){
+				String columnName = iterator.next().toString();
+				if(!userNoList.contains(map.get(columnName).toString())){
+					userNoList.add(map.get(columnName).toString());
+				}
+			}
+		}
+		//将userno转化为username
+		List<String> userNameList = new ArrayList<String>();
+		for(String userno: userNoList){
+			String Sql = SQLSet.QUERY_USERNAME_BY_USERNO;
+			int[] Type = new int[1];
+			Object[] Param = new Object[1];
+			
+			Type[0] = java.sql.Types.INTEGER;
+			Param[0] = userno;
+			List<Map> temp = db.executeQuery(Sql,Param,Type);
+			for(int i = 0;i<temp.size();++i){
+				Map map = temp.get(i);
+				for(Iterator it = map.keySet().iterator();it.hasNext();){
+					String columnName = it.next().toString();
+					if(!userNameList.contains(map.get(columnName).toString())){
+						userNameList.add(map.get(columnName).toString());
+					}
+				}
+			}
+		}
+		return userNameList;
+	}
+	
+	/**
+	 * To get list of similar users which are related with the list of user-name in parameter
+	 * 
+	 * @param listUsername
+	 * 				list of user-name
+	 * @return		list of user-name
+	 */
+	public List<String> RecUser(List<String> listUsername) {
+		List<String> userNameList = new ArrayList<String>();
+		for(int i = 0;i<listUsername.size();++i){
+			for(String name: RecUser(listUsername.get(i))){
+				if(!userNameList.contains(name)){
+					userNameList.add(name);
+				}
+			}
+		}
+		return userNameList;
+	}
+	
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// Analyze and Test
+		AlgoUserCF usercf = new AlgoUserCF();
+		List<String> list = new ArrayList<String>();
+		for(String name:usercf.RecUser("hongxin")){
+			System.out.println(name);
+		}
+		System.out.println("+++++++++++++++++++++++");
+		list.add("wangzhaoliao");
+		list.add("hongxin");
+		
+		for(String name : usercf.RecUser(list))
+			System.out.println(name);
+	}
+
+}

@@ -1,0 +1,92 @@
+package cn.cadal.rec.ol.algo;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+
+import cn.cadal.rec.ol.common.Book;
+
+/**
+ * 
+ * @author hongxin
+ * 
+ */
+public class Recommendation {
+	private List<Book> recList;
+	
+	public Recommendation(){
+		recList = new ArrayList<Book>();
+	}
+	
+	public List<Book> getRecList(){
+		return this.recList;
+	}
+	
+	public static void main(String[] args) {
+		Recommendation rec = new Recommendation();
+		rec.getRecForUser(1);
+		System.out.println("rec size: " + rec.recList.size());
+		for(Book book: rec.recList){
+			System.out.println("---------------------------");
+			System.out.println(book.getBookName());
+			System.out.println(book.getAuthor());
+			System.out.println(book.getPress());
+		}
+	}
+
+	
+	/**
+	 * 为用户userNo推荐图书,得到预选结果集
+	 * @param userNo
+	 * @return
+	 */
+	public void getRecForUser(int userNo){
+		RecUserCF recUserCF = new RecUserCF();
+		for(Book book: recUserCF.getRecbyUserCF(userNo))
+			recList.add(book);
+		
+		RecTags recTags = new RecTags();
+		for(Book book:recTags.getRecbyTags(userNo))
+			recList.add(book);
+	}
+	
+	/**
+	 * 推荐与bookNo相关的书
+	 * @param bookNo
+	 * @return 
+	 */
+	public void getRecForBook(int bookNo){
+		RecFreqItem recFreqItem = new RecFreqItem();
+		for(Book book:recFreqItem.getRecbyFreqitem(bookNo))
+			recList.add(book);
+		
+		RecItemCF recItemCF = new RecItemCF();
+		for(Book book:recItemCF.getRecbyItemCF(bookNo))
+			recList.add(book);
+	}
+	
+	/**
+	 * 简单去重
+	 * @param arlList
+	 */
+	private List<Book> removeRepeat(List<Book> arlList) {
+		HashSet<Book> h = new HashSet<Book>(arlList);
+		arlList.clear();
+		arlList.addAll(h);
+		return arlList;
+	}
+	
+	/**
+	 * 去重
+	 */
+	public void removeDuplicate(){
+		//to do
+	}
+	
+	/**
+	 * 去异,即去除孤立点
+	 */
+	public void removeOutlier(){
+		//to do
+	} 
+}

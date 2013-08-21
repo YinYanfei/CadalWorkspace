@@ -1,0 +1,81 @@
+package cn.cadal.rec.ol.dao;
+
+public class SQLSet {
+
+	/****************************************************************
+	** SQL used in cn.cadal.rec.ol.algo                           **
+	****************************************************************/
+	
+	/*
+	 * Common
+	 */
+	public static String QUERY_BOOKID_BY_BOOKNO = "SELECT book_id FROM M_BOOK_ID_TO_NO WHERE book_no = ?;";
+	public static String QUERY_USERNAME_BY_USERNO = "SELECT user_name FROM M_USER_NAME_TO_NO WHERE user_no = ?;";
+	public static String QUERY_TAGNAME_BY_TAGNO = "SELECT tag_name FROM M_TAG_NAME_TO_NO WHERE tag_no = ?;";	
+	
+	/*
+	 * FreqItem
+	 */
+	public static String QUERY_FREQITEM_BY_BOOKID_1 = "SELECT book_id FROM M_BOOK_ID_TO_NO WHERE book_no IN (SELECT item_no_1 FROM A_FREQ_ITEM WHERE item_no_2 = (SELECT book_no FROM M_BOOK_ID_TO_NO WHERE book_id = ?));";
+	public static String QUERY_FREQITEM_BY_BOOKID_2 = "SELECT book_id FROM M_BOOK_ID_TO_NO WHERE book_no IN (SELECT item_no_2 FROM A_FREQ_ITEM WHERE item_no_1 = (SELECT book_no FROM M_BOOK_ID_TO_NO WHERE book_id = ?));";
+
+	/*
+	 * ItemCF
+	 */
+	public static String QUERY_ITEMCF_BY_BOOKID_1 = "SELECT item_no_1 FROM A_ITEM_CF WHERE item_no_2 = (SELECT book_no FROM M_BOOK_ID_TO_NO WHERE book_id = ?) ORDER BY score DESC LIMIT 50;";
+	public static String QUERY_ITEMCF_BY_BOOKID_2 = "SELECT item_no_2 FROM A_ITEM_CF WHERE item_no_1 = (SELECT book_no FROM M_BOOK_ID_TO_NO WHERE book_id = ?) ORDER BY score DESC LIMIT 50;";
+	
+	/*
+	 * UserCF
+	 */
+	public static String QUERY_USERNO_BY_USERNAME_1 = "SELECT user_no_1 FROM A_USER_CF WHERE user_no_2 = (SELECT user_no FROM M_USER_NAME_TO_NO WHERE user_name = BINARY ?) ORDER BY score DESC LIMIT 100;";
+	public static String QUERY_USERNO_BY_USERNAME_2 = "SELECT user_no_2 FROM A_USER_CF WHERE user_no_1 = (SELECT user_no FROM M_USER_NAME_TO_NO WHERE user_name = BINARY ?) ORDER BY score DESC LIMIT 100;";
+
+	/*
+	 * Tags
+	 */
+	public static String QUERY_BOOKID_BY_TAGNAME = "SELECT item_no FROM A_TAG_BOOK WHERE tag_no = (SELECT tag_no FROM M_TAG_NAME_TO_NO WHERE tag_name = ?) LIMIT 100";
+	public static String QUERY_TAGNAME_BY_BOOKID = "SELECT tag_name FROM M_TAG_NAME_TO_NO WHERE tag_no IN (SELECT tag_no FROM A_TAG_BOOK WHERE item_no = (SELECT book_no FROM M_BOOK_ID_TO_NO WHERE book_id = ?)); ";
+
+	// ...
+	
+	
+	
+	/****************************************************************
+	** SQL used in cn.cadal.rec.ol.common                          **
+	****************************************************************/
+	public static String QUERY_BOOK_INFO_BY_NO = "SELECT * FROM B_INFO WHERE book_id = (SELECT book_id FROM M_BOOK_ID_TO_NO WHERE book_no = ?);";
+	
+	public static String QUERY_BOOK_INFO_BY_ID = "SELECT * FROM B_INFO WHERE book_id = ?;";
+	
+	public static String QUERY_USER_INFO_BY_NO = "SELECT * FROM U_INFO WHERE user_name = (SELECT user_name FROM M_USER_NAME_TO_NO WHERE user_no = ?);";
+	
+	public static String QUERY_USER_INFO_BY_ID = "SELECT * FROM U_INFO WHERE user_id = ?;";
+	
+	public static String QUERY_USER_INFO_BY_NAME = "SELECT * FROM U_INFO WHERE user_name = ?;";
+	
+	
+	
+	/****************************************************************
+	** SQL used in cn.cadal.rec.ol.optimize                        **
+	****************************************************************/
+	public static String QUERY_BOOKID_FROM_READ_HISTORY_BY_NAME = "SELECT distinct(book_id) FROM U_READ_HISTORY WHERE user_name = ?;";
+	
+	public static String QUERY_USERNAME_FROM_READ_HISTORY_BY_BOOK = "SELECT distinct(user_name) FROM U_READ_HISTORY WHERE book_id = ?;";
+	
+	
+	
+	/****************************************************************
+	** SQL used in cn.cadal.rec.ol.qa                              **
+	****************************************************************/
+	public static String INSERT_REC_RESULT = "INSERT INTO R_RESULT(user_no, time) VALUES(?, ?);";
+
+	public static String QUERY_MAX_REC_RESULT_ID = "SELECT MAX(rec_result_id) FROM R_RESULT WHERE user_no = ?;";
+	
+	public static String INSERT_REC_RESULT_DETAIL = "INSERT INTO R_RESULT_DETAIL(rec_result_id, book_id, display) VALUES(?, ?, ?);";
+	
+	public static String QUERY_EDIT_REC_DATE = "SELECT book_id FROM R_EDIT WHERE edit_date = ?;";
+	
+	public static String QUERY_EDIT_REC_DATE_TYPE = "SELECT book_id FROM R_EDIT WHERE edit_date = ? AND edit_type = ?;";
+	
+}

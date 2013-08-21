@@ -1,0 +1,13 @@
+package cn.cadal.rec.ol.qa;
+
+public class RecResultInsert {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// Analyze and Test
+
+	}
+
+}

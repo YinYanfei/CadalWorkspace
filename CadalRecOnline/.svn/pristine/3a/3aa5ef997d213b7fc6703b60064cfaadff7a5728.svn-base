@@ -1,0 +1,10 @@
+package cn.cadal.rec.ol.optimize;
+
+public class SQLSetOP {
+
+	/*
+	 * 
+	 */
+	public static String QUERY_BOOKID_FROM_READ_HISTORY_BY_NAME = "SELECT book_id FROM U_READ_HISTORY WHERE user_name = ?;";
+	
+}
