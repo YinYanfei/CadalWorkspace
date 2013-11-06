@@ -1,0 +1,17 @@
+package cn.edu.zju.cadal.pattern.adapter;
+
+public class Main {
+
+	private static void testDuck(Duck duck) {
+		duck.quack();
+		duck.fly();
+	}
+	
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		
+	}
+
+}

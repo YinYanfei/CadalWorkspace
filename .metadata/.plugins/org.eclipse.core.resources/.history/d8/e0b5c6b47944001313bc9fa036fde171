@@ -1,0 +1,24 @@
+package cn.edu.zju.cadal.hbase.insertInfo;
+
+public class InsertOp {
+
+	public static String TABLENAME = "access-log";
+	public static String DIR = "";
+	
+	private Utils hbaseOp = null;
+	private FileHandle handle = null;
+	
+	public InsertOp() throws Exception{
+		this.hbaseOp = new Utils(this.TABLENAME);
+		this.handle = new FileHandle();
+	}
+	
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// Test
+		
+	}
+
+}

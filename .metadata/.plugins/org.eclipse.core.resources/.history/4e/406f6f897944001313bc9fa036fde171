@@ -1,0 +1,21 @@
+package cn.edu.zju.cadal.hbase.insertInfo;
+
+public class InsertOp {
+
+	public static String TABLENAME = "access-log";
+	
+	private Utils hbaseOp = null;
+	
+	public InsertOp() {
+		this.hbaseOp = new Utils(this.TABLENAME);
+	}
+	
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// Test
+		
+	}
+
+}

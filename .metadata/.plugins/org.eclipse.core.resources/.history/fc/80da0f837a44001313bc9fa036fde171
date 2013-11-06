@@ -1,0 +1,62 @@
+package cn.edu.zju.cadal.hbase.insertInfo;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.util.List;
+
+public class InsertOp {
+	public static String TABLENAME = "access-log";
+	public static String DIR = "F:\\hadoop\\µÚ4´Î\\Sep-2013";
+
+	private Utils hbaseOp = null;
+	private FileHandle handle = null;
+
+	/**
+	 * Construct functions
+	 * 
+	 * @throws Exception
+	 */
+	public InsertOp() throws Exception {
+		this.hbaseOp = new Utils(this.TABLENAME);
+		this.handle = new FileHandle(this.DIR);
+	}
+
+	/**
+	 * Write into hbase DB
+	 */
+	public void WriteIntoHBase() {
+		List<File> listFile = this.handle.GetFileInfo();
+		BufferedReader reader = null;
+
+		try {
+			for (File file : listFile) {
+				reader = new BufferedReader(new FileReader(file));
+				String line = null;
+				while ((line = reader.readLine()) != null) {
+					String [] lineArray = line.split(" ");
+					
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (reader != null) {
+					reader.close();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// Test
+
+	}
+
+}

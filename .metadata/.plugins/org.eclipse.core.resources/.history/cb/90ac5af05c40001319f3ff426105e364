@@ -1,0 +1,17 @@
+package cn.edu.zju.cadal.pattern.adapter;
+
+public class MallardDuck implements Duck {
+
+	@Override
+	public void fly() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void quack() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

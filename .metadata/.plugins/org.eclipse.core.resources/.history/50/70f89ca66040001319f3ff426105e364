@@ -1,0 +1,20 @@
+package cn.edu.zju.cadal.pattern.adapter;
+
+public class DuckAdapter implements Duck {
+	private Duck duck;
+	
+	public DuckAdapter(Duck duck) {
+		this.duck = duck;
+	}
+	
+	@Override
+	public void fly() {
+		this.duck.fly();
+	}
+
+	@Override
+	public void quack() {
+		this.duck.quack();
+	}
+
+}

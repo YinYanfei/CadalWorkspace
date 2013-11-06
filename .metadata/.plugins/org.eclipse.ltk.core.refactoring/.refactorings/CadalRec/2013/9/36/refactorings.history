@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;cn.cadal.rec.algo.descSimilar&apos; to &apos;cn.cadal.rec.algo.descsimilar&apos;&#x0D;&#x0A;- Original project: &apos;CadalRec&apos;&#x0D;&#x0A;- Original element: &apos;CadalRec/src/cn.cadal.rec.algo.descSimilar&apos;&#x0D;&#x0A;- Renamed element: &apos;CadalRec/src/cn.cadal.rec.algo.descsimilar&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;cn.cadal.rec.algo.descSimilar&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;cn.cadal.rec.algo.descSimilar" name="cn.cadal.rec.algo.descsimilar" qualified="false" references="true" stamp="1378025421435" textual="false" version="1.0"/>
+</session>

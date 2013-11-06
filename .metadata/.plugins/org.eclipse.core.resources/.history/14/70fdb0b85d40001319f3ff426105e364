@@ -1,0 +1,6 @@
+package cn.edu.zju.cadal.pattern.adapter;
+
+public interface Turkey {
+	public void fobble();
+	public void fly();
+}

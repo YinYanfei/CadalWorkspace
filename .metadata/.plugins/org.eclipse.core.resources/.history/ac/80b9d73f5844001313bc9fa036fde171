@@ -1,0 +1,50 @@
+package cn.edu.zju.cadal.hbase.insertInfo;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
+public class FileHandle {
+	private String dir;
+	public static List<String> fileInfoList;
+	
+	/**
+	 * Construct function
+	 */
+	public FileHandle(String dir) {
+		this.dir = dir;
+		this.fileInfoList = new ArrayList<String>();
+	}
+	
+	/**
+	 * 得到所有的文件路径信息
+	 */
+	public void FileInfo(File fileDir){
+		File [] fileList = fileDir.listFiles();
+		
+		if(fileList == null || fileList.length == 0) {
+			return;
+		}
+		
+		for(File fileSingle : fileList){
+			if(fileSingle.isDirectory()) {
+				
+			}
+		}
+	}
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// Test
+		FileHandle handle = new FileHandle("F:/hadoop/第4次/Sep-2013");
+		File file = new File("F:/hadoop/第4次/Sep-2013");
+		File [] fileList = file.listFiles();
+		
+		for(File fileSingle: fileList) {
+			System.out.println(fileSingle);
+		}
+	}
+
+}

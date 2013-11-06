@@ -1,0 +1,23 @@
+package cn.edu.zju.cadal.hbase.insertInfo;
+
+public class FileHandle {
+	private String dir;
+	
+	/**
+	 * Construct function
+	 */
+	public FileHandle(String dir) {
+		this.dir = dir;
+	}
+	
+	
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// Test
+
+	}
+
+}

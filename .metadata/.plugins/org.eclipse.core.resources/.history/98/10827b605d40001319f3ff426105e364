@@ -1,0 +1,17 @@
+package cn.edu.zju.cadal.pattern.adapter;
+
+public class WildTurkey implements Turkey {
+
+	@Override
+	public void fly() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void fobble() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

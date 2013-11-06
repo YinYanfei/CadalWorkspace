@@ -1,0 +1,54 @@
+package cn.edu.zju.cadal.hbase.insertInfo;
+
+import org.apache.hadoop.hbase.client.ResultScanner;
+import org.apache.hadoop.hbase.client.Scan;
+import org.apache.hadoop.hbase.util.Bytes;
+
+public class QueryOp {
+	public static String TABLENAME = "access-log";
+
+	private Utils hbaseOp = null;
+
+	/**
+	 * Construct functions
+	 * 
+	 * @throws Exception
+	 */
+	public QueryOp() throws Exception {
+		this.hbaseOp = new Utils(this.TABLENAME);
+	}
+
+	/**
+	 * Scan function for HBase
+	 * 
+	 * @param startKey
+	 * @param endKey
+	 */
+	private ResultScanner Scan(String startKey, String endKey) {
+		try{
+			Scan scan = new Scan(Bytes.toBytes(startKey), Bytes.toBytes(endKey));
+			scan.addColumn(Bytes.toBytes("info"), Bytes.toBytes("url"));
+			return this.hbaseOp.htable.getScanner(scan);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	/**
+	 * To get totally url for ip '165.44.19.36'
+	 */
+	public void GetIpUrl() {
+		String startKey = "";
+		String endKey   = "";
+	}
+	
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// Test
+
+	}
+
+}

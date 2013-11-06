@@ -1,0 +1,19 @@
+package cn.edu.zju.cadal.hbase.insertInfo;
+
+public class FileHandle {
+	private String dir;
+	
+	/**
+	 * Construct function
+	 */
+	public 
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

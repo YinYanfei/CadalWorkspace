@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;cn.edu.zju.cadal.factoryMethod&apos; to &apos;cn.edu.zju.cadal.pattern.factoryMethod&apos;&#x0D;&#x0A;- Original project: &apos;DesignPattern&apos;&#x0D;&#x0A;- Original element: &apos;DesignPattern/src/cn.edu.zju.cadal.factoryMethod&apos;&#x0D;&#x0A;- Renamed element: &apos;DesignPattern/src/cn.edu.zju.cadal.pattern.factoryMethod&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;cn.edu.zju.cadal.factoryMethod&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;cn.edu.zju.cadal.factoryMethod" name="cn.edu.zju.cadal.pattern.factoryMethod" qualified="false" references="true" stamp="1382842196105" textual="false" version="1.0"/>
+</session>

@@ -1,0 +1,6 @@
+package cn.edu.zju.cadal.pattern.adapter;
+
+public class TurkeyAdapter implements Duck {
+	
+	
+}

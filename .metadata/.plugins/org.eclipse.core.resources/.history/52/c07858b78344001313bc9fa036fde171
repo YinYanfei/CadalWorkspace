@@ -1,0 +1,29 @@
+package cn.edu.zju.cadal.hbase.insertInfo;
+
+public class QueryOp {
+	public static String TABLENAME = "access-log";
+
+	private Utils hbaseOp = null;
+
+	/**
+	 * Construct functions
+	 * 
+	 * @throws Exception
+	 */
+	public QueryOp() throws Exception {
+		this.hbaseOp = new Utils(this.TABLENAME);
+	}
+
+	private void Scan(String startKey, String endKey) {
+		
+	}
+	
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// Test
+
+	}
+
+}

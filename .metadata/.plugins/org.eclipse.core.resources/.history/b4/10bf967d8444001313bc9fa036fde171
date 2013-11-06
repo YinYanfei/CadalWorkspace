@@ -1,0 +1,43 @@
+package cn.edu.zju.cadal.hbase.insertInfo;
+
+import org.apache.hadoop.hbase.client.Scan;
+import org.apache.hadoop.hbase.util.Bytes;
+
+public class QueryOp {
+	public static String TABLENAME = "access-log";
+
+	private Utils hbaseOp = null;
+
+	/**
+	 * Construct functions
+	 * 
+	 * @throws Exception
+	 */
+	public QueryOp() throws Exception {
+		this.hbaseOp = new Utils(this.TABLENAME);
+	}
+
+	/**
+	 * Scan function for HBase
+	 * 
+	 * @param startKey
+	 * @param endKey
+	 */
+	private void Scan(String startKey, String endKey) {
+		try{
+			Scan scan = new Scan(Bytes.toBytes(startKey), Bytes.toBytes(endKey));
+			scan.addColumn(Bytes.toBytes("info"), Bytes.toBytes(""));
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// Test
+
+	}
+
+}

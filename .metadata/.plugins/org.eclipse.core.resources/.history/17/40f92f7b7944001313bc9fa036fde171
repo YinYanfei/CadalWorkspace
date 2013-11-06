@@ -1,0 +1,15 @@
+package cn.edu.zju.cadal.hbase.insertInfo;
+
+public class InsertOp {
+
+	private Utils hbaseOp = null;
+	
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// Test
+		
+	}
+
+}
