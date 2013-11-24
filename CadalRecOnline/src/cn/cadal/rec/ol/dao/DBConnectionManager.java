@@ -122,8 +122,8 @@ public class DBConnectionManager {
 	private void loadDrivers() {
 		ParseDSConfig pd = new ParseDSConfig();
 		// 读取数据库配置文件
-		drivers = pd.readConfigInfo("/usr/local/rec/bin/libRec/ds.config.xml");
-//		drivers = pd.readConfigInfo("ds.config.xml");
+//		drivers = pd.readConfigInfo("/usr/local/rec/bin/libRec/ds.config.xml");
+		drivers = pd.readConfigInfo("ds.config.xml");
 //		System.out.println("in loadDrivers 加载驱动程序。。。");
 	}
 	public static void main(String[] args) {

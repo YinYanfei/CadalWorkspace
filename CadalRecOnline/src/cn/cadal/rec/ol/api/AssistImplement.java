@@ -87,23 +87,23 @@ public class AssistImplement implements AssistInterface {
 	 */
 	public static void main(String[] args) {
 		// Analyze and Test
-//		AssistImplement aa = new AssistImplement();
+		AssistImplement aa = new AssistImplement();
 
-//		String date = "2013-09-02";
-//		String type = "0";
-//		
-//		List<Book> listRes = aa.AssistEditRecByDateType(date, type);
-//		
-//		System.out.println(listRes.size());
-//		
-//		for(int i = 0; i < listRes.size(); ++i) {
-//			System.out.println("-----------");
-//			System.out.println(listRes.get(i).getBookId());
-//			System.out.println(listRes.get(i).getBookTitle());
-//			System.out.println(listRes.get(i).getBookAuthor());
-//			System.out.println(listRes.get(i).getBookPublisher());
-//			System.out.println(listRes.get(i).getBookType());
-//		}
+		String date = "2013-09-02";
+		String type = "0";
+		
+		List<Book> listRes = aa.AssistEditRecByDateType(date, type);
+		
+		System.out.println(listRes.size());
+		
+		for(int i = 0; i < listRes.size(); ++i) {
+			System.out.println("-----------");
+			System.out.println(listRes.get(i).getBookId());
+			System.out.println(listRes.get(i).getBookTitle());
+			System.out.println(listRes.get(i).getBookAuthor());
+			System.out.println(listRes.get(i).getBookPublisher());
+			System.out.println(listRes.get(i).getBookType());
+		}
 
 //		List<String> listStr = new ArrayList<String>();
 //		listStr.add("Ãñ¹ú");
