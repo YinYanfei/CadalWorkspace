@@ -1,7 +1,13 @@
 package cn.cadal.sec.storm.bolt.cassandra;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.nio.ByteBuffer;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,35 +38,36 @@ public class CassandraOp {
 		System.out.println(strList[2]);
 		System.out.println(strList[3]);
 		System.out.println(strList[4]);
-		
-		String IP = strList[0];			// 10.15.62.237
-		String USERNAME = strList[1];	// Yanfei
-		String BOOKNO = strList[2];		// 07018720
-		String PAGENO = strList[3];		// 00000028
-		String TIME = strList[4];		// 2013-03-13 08:51:13.123456
-		
-		String key_name = TIME.substring(0, 16);  // 2013-03-13 08:51
-		
+
+		String IP = strList[0]; // 10.15.62.237
+		String USERNAME = strList[1]; // Yanfei
+		String BOOKNO = strList[2]; // 07018720
+		String PAGENO = strList[3]; // 00000028
+		String TIME = strList[4]; // 2013-03-13 08:51:13.123456
+
+		String key_name = TIME.substring(0, 16); // 2013-03-13 08:51
+
 		String super_key_name = String.valueOf(UUID.randomUUID());
 		String ColumnFamilyName = "RecordMinute";
-		
+
 		try {
-			TTransport tr = new TFramedTransport(new TSocket("10.15.61.113", 9160));
+			TTransport tr = new TFramedTransport(new TSocket("10.15.61.113",
+					9160));
 
 			TProtocol proto = new TBinaryProtocol(tr);
 			Cassandra.Client client = new Cassandra.Client(proto);
-			
+
 			tr.open();
-			
+
 			client.set_keyspace("CadalSecTest");
-//			client.set_keyspace("CadalSec");
-			
+			// client.set_keyspace("CadalSec");
+
 			long timeStamp = System.currentTimeMillis();
 
 			Map<ByteBuffer, Map<String, List<Mutation>>> outerMap = new HashMap<ByteBuffer, Map<String, List<Mutation>>>();
 			List<Mutation> columnToAdd = new ArrayList<Mutation>();
 
-			// 
+			//
 			Column idColumnIp = new Column();
 			idColumnIp.setName(toByteBuffer("ip"));
 			idColumnIp.setValue(toByteBuffer(IP));
@@ -85,7 +92,7 @@ public class CassandraOp {
 			idColumnTime.setName(toByteBuffer("time"));
 			idColumnTime.setValue(toByteBuffer(TIME));
 			idColumnTime.setTimestamp(timeStamp);
-			
+
 			List<Column> cols = new ArrayList<Column>();
 			cols.add(idColumnIp);
 			cols.add(idColumnUsername);
@@ -119,19 +126,20 @@ public class CassandraOp {
 			outerMap.put(toByteBuffer(key_name), innerMap);
 
 			client.batch_mutate(outerMap, ConsistencyLevel.ONE);
-			
+
 			tr.close();
-			
+
 			return 0;
 		} catch (Exception e) {
 			e.printStackTrace();
-			
+
 			return 1;
 		}
 	}
-	
+
 	/**
 	 * Query from cf [RecordMinute]
+	 * 
 	 * @param queryWord
 	 */
 	public void QueryRecordMinute(String queryWord) {
@@ -142,55 +150,76 @@ public class CassandraOp {
 		try {
 			tr.open();
 			client.set_keyspace("CadalSecTest");
-//			client.set_keyspace("CadalSec");
-			
+			// client.set_keyspace("CadalSec");
+
 			// read single column
-//			System.out.println("------------Single---------------");
-//			ColumnPath columnPath = new ColumnPath();
-//			columnPath.column_family = "RecordMinute";
-//			columnPath.super_column = toByteBuffer("e140d64d-cc0f-423b-8ccc-312ed508f563");
-//			
-//			ColumnOrSuperColumn columnOrSuperColumn = client.get(toByteBuffer(queryWord), columnPath, ConsistencyLevel.ONE);
-//
-//			SuperColumn superColumn = columnOrSuperColumn.getSuper_column();
-//			
-//			List<Column> columns = superColumn.getColumns();
-//			
-//			for(Column col : columns) {
-//				System.out.println(new String(col.getName(), "UTF-8") + " --> " + new String(col.getValue(), "UTF-8"));
-//			}
-			
+			// System.out.println("------------Single---------------");
+			// ColumnPath columnPath = new ColumnPath();
+			// columnPath.column_family = "RecordMinute";
+			// columnPath.super_column =
+			// toByteBuffer("e140d64d-cc0f-423b-8ccc-312ed508f563");
+			//
+			// ColumnOrSuperColumn columnOrSuperColumn =
+			// client.get(toByteBuffer(queryWord), columnPath,
+			// ConsistencyLevel.ONE);
+			//
+			// SuperColumn superColumn = columnOrSuperColumn.getSuper_column();
+			//
+			// List<Column> columns = superColumn.getColumns();
+			//
+			// for(Column col : columns) {
+			// System.out.println(new String(col.getName(), "UTF-8") + " --> " +
+			// new String(col.getValue(), "UTF-8"));
+			// }
+
 			// read entire row
 			System.out.println("------------Entire---------------");
-			SlicePredicate predicate = new SlicePredicate();//null, new SliceRange(new byte[0], new byte[0], false, 10)
+			SlicePredicate predicate = new SlicePredicate();// null, new
+															// SliceRange(new
+															// byte[0], new
+															// byte[0], false,
+															// 10)
 			SliceRange range = new SliceRange();
 			range.start = toByteBuffer("");
 			range.finish = toByteBuffer("");
 			predicate.setSlice_range(range);
-			
+
 			ColumnParent parent = new ColumnParent();
 			parent.column_family = "RecordMinute";
-			
-			List<ColumnOrSuperColumn> results = client.get_slice(toByteBuffer(queryWord), parent, predicate, ConsistencyLevel.ONE);
+
+			FileWriter writer = new FileWriter(new File("ip_check.dat"), true);
+
+			List<ColumnOrSuperColumn> results = client.get_slice(
+					toByteBuffer(queryWord), parent, predicate,
+					ConsistencyLevel.ONE);
 			for (ColumnOrSuperColumn result : results) {
 				SuperColumn superColumn2 = result.super_column;
-				
+
 				List<Column> columns2 = superColumn2.getColumns();
-				
-				System.out.println(new String(superColumn2.getName(), "UTF-8"));
-				
+
+				// System.out.println(new String(superColumn2.getName(),
+				// "UTF-8"));
+
 				for (Column column : columns2) {
-					System.out.println(new String(column.getName(), "UTF-8") + " -> "+ new String(column.getValue(), "UTF-8"));
+					if (new String(column.getName(), "UTF-8").equals("ip")) {
+						// System.out.println(new String(column.getName(),
+						// "UTF-8") + " -> "+ new String(column.getValue(),
+						// "UTF-8"));
+//						System.out.println(new String(column.getValue(), "UTF-8"));
+						writer.write(new String(column.getValue(), "UTF-8"));
+						writer.write("\n");
+					}
 				}
-				System.out.println("----------------------------------------");
+				// System.out.println("----------------------------------------");
 			}
-			
+
+			writer.close();
 			tr.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * String => bytebuffer
 	 */
@@ -202,22 +231,37 @@ public class CassandraOp {
 		}
 		return null;
 	}
-	
-	
+
 	/**
 	 * @param args
+	 * @throws Exception
 	 */
-	public static void main(String[] args) {
-//		// Test
-//		String strTmp = "290.15.6.200$Yanfei$07018720$00000180$2013-08-15 22:00:00.000000";
+	public static void main(String[] args) throws Exception {
+		// // Test
+		// String strTmp =
+		// "290.15.6.200$Yanfei$07018720$00000180$2013-08-15 22:00:00.000000";
 
 		CassandraOp co = new CassandraOp();
-		
-		// Insert into cf [RecordMinute]
-//		co.InsertRecordMinute(strTmp);
-//		
-//		// Query from c	f [RecordMinute]
-		co.QueryRecordMinute("2013-10-13 21:22");
-	}
 
+		// Insert into cf [RecordMinute]
+		// co.InsertRecordMinute(strTmp);
+		//
+		// // Query from c f [RecordMinute]
+		// co.QueryRecordMinute("2013-10-13 21:22");
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		String str = "2013-08-30 08:39";
+		for (int min = 0; min < 10000; ++min) {
+			Date dt = sdf.parse(str);
+			Calendar rightNow = Calendar.getInstance();
+			rightNow.setTime(dt);
+			rightNow.add(Calendar.MINUTE, min);// ·ÖÖÓ¼Ó1·ÖÖÓ
+
+			Date dt1 = rightNow.getTime();
+			String reStr = sdf.format(dt1);
+			System.out.println(reStr);
+			
+			co.QueryRecordMinute(reStr);
+		}
+	}
 }

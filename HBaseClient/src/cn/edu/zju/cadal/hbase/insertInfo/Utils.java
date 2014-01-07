@@ -104,4 +104,14 @@ public class Utils {
 		return (new Date(dateLong)).toString();
 	}
 
+	/**
+	 * Main function
+	 * 
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		System.out.println(System.currentTimeMillis());
+	}
+	
 }
+

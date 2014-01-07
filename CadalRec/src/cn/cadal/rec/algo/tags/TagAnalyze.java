@@ -242,14 +242,14 @@ public class TagAnalyze {
 	 */
 	public static void main(String[] args) {
 		// Analyze 
-//		TagAnalyze analyzer = new TagAnalyze();
+		TagAnalyze analyzer = new TagAnalyze();
 		
-//		analyzer.QueryMysql(678);
-//		analyzer.QueryMysql(679);
-//		analyzer.QueryMysql(680);
-//		analyzer.QueryMysql(681);
+		analyzer.QueryMysql(678);
+		analyzer.QueryMysql(679);
+		analyzer.QueryMysql(680);
+		analyzer.QueryMysql(681);
 		
-//		analyzer.Print();
+		analyzer.Print();
 	
 //		analyzer.QueryMysql();
 //		
